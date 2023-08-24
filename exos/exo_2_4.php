@@ -2,68 +2,81 @@
 
 $total = 100;
 
-$score = 12.5;
-$scoresCandidats = [25, 50, 30];
+$score = 27;
+$scoresCandidats = [14, 25, 25];
 $status = "";
-$balolotageFavorable = false;
+$balotageFavorable = false;
+
+/**
+ * vérifie le score du candidat est le meilleur
+ * Revoie un tableau des valeurs supériereures au score du candidat
+ */
+function checkArray($scoresCandidats, $score){
+    $filteredArray = array_filter($scoresCandidats, function($value) use ($score){
+        return $value > $score;
+    });
+    return $filteredArray;
+    }
+
+/** 
+ * Vérifie si un nombre >= à 50 est présent dans la tableau
+ */
+function checkLose($scoresCandidats){
+    $flag = true;
+    $loose = false;
+    $index = 0;
+    // foreach( $scoresCandidats as $scoreCandidat){
+    //     if($scoreCandidat > 50){
+    //         $loose = true;
+    //     }
+        
+    // }
+    while($flag && $index < count($scoresCandidats))
+    {
+        if($scoresCandidats[$index] > 49)
+        {
+            $loose = true;
+            $flag = false;
+        }
+
+        $index ++;
+    }
+    return $loose;
+}
 
 
 // test si il est élu : 
 if( $score > 49){
     $status = "élu";
 } 
-// si non élu , deux cas : ballotage ou echec 
-elseif ($score <= 12.5)
+// cas non élu : score inférieur à 12.5 ou candidatq qui a plus de 50  
+elseif ($score <= 12.5 || checkLose($scoresCandidats))
 {
     $status = "non élu";
 }
 // cas de ballotage 
 else {
     // vérifier si ballotage favorable :
-    foreach($scoresCandidats as $scoreCandidat)
+    // égalité favorable
+    if (in_array($score, $scoresCandidats) && max($scoresCandidats) == $score) {
+        $status = "égalité de balotage favorable";
+    // égalité défavorable
+    } elseif(in_array($score, $scoresCandidats) && max($scoresCandidats) != $score)
     {
-        if($score >= $scoreCandidat)
-        {
-            $status = "ballotage favorable";
-        }
+        $status = "égalité de balotage defavorable";
     }
-    // vérifier si ballotage defavorable :  
-    // vérifier si un candidat est victorieux : 
-    // vérifier si égalité de ballotage / 
-}
-
-
-
-// // vérifier que la participation 
-
-// // si score candidat > 100 - 12.5, alors élu 
-// if ($score > 51) {
-//     $status = "elu";
-//     // conditiond de ballotage 
-// } elseif ($score >= 12.5) {
-//     foreach ($scoresCandidats as $scoreCandidat) {
-//         if($scoreCandidat <= 50)
-//         {
-//             if ($score <= $scoreCandidat)
-//             {
-//                 var_dump('ici');
-//                 $status = "non favori";
-//             } else {
-//                 $status = "favori";
-//             }
-                
-//         } else {
-//                 $status = "loser";
-//                 break;
-//             }
-//         }
+    // premier de ballotage
+    elseif(count(checkArray($scoresCandidats, $score)) == 0)
+    {
+        $status = "prem's";
+    } 
+    else 
+    {
         
-//     }
-// else {
-//     $status = "loser";
-// }
-
-// echo $status;
+        $status = "balotage défavorable";
+    }
+    }
 
 
+echo $status;
 
