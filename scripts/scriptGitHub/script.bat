@@ -1,6 +1,6 @@
-@echo off
+@echo on
 
-cd C:\chemin\vers\votre\projet
+cd U:\59011-82-08\scripts\script
 if errorlevel 1 (
     echo Erreur : Impossible de changer de repertoire.
     exit /b 1

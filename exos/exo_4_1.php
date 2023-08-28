@@ -112,20 +112,10 @@ class Menu
 // $plateau = new build(Menu::$lines, Menu::$columns);
 // $plateau->printArray();
 
+
 /**
- * Gestion du tableau à une dimension
+ * Construction tableau 
  */
-class SimpleArray
-{
-    private array $array;
-
-    public function __construct(array $array = [])
-    {
-
-    }
-}
-
-
 class SimpleArrayBuilder
 {
     public static $numbersTab = [];
@@ -152,7 +142,7 @@ class SimpleArrayBuilder
 
     public static function sortTab(): void
     {
-        sort(self::$numbersTab);
+        asort(self::$numbersTab);
         print_r(self::$numbersTab);
     }
 }
