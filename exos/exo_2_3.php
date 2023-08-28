@@ -21,3 +21,8 @@ function macron() : void
 }
 
 macron();
+
+//corection 
+
+
+// if (($genre == "M" && $age > 20) || ($genre == "F" && ($age > 17 && $age < 36)));
