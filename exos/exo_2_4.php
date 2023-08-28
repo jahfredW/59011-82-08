@@ -33,7 +33,7 @@ function checkLose($scoresCandidats){
     // }
     while($flag && $index < count($scoresCandidats))
     {
-        if($scoresCandidats[$index] > 49)
+        if($scoresCandidats[$index] > 50)
         {
             $loose = true;
             $flag = false;
@@ -46,7 +46,7 @@ function checkLose($scoresCandidats){
 
 
 // test si il est élu : 
-if( $score > 49){
+if( $score > 50){
     $status = "élu";
 } 
 // cas non élu : score inférieur à 12.5 ou candidatq qui a plus de 50  
@@ -58,12 +58,8 @@ elseif ($score <= 12.5 || checkLose($scoresCandidats))
 else {
     // vérifier si ballotage favorable :
     // égalité favorable
-    if (in_array($score, $scoresCandidats) && max($scoresCandidats) == $score) {
+    if (in_array($score, $scoresCandidats)) {
         $status = "égalité de balotage favorable";
-    // égalité défavorable
-    } elseif(in_array($score, $scoresCandidats) && max($scoresCandidats) != $score)
-    {
-        $status = "égalité de balotage defavorable";
     }
     // premier de ballotage
     elseif(count(checkArray($scoresCandidats, $score)) == 0)
@@ -79,4 +75,16 @@ else {
 
 
 echo $status;
+
+// correction 
+
+// $score1 = readline("Score candidat n°1: ");
+// $score2 = readline("Score candidat n°2: ");
+// $score3 = readline("Score candidat n°3: ");
+// $score4 = readline("Score candidat n°4: ");
+
+// if ($score1 <12.5 || $score2 >50 || $score3 > 50 || $score4 > 50) echo "Le candidat numéro 1 a été battu";
+// else if ($score1 > 50) echo "Le candidat numéro 1 est élu";
+// else if ($score1 > $score2 && $score1 > $score3 && $score1 > $score4) echo "le candidat numéro 1 se trouve en ballotage favorable";
+// else echo "le candidat numéro 1 se trouve en ballotage défavorable";
 
