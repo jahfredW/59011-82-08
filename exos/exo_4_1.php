@@ -188,8 +188,6 @@ function creerTableau() : array
     global $tabLargeur;
     global $tabInteger;
 
-
-    
     do
     {   
         
