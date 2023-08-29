@@ -99,9 +99,7 @@ class ArrayBuilder2d
     {
         for($x = 0; $x < $this->heigth; $x++) {
             echo PHP_EOL;
-            for($t = 0; $t < $this->width * 2; $t++) {
-                echo '_';
-            }
+            echo " -------------------------------------------------------------------";
             echo PHP_EOL;
             for($y = 0; $y < $this->width; $y++) {
                 $line = $this->myTab[$x][$y]["x"]. " ". $this->myTab[$x][$y]["y"];
@@ -110,8 +108,10 @@ class ArrayBuilder2d
                 }
                 echo $line . " | ";
             }
-    
+            
     }
+    echo PHP_EOL;
+    echo " -------------------------------------------------------------------";
 }
 
 
