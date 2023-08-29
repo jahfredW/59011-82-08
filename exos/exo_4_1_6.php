@@ -1,9 +1,10 @@
 <?php 
 
 /**
- * Undocumented function
- *
- * @return void
+ * function de recherche dans un tableau
+ * @param int $value : valeur à rechercher 
+ * @param array $tab : tableau à rechercher 
+ * @return void 
  */
 function search(array $tab, int $value) : array
 {
