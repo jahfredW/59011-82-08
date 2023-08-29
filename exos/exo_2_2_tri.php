@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * Undocumented class
+ * Classe permettant de trier des tableaux
  */
 class TrierTableau
 {
@@ -13,16 +13,32 @@ class TrierTableau
     }
 
     /**
-     * Undocumented function
+     * Tri un tableau en utilisant usort
+     * Ordre croissant 
      *
      * @return void
      */
-    public function sortByUsort()
+    public function sortByUsortUp() : void
     {
         usort($this->tableau, function( $a, $b) { return $a <=> $b; });
     }
 
-    public function printTableau()
+    /**
+     * Tri un tableau en utilisant usort
+     * Ordre décroissant 
+     *
+     * @return void
+     */
+    public function sortByUsortDown() : void
+    {
+        usort($this->tableau, function( $a, $b) { return $b <=> $a; });
+    }
+    /**
+     * Affiche le tableau 
+     *
+     * @return void
+     */
+    public function printTableau() : void
     {
         foreach ($this->tableau as $key => $value) {
             echo $key. " => ". $value. PHP_EOL;
@@ -33,5 +49,5 @@ class TrierTableau
 $tab = [2,4,5,7,6];
 
 $sort = new TrierTableau($tab);
-$sort->sortByUsort();
+$sort->sortByUsortDown();
 $sort->printTableau();
