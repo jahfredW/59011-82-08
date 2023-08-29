@@ -145,8 +145,98 @@ class SimpleArrayBuilder
         asort(self::$numbersTab);
         print_r(self::$numbersTab);
     }
+
+    /**
+     * Invite utilisateur avec vérification entier 
+     * et choix de l'invite
+     *
+     * @return void
+     */
+    public static function saisirEntier($positif, $inviteChoix): void
+    {
+        $inviteListe = [
+            1 => "Entrez un nombre positif :" 
+        ];
+    }
 }
 
-SimpleArrayBuilder::buildTab();
-SimpleArrayBuilder::printTab();
-SimpleArrayBuilder::sortTab();
+// SimpleArrayBuilder::buildTab();
+// SimpleArrayBuilder::printTab();
+// SimpleArrayBuilder::sortTab();
+
+
+////////////////////
+
+// tableau contenant les invite utilisateurs
+$inviteTab = [
+    "1" => "1 : Entrez une largeur : ",
+    "2" => "2 : Entrez une hauteur : ",
+    "3" => "3 : Entrez un nombre entier positif : ",
+];
+
+$tabHauteur = [];
+$tabLargeur = [];
+$tabInteger = [];
+/**
+ * Construction tableau 
+ */
+function creerTableau() : array
+{
+    
+    global $inviteTab;
+    global $tabHauteur;
+    global $tabLargeur;
+    global $tabInteger;
+
+
+    
+    do
+    {   
+        
+        foreach($inviteTab as $invite)
+        {
+            echo $invite. PHP_EOL;
+        }
+    
+        $typeInvite = readline("quelle type d'invite voulez vous saisir : ");
+
+        do
+        {   
+            $number = saisirEntier($typeInvite);
+            $number != 0 && $typeInvite == "1"  ? $tabLargeur[] = $number : null;
+            $number != 0 && $typeInvite == "2"  ? $tabHauteur[] = $number : null;
+            $number != 0 && $typeInvite == "3"  ? $tabInteger[] = $number : null;
+        } while($number != 0);
+    
+    } while ($typeInvite > 0 || !preg_match("/^[\d]+$/", $typeInvite));
+    
+
+    
+    return [$tabLargeur, $tabHauteur, $tabInteger];
+}
+
+/**
+ * Vérification de la saisie utilisateur
+ * Si l'input est bien un nombre entier
+ *
+ * @return integer
+ */
+function saisirEntier($typeInvite) : int
+{
+    global $inviteTab;
+    
+    if (!in_array($typeInvite, array_keys($inviteTab))){
+        return 0;
+    }
+
+    do
+    {   
+        $number = readline($inviteTab[$typeInvite]);
+        
+    } while ($number < 0 || !preg_match("/^[\d]+$/", $number));
+
+    return $number;
+}
+
+$tab = creerTableau();
+print_r($tab);
