@@ -97,21 +97,25 @@ class ArrayBuilder2d
 
     public function lazyPrint() : void
     {
-        for($x = 0; $x < $this->heigth; $x++) {
+        $letterY = 65;
+        $letterX = 65;
+        for($y = 0; $y < $this->heigth; $y++) {
             echo PHP_EOL;
-            echo " -------------------------------------------------------------------";
+            echo " --------------------------------------------------------------";
             echo PHP_EOL;
-            for($y = 0; $y < $this->width; $y++) {
-                $line = $this->myTab[$x][$y]["x"]. " ". $this->myTab[$x][$y]["y"];
-                if($y == 0 ){
-                    echo " | " . $line . " | ";
+            echo chr($letterY);
+            $letterY += 1;
+            for($x = 0; $x < $this->width; $x++) {
+                $line = $this->myTab[$y][$x]["y"]. " ". $this->myTab[$y][$x]["x"];
+                if($x == 0 ){
+                    echo " | ";
                 }
                 echo $line . " | ";
             }
             
     }
     echo PHP_EOL;
-    echo " -------------------------------------------------------------------";
+    echo " --------------------------------------------------------------";
 }
 
 
