@@ -147,9 +147,9 @@ class ArrayBuilder2d
     // }
     // echo PHP_EOL;
     // echo " ---------------------------------------------------";
-    $interlines  = str_repeat("---", $this->width);
+    $interlines  = str_repeat("----", $this->width);
     $letterX = 65;
-    $letterY = 65;
+    $Y = 1;
     echo $interlines . PHP_EOL;
     for($y = 0; $y < $this->heigth; $y++) {
         for($x = 0; $x < $this->width; $x++) {
@@ -157,8 +157,8 @@ class ArrayBuilder2d
                 echo chr($letterX). " | "; 
                 $letterX += 1;
             } elseif( $y > 0 && $x == 0){
-                echo chr($letterY). " | "; 
-                $letterY += 1;
+                echo $Y. " | "; 
+                $Y += 1;
             }
             else {
                 echo $this->myTab[$y][$x]["value"]. "  | ";
