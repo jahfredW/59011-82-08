@@ -104,7 +104,7 @@ class ArrayBuilder2d
      */
     public function addArrayValue(array $coord, int $value): void
     {
-        $this->myTab[$coord["y"]][$coord["x"]]["value"] = $value;
+        $this->myTab[$coord["y"] + 1][$coord["x"] + 1]["value"] = $value;
     }
 
     /**
@@ -174,7 +174,7 @@ class ArrayBuilder2d
 
 
 $tab = new ArrayBuilder2d(10, 10);
-// $tab->addArrayValue([ "x" => 0, "y" => 0], 1);
+$tab->addArrayValue([ "x" => 0, "y" => 0], 1);
 $tab->lazyPrint();
 
 // $tab = ["hello",4,5,7,6];
