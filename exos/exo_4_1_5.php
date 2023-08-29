@@ -75,8 +75,8 @@ class ArrayBuilder2d
 
     public function __construct(int $width, int $heigth)
     {
-        $this->width = $width;
-        $this->heigth = $heigth;
+        $this->width = $width + 1;
+        $this->heigth = $heigth + 1;
         $this->myTab = [];
         $this->build();
     }
@@ -90,7 +90,7 @@ class ArrayBuilder2d
     {
         for ($i = 0; $i < $this->width; $i++) {
             for ($j = 0; $j < $this->heigth; $j++) {
-                $this->myTab[$i][$j] = [ "x" => $j, "y" => $i, "value"=> null];
+                $this->myTab[$i][$j] = [ "x" => $j , "y" => $i , "value"=> null];
             }
         }
     }
@@ -114,36 +114,67 @@ class ArrayBuilder2d
      */
     public function lazyPrint() : void
     {
-        $letterY = 65;
-        $letterX = 65;
-        for($y = 0; $y < $this->heigth; $y++) {
-            echo PHP_EOL;
-            $interline = str_repeat("---", $this->width);
-            echo $interline;
-            echo PHP_EOL;
-            echo chr($letterY);
-            $letterY += 1;
-            for($x = 0; $x < $this->width; $x++) {
-                // $line = $this->myTab[$y][$x]["x"]. " ". $this->myTab[$y][$x]["x"];
-                $line = $this->myTab[$y][$x]["value"];
-                if($x == 0 ){
-                    echo " | ";
-                }
-                echo $line . " | ";
+    //     $letterY = 65;
+    //     $letterX = 65;
+    //     for($y = 0; $y < $this->heigth; $y++) {
+    //         echo PHP_EOL;
+    //         $interline = str_repeat("---", $this->width);
+    //         echo $interline;
+    //         echo PHP_EOL;
+    //         if($y >= 1){
+    //             echo chr($letterY);
+    //             $letterY += 1;
+    //         }
+            
+    //         for($x = 0; $x < $this->width; $x++) {
+    //             if($y == 0 && $x > 0 ){
+    //                 echo chr($letterX) . " | "; 
+    //                 $letterX += 1;
+                   
+    //             } else {
+    //                 // $line = $this->myTab[$y][$x]["x"]. " ". $this->myTab[$y][$x]["x"];
+    //                 $line = $this->myTab[$y][$x]["y"];
+    //                 if($x == 0 ){
+    //                     echo "  | ";
+    //                 } 
+    //                 echo $line . "  | ";
+    //             }
+                
+                
+                
+    //         }
+            
+    // }
+    // echo PHP_EOL;
+    // echo " ---------------------------------------------------";
+    $interlines  = str_repeat("---", $this->width);
+    $letterX = 65;
+    $letterY = 65;
+    echo $interlines . PHP_EOL;
+    for($y = 0; $y < $this->heigth; $y++) {
+        for($x = 0; $x < $this->width; $x++) {
+            if( $y == 0 && $x > 0){
+                echo chr($letterX). " | "; 
+                $letterX += 1;
+            } elseif( $y > 0 && $x == 0){
+                echo chr($letterY). " | "; 
+                $letterY += 1;
+            }
+            else {
+                echo $this->myTab[$y][$x]["value"]. "  | ";
             }
             
+        }
+        echo PHP_EOL;
+        echo $interlines . PHP_EOL;
     }
-    echo PHP_EOL;
-    echo " ---------------------------------------------------";
-}
 
-
+    }
 }
 
 
 $tab = new ArrayBuilder2d(10, 10);
-$tab->lazyPrint();
-$tab->addArrayValue([ "x" => 0, "y" => 0], 1);
+// $tab->addArrayValue([ "x" => 0, "y" => 0], 1);
 $tab->lazyPrint();
 
 // $tab = ["hello",4,5,7,6];
