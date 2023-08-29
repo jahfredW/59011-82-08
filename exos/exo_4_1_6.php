@@ -23,7 +23,7 @@ function search(array $tab, int $value) : array
         for($index = 0; $index < count($tab); $index++){
             for($index2 = 0; $index2 < count($tab[$index]); $index2++){
                 if($tab[$index][$index2] == $value){
-                    array_push($findList,["x" => $index, "y" => $index2]);
+                    array_push($findList,["x" => $index2, "y" => $index]);
                 }
         }
     }
@@ -44,4 +44,6 @@ function search(array $tab, int $value) : array
 
 $tab = [[1,3,4], [7,4,9], [8, 3 ,4]];
 $tab2 = [1,2,3,4];
+
+
 

@@ -90,23 +90,42 @@ class ArrayBuilder2d
     {
         for ($i = 0; $i < $this->width; $i++) {
             for ($j = 0; $j < $this->heigth; $j++) {
-                $this->myTab[$i][$j] = [ "x" => $j, "y" => $i];
+                $this->myTab[$i][$j] = [ "x" => $j, "y" => $i, "value"=> null];
             }
         }
     }
 
+    /**
+     * Permet de rensigner une case du tableau en lui passant une valeur. 
+     *
+     * @param [array] $coord : les coordonnées du point
+     * @param [int] $value : la valeur à mettre dans le tableau
+     * @return void
+     */
+    public function addArrayValue(array $coord, int $value): void
+    {
+        $this->myTab[$coord["y"]][$coord["x"]]["value"] = $value;
+    }
+
+    /**
+     * Imprime le tableau 
+     *
+     * @return void
+     */
     public function lazyPrint() : void
     {
         $letterY = 65;
         $letterX = 65;
         for($y = 0; $y < $this->heigth; $y++) {
             echo PHP_EOL;
-            echo " --------------------------------------------------------------";
+            $interline = str_repeat("---", $this->width);
+            echo $interline;
             echo PHP_EOL;
             echo chr($letterY);
             $letterY += 1;
             for($x = 0; $x < $this->width; $x++) {
-                $line = $this->myTab[$y][$x]["y"]. " ". $this->myTab[$y][$x]["x"];
+                // $line = $this->myTab[$y][$x]["x"]. " ". $this->myTab[$y][$x]["x"];
+                $line = $this->myTab[$y][$x]["value"];
                 if($x == 0 ){
                     echo " | ";
                 }
@@ -115,7 +134,7 @@ class ArrayBuilder2d
             
     }
     echo PHP_EOL;
-    echo " --------------------------------------------------------------";
+    echo " ---------------------------------------------------";
 }
 
 
@@ -123,6 +142,8 @@ class ArrayBuilder2d
 
 
 $tab = new ArrayBuilder2d(10, 10);
+$tab->lazyPrint();
+$tab->addArrayValue([ "x" => 0, "y" => 0], 1);
 $tab->lazyPrint();
 
 // $tab = ["hello",4,5,7,6];
