@@ -3,7 +3,7 @@
 /**
  * Undocumented class
  */
-class build
+class builder
 {
 
     private array $array;
