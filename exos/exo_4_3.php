@@ -15,4 +15,10 @@ function factorielle($n)
     return $n * factorielle($n - 1);
 }
 
-echo factorielle(10);
+echo factorielle(5);
+
+// 5 *      fac(4)
+// 5 * | 4    *    fac(3) |
+// 5 *   4 *    | 3 *    fac(2) |
+// 5 *   4 *      3 * | 2 * fac(1) |
+// 5 *   4 *      3 *   2 * | 1 |

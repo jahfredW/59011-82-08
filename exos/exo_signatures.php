@@ -32,6 +32,16 @@ function initPlayers($players, $player_name, $player_token) {
 function initGrid($largeur, $hauteur) {
 }
 
+/**
+ * Met à jour la grille de jeu aevec l'état de la cellule 
+ * Est appelée dans changeCellState()
+ *
+ * @param array $grid
+ * @return void
+ */
+function updateGrid($grid) {
+
+}
 /** 
  * Conditions pour gagner
  * @param int $turnNumber : nombre de tours maximal 
@@ -48,6 +58,18 @@ function winConditions($turnNumber, $winAlign) {
  * @return void
  */
 function changeCellState($indice, $x, $y) {
+}
+
+/** 
+ * Logique d'affichage de la cellule 
+ * @indice : indice correspondant au numéro du joueur 
+ * @param int $x : abscisse de la cellule 
+ * @param int $y : ordonnée de la cellule  
+ * @param array gridGame : grid game
+ *
+ *
+ */
+function cellDisplay($indice, $x, $y, $gridGame) {
 }
 
 /**
@@ -79,6 +101,25 @@ function checkTurn($indice) {
  * @param int $j : indice de position dans la liste B 
  * @param int $n : nombre d'éléments à copier
  */
-function listeCopy($A, $B, $i, $j, $n) {
+function listeCopy(array $A, array $B = null, int $i = 0, int $j = 0, $n = 0) {
+    // parcours de la liste A avec indice de départ défini et indice de fin
+    // 1 - cas d'erreur : indice départ < 0 ou > taille de la liste
+    // 2 - indice de fin < indice de départ ou indice de fin > taille de la liste 
+    // 3 - indice
+    // sinon on peut boucler : 
+    // (count(liste) - 1) - $index -> longueur de la liste restante à ne pas dépasser 
+    $numbersA = [];
+    if($i < 0 || $i > count($A) - 1 || $n > (count($A) - 1) - $i || 0 <= 1 - $n){
+        return "valeur impossible";
+    }
+    for($index = $i; $index <= $n; $index++) {
+        // sauvegarde des valeurs dans un nouveau tabeau
+        echo $A[$index];
+        $numbersA = $A[$index];
+
+    }
+
+    // 
 }
 
+listeCopy([1, 2, 3, 4, 5, 6], [], 1, 0, 2 );
