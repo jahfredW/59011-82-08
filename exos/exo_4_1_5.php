@@ -127,30 +127,54 @@ class ArrayBuilder2d
     public function lazyPrint() : void
     {
    
-    $interlines  = str_repeat("------", $this->width);
+    // $interlines  = str_repeat("------", $this->width);
+    // $letterX = 65;
+    // $Y = 1;
+    // echo $interlines . PHP_EOL;
+    // for($y = 0; $y < $this->heigth; $y++) {
+    //     for($x = 0; $x < $this->width; $x++) {
+    //         if( $y == 0 && $x > 0){
+    //             echo str_pad(chr($letterX), 2, " ", STR_PAD_LEFT). "  | "; 
+    //             $letterX += 1;
+    //         } elseif( $y > 0 && $x == 0){
+    //             echo str_pad(strval($Y), 2, "_", STR_PAD_LEFT). "  | "; 
+    //             $Y += 1;
+    //         }
+    //         else {
+    //             echo str_pad($this->myTab[$y][$x]["value"], 2). "  | ";
+    //         }
+            
+    //     }
+    //     echo PHP_EOL;
+    //     echo $interlines . PHP_EOL;
+    // }
+
+    $interlines = str_repeat("-----", $this->width);
     $letterX = 65;
     $Y = 1;
-    echo $interlines . PHP_EOL;
-    for($y = 0; $y < $this->heigth; $y++) {
-        for($x = 0; $x < $this->width; $x++) {
-            if( $y == 0 && $x > 0){
-                echo str_pad(chr($letterX), 2, " ", STR_PAD_LEFT). "  | "; 
-                $letterX += 1;
-            } elseif( $y > 0 && $x == 0){
-                echo str_pad(strval($Y), 2, "_", STR_PAD_LEFT). "  | "; 
-                $Y += 1;
-            }
-            else {
-                echo str_pad($this->myTab[$y][$x]["value"], 2). "  | ";
-            }
-            
-        }
-        echo PHP_EOL;
-        echo $interlines . PHP_EOL;
+    echo $interlines. PHP_EOL;
+    // affichage de l'entête : 
+    echo "    | ";
+    for($index = 1 ; $index < $this->width; $index++) {
+        echo chr($letterX). "  | "; 
+        $letterX += 1;
     }
-
+    echo PHP_EOL;
+    echo $interlines. PHP_EOL;
+     for($y = 0; $y < $this->heigth; $y++) {
+        // affichage des entête de ligne : 
+        echo str_pad(strval($y + 1), 2, "_", STR_PAD_LEFT). "  | "; 
+        for($x = 0; $x < $this->width - 1; $x++) {
+            // affichage des valeurs : 
+            echo str_pad($this->myTab[$y][$x]["value"], 1). "  | ";
+            }
+            echo PHP_EOL;
+            echo $interlines . PHP_EOL;
+        }
+        
     }
 }
+
 
 
 $tab = new ArrayBuilder2d(10, 10);
