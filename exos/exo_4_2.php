@@ -1,9 +1,9 @@
 <?php 
 
 $tab = [
-    "1" => 1,
-    "2" => 2,
-    "3" => 3
+    "un" => 1,
+    "deux" => 2,
+    "trois" => 3
 ];
 
 /**
@@ -25,5 +25,29 @@ function search($tab, $val)
     return "not found";
     }
 
+/**
+ * Undocumented function
+ *
+ * @param [type] $tab tableau dans lequel chercher
+ * @param [type] $val valeur à chercher dans le tableau 
+ * @return void
+ */
+function searchArraySearch($tab, $val)
+{
+    return gettype(array_search($val, $tab)) == "string" ? array_search($val, $tab) : "not found";
+}
 
-echo search($tab, 2);
+/**
+ * Implémentation de la fonction de recherhche in-array
+ * Renvoie l'index de la valeur ! 
+ *
+ * @param [type] $tab tableau dans lequel chercher 
+ * @param [type] $val la valeur à rechercher 
+ * @return void
+ */
+function searchInArray($tab, $val)
+{
+    return in_array($val, $tab);
+}
+
+echo searchInArray($tab, 2);

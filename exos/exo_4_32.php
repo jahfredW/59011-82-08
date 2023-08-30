@@ -1,6 +1,12 @@
 <?php 
 
-function spell($text)
+/**
+ * Undocumented function
+ *
+ * @param [type] $text
+ * @return void
+ */
+function spell($text) 
 {
     if(strlen($text) == 0)
     {
