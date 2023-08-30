@@ -3,8 +3,8 @@
 /**
  * Undocumented function
  *
- * @param [type] $text
- * @return void
+ * @param string $text : texte à épeler 
+ * @return string
  */
 function spell($text) 
 {
