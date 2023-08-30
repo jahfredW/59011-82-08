@@ -51,3 +51,6 @@ function searchInArray($tab, $val)
 }
 
 echo searchInArray($tab, 2);
+
+// méthode de tri la plus adaptée : 
+// array-search car renvoie la clé si trouvée, "not found" sinon. 

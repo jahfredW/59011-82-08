@@ -12,7 +12,6 @@
 function init_players($players, $player_name, $player_token) {
 }
 
-
 /**   
  * Fonction de construction de la grille de jeu 
  * @param int $largeur :  largeur de la grille 
@@ -49,3 +48,9 @@ function check_winner($indice, $x, $y){
  */
 function check_turn($indice) {
 }
+
+/** 
+ * Conditions pour gagner
+ * @param int $turnNumber : nombre de tours maximal 
+ * @param int $winAlign : nombre de jetons à aligner pour gagner 
+ */
