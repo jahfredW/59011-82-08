@@ -96,6 +96,18 @@ class ArrayBuilder2d
     }
 
     /**
+     * Méthode de recherche d'une valeur dans le tableau
+     *
+     * @param integer $x abscisse de la valeur
+     * @param integer $y ordonnée de la valeur
+     * @return array
+     */
+    public function arraySearch(int $x, int $y) : array
+    {
+        return $this->myTab[$y][$x];
+    }
+
+    /**
      * Permet de rensigner une case du tableau en lui passant une valeur. 
      *
      * @param [array] $coord : les coordonnées du point
@@ -108,60 +120,28 @@ class ArrayBuilder2d
     }
 
     /**
-     * Imprime le tableau 
+     * Affiche le tableau  le tableau 
      *
      * @return void
      */
     public function lazyPrint() : void
     {
-    //     $letterY = 65;
-    //     $letterX = 65;
-    //     for($y = 0; $y < $this->heigth; $y++) {
-    //         echo PHP_EOL;
-    //         $interline = str_repeat("---", $this->width);
-    //         echo $interline;
-    //         echo PHP_EOL;
-    //         if($y >= 1){
-    //             echo chr($letterY);
-    //             $letterY += 1;
-    //         }
-            
-    //         for($x = 0; $x < $this->width; $x++) {
-    //             if($y == 0 && $x > 0 ){
-    //                 echo chr($letterX) . " | "; 
-    //                 $letterX += 1;
-                   
-    //             } else {
-    //                 // $line = $this->myTab[$y][$x]["x"]. " ". $this->myTab[$y][$x]["x"];
-    //                 $line = $this->myTab[$y][$x]["y"];
-    //                 if($x == 0 ){
-    //                     echo "  | ";
-    //                 } 
-    //                 echo $line . "  | ";
-    //             }
-                
-                
-                
-    //         }
-            
-    // }
-    // echo PHP_EOL;
-    // echo " ---------------------------------------------------";
-    $interlines  = str_repeat("----", $this->width);
+   
+    $interlines  = str_repeat("------", $this->width);
     $letterX = 65;
     $Y = 1;
     echo $interlines . PHP_EOL;
     for($y = 0; $y < $this->heigth; $y++) {
         for($x = 0; $x < $this->width; $x++) {
             if( $y == 0 && $x > 0){
-                echo chr($letterX). " | "; 
+                echo str_pad(chr($letterX), 2, " ", STR_PAD_LEFT). "  | "; 
                 $letterX += 1;
             } elseif( $y > 0 && $x == 0){
-                echo $Y. " | "; 
+                echo str_pad(strval($Y), 2, "_", STR_PAD_LEFT). "  | "; 
                 $Y += 1;
             }
             else {
-                echo $this->myTab[$y][$x]["value"]. "  | ";
+                echo str_pad($this->myTab[$y][$x]["value"], 2). "  | ";
             }
             
         }
