@@ -4,11 +4,16 @@ document.addEventListener('click', (e) => {
 
     if(target instanceof HTMLImageElement){
         console.log("ici");
-    target.classList.add('rotate-img');
-    setTimeout( rotateImg(target), 2000)
+        if(!target.classList.contains('rotate-img')){
+            target.classList.remove('rotate-img-bis');
+            target.classList.add('rotate-img');
+            setTimeout( () => rotateImg(target), 2000)
+        }
+        
     }
 })
 
 const rotateImg : Function = (target : HTMLElement) : void => {
+    target.classList.add('rotate-img-bis');
     target.classList.remove('rotate-img');
 }
