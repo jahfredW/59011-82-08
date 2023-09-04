@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "outDir": "js01/dist",
+        "target" : "ESNext",
+        "noEmitOnError": true,
+        "strict": true
+    },
+    "files": [
+        "src/test.ts"
+    ]
+}
