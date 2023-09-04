@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+
+
+}
+
+body {
+    box-sizing: border-box;
+}
