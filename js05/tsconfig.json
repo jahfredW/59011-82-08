@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "outDir": "../ts/js05/dist",
+        "target" : "ESNext",
+        "noEmitOnError": true,
+        "strict": true
+    },
+    "files": [
+        "../ts/js05/src/main.ts"
+    ]
+}
