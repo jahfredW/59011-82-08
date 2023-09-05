@@ -1,0 +1,77 @@
+.rotate-img {
+  transform: rotate(90deg);
+  transition: transform 1s ease-in-out;
+}
+
+.rotate-img-bis {
+  transform: rotate(0);
+  transition: transform 1s ease-in-out;
+}
+
+.container {
+  box-sizing: border-box;
+  padding: 10px;
+}
+.container__square {
+  border: 1px solid blueviolet;
+  min-height: 500px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: auto;
+  width: 300px;
+}
+
+.carre {
+  background-color: blue;
+  width: 50px;
+  height: 50px;
+  margin: 50px auto;
+}
+
+.directionButton {
+  border: 1px solid black;
+  padding: 2px;
+  display: block;
+  border-radius: 3px;
+  width: 40px;
+  padding: auto;
+  text-align: center;
+  box-shadow: 5px 5px 5px grey;
+  transition: all 0.3s ease;
+}
+.directionButton:hover {
+  cursor: pointer;
+  box-shadow: 10px 10px 10px grey;
+  color: white;
+  background-color: darkblue;
+}
+
+.flex-row-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100px;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100px;
+  margin: 5px 0;
+}
+
+.gamePad {
+  border: 1px solid black;
+  padding: 5px;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/*# sourceMappingURL=output.css.map */
