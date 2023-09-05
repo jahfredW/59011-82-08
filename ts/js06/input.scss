@@ -11,6 +11,12 @@
 .container {
     box-sizing: border-box;
     padding: 10px;
+
+    &__square{
+        border: 1px solid blueviolet;
+        min-height: 500px;
+        margin-bottom: 20px;
+    }
 }
 
 h1 {
@@ -35,6 +41,14 @@ h1 {
     padding: auto;
     text-align: center;
     box-shadow: 5px 5px 5px grey;
+    transition: all 0.3s ease;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 10px 10px 10px grey;
+        color: white;
+        background-color: darkblue;
+    }
 }
 
 .flex-row-between {
@@ -62,3 +76,4 @@ h1 {
     flex-direction: row;
     justify-content: space-evenly;
 }
+
