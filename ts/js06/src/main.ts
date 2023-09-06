@@ -1,112 +1,51 @@
-let isDragging = false;
-let startX = 0, startY = 0;
-let initialX = 0, initialY = 0;
+import { SquareContainer, GamePad, Rect } from './classes/classes';
 
-import { Square, SquareContainer} from  '../dist/classes/classes.js'
-
-const square = new Square();
+// Instanciation des éléments 
 const squareContainer = new SquareContainer();
+const gamePad = new GamePad();
 
-let squareElement = square.getHtmlElement();
-let squareContainerElement = squareContainer.getHtmlElement();
+// récupération des éléments HTML correspondants à la classe
+const squareElement = squareContainer.getBlob().getHtmlElement();
+const squareContainerElement = squareContainer.getHtmlElement();
+const directionButtons = gamePad.getHtmlElement();
 
-// const square = document.querySelector('[data-object="square"]') as HTMLElement;
-// const squareContainer = document.querySelector('.container__square');
-const directionButtons = document.querySelectorAll('[data-button]');
 
-// Animate Square
-const animateSquare = () => {
-    if (squareElement.classList.contains('square')) {
-        squareElement.classList.remove('square');
-        squareElement.classList.add('circle');
-    } else {
-        squareElement.classList.remove('circle');
-        squareElement.classList.add('square');
+let colorTab = ['red', 'green', 'blue', 'yellow', 'purple'];
+let x  = 100;
+let vInit = 1;
+let accel = 1;
+
+let timer = 3000;
+function executeInterval() {
+    let i = Math.floor(Math.random() * 5);
+    const rect = new Rect();
+    rect.build(squareContainer);
+    rect.display(x, colorTab[i]);
+    vInit = Math.floor(Math.random() * 10) / 10 + 1;
+    accel = Math.floor(Math.random() * 10) / 100;
+    rect.move(vInit, accel);
+    x = Math.floor(Math.random() * 1000) + 1;
+    timer -= 100;
+
+    if (timer <= 100) {
+        timer = 100;
     }
-};
 
-// Animate Square every 1 second
-setInterval(animateSquare, 1000);
+    setTimeout(executeInterval, timer);
+}
 
-// Move Square Function
-const moveSquare = (e: Event, button: HTMLElement | null, square: HTMLElement | null) => {
-    if (square instanceof HTMLElement) {
-        let posX = square.offsetLeft;
-        let posY = square.offsetTop;
-
-        if (button) {
-            // Handle button clicks
-            if (e instanceof MouseEvent) {
-                switch (button.getAttribute('data-button')) {
-                    case "right":
-                        posX += 10;
-                        break;
-                    case "left":
-                        posX -= 10;
-                        break;
-                    case "down":
-                        posY += 10;
-                        break;
-                    case "up":
-                        posY -= 10;
-                        break;
-                }
-            }
-        } else if (e instanceof KeyboardEvent) {
-            // Handle keyboard events
-            switch (e.key) {
-                case "ArrowRight":
-                    posX += 10;
-                    break;
-                case "ArrowLeft":
-                    posX -= 10;
-                    break;
-                case "ArrowDown":
-                    posY += 10;
-                    break;
-                case "ArrowUp":
-                    posY -= 10;
-                    break;
-            }
-        } else if (e instanceof MouseEvent) {
-            // Handle drag events
-            if (e.type === 'mousedown') {
-                isDragging = true;
-                startX = e.clientX;
-                startY = e.clientY;
-                initialX = posX;
-                initialY = posY;
-            }
-            if (e.type === 'mousemove' && isDragging) {
-                const dx = e.clientX - startX;
-                const dy = e.clientY - startY;
-                posX = initialX + dx;
-                posY = initialY + dy;
-            }
-            if (e.type === 'mouseup') {
-                isDragging = false;
-            }
-        }
-
-        // Clamp positions within container
-        let containerWidth = squareContainerElement.getBoundingClientRect().width || 0;
-        posX = Math.min(Math.max(posX, 0), containerWidth - 50);
-        posY = Math.min(Math.max(posY, 0), 450);
-
-        square.style.left = `${posX}px`;
-        square.style.top = `${posY}px`;
-    }
-};
+executeInterval();
 
 // Button Events
 directionButtons.forEach(button => {
     if (button instanceof HTMLElement) {
-        button.addEventListener('click', (e) => moveSquare(e, button, squareElement));
+        button.addEventListener('click', (e) => squareContainer.getBlob().moveSquare(e, button, squareElement, squareContainerElement));
     }
 });
 
 // Global Events
-document.addEventListener('keydown', (e) => moveSquare(e, null, squareElement));
-document.addEventListener('mousedown', (e) => moveSquare(e, null, squareElement));
-document.addEventListener('mousemove', (e) => moveSquare(e, null, squareElement));
-document.addEventListener('mouseup', (e) => moveSquare(e, null, squareElement));
+document.addEventListener('keydown', (e) => squareContainer.getBlob().moveSquare(e, null, squareElement, squareContainerElement));
+document.addEventListener('mousedown', (e) => squareContainer.getBlob().moveSquare(e, null, squareElement, squareContainerElement));
+document.addEventListener('mousemove', (e) => squareContainer.getBlob().moveSquare(e, null, squareElement, squareContainerElement));
+document.addEventListener('mouseup', (e) => squareContainer.getBlob().moveSquare(e, null, squareElement, squareContainerElement));
+

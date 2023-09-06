@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
         "outDir": "dist",
-        "target" : "ES6",
+        "target" : "ESNext",
         "module" : "ESNext",
         "noEmitOnError": true,
         "strict": true
     },
     "files": [
-        // "src/classes/classes.ts"
-        "src/main.ts"
+        "src/main.ts",
+        "src/classes/classes.ts"
     ]
 }

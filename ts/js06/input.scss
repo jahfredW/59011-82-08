@@ -18,6 +18,7 @@
     
     box-sizing: border-box;
     padding: 10px;
+    text-align: center;
 
     &__square{
         position: relative;
@@ -42,6 +43,21 @@ h1 {
     border-radius: 100%;
     transition : border-radius 1s ease, background-color 1s ease, left 0.1s linear top 0.1s linear;
     
+}
+
+.rect{
+    position: absolute;
+    background-color: rgb(28, 160, 88);
+    width: 20px;
+    height: 70px;
+    left: var(--x-position);
+    top: var(--y-position);
+    background-color: var(--color);
+    border-radius: 0%;
+}
+
+.off {
+    display: none;
 }
 
 .square{
