@@ -15,38 +15,73 @@ interface ContainerDimensions {
     height : number
 }
 
+/**
+ * Interface coordonnées du carré 
+ */
+interface squareCoords {
+    x : number,
+    y : number
+}
+
+/**
+ * interface dimensions du carré 
+ */
+interface squareDimensions {
+    width : number,
+    height : number
+}
+
 
 export class SquareContainer<T> {
     constructor( 
-        private  square : Square,
-        private coords : ContainerCoords,
-        private dimensions: ContainerDimensions
+        private  square : Square = new Square(),
+        private coords : ContainerCoords = {x:0,y:0},
+        private dimensions: ContainerDimensions = {width:50,height:50},
+        private htmlElement : HTMLElement = document.querySelector('.container__square')!
         ) {
-            this.square = new Square(0, 0, 50, 50); // Initialisation ici
-        this.coords = { x: 0, y: 0 };  // Initialisation ici
-        this.dimensions = { width: 100, height: 100 };
+     
         }
-
-    init() : void {
-        this.square = new Square(0, 0, 50, 50);
-        this.coords = { x : 0, y : 0}
-    }
 
     getCoords() : ContainerCoords {
-        if(this.coords){
-            return this.coords;
-        }
+        return this.coords;
+    }
+
+    getSquareCoords() : squareCoords {
+        return this.square.getCoords();
+    }
+
+    setCoords(coords : ContainerCoords) : this {
+        this.coords.x = coords.x;
+        this.coords.y = coords.y;
+        return this;
+    }
+    getHtmlElement() : HTMLElement {
+        return this.htmlElement;
     }
 }
 
 
 export class Square {
+    static readonly DEFAULT_WIDTH = 50;
+    static readonly DEFAULT_HEIGHT = 50;
+
     constructor(
-        private x: number,
-        private y: number,
-        private width: number,
-        private height: number,
-    ){}
+        private coords : squareCoords = { x : 0, y : 0 },
+        private dimensions : squareDimensions = { width : Square.DEFAULT_WIDTH, height : Square.DEFAULT_HEIGHT},
+        private htmlElement : HTMLElement = document.querySelector('[data-object="square"]')!
+    ){
+        
+    }
+    
+    getCoords() : squareCoords {
+        return this.coords;
+    }
+
+    getHtmlElement() : HTMLElement {
+        return this.htmlElement;
+    }
+    
 }
 
 let container = new SquareContainer()
+console.log(container.getSquareCoords());
