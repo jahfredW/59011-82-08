@@ -11,6 +11,7 @@ let x = 100;
 let vInit = 1;
 let accel = 1;
 let timer = 3000;
+
 function executeInterval() {
     let i = Math.floor(Math.random() * 5);
     const rect = new Rect();
@@ -26,6 +27,8 @@ function executeInterval() {
     }
     setTimeout(executeInterval, timer);
 }
+
+// gameloop
 executeInterval();
 // Button Events
 directionButtons.forEach(button => {
