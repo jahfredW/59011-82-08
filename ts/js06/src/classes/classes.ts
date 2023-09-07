@@ -44,66 +44,124 @@ interface IShapeBuilderInterface {
 
 // Shape : classe abstraite qui permet de servir de base pour construire les éléments 
 export abstract class Shape {
+    static DEFAULT_WIDTH : number = 50;
+    static DEFAULT_HEIGHT : number = 50;
     protected coords : squareCoords = { x : 0, y : 0 };
-    protected dimensions : squareDimensions = { width : Blob.DEFAULT_WIDTH, height : Blob.DEFAULT_HEIGHT};
+    protected dimensions : squareDimensions = { width : Shape.DEFAULT_WIDTH, height : Shape.DEFAULT_HEIGHT};
 }
+
+
+export class Bullet implements IhtmlElementInterface  {
+
+    constructor(private coords : { x : number, y : number} = { x : 0, y : 0}, 
+        private dimensions : { width : number, height : number} = { width : 5, height : 5 },
+        private htmlElement : HTMLElement = document.querySelector<HTMLElement>('.bullet')!) {
+          
+    }
+
+    getHtmlElement(): HTMLElement {
+        return this.htmlElement;
+    }
+
+    setCoord(x : number, y : number) : void {
+        this.coords.x = x ;
+        this.coords.y = y ;
+    }
+
+    display(){
+        let vInit = 1;
+        let lastime : number | null = null;
+        const animate = (time : number) =>  {
+            if(lastime !== null){
+                const deltaTime = time - lastime;
+                this.coords.y -= vInit * (deltaTime / 100);
+
+                if(this.coords.y < 0){
+                    this.htmlElement.classList.add("off");
+                    this.htmlElement.remove();
+                }
+                
+                this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
+            }
+        }
+    }
+}
+
+
+
 
 /**
  * classe rectangle : classe abstraite qui permet de servir de base pour construire les rectangles,
  * en leur ajouter la classe 'rect' définie dans le fichier input.scss
  */
 export class Rect extends Shape implements IShapeBuilderInterface {
+  private htmlElement!: HTMLElement;
+  constructor() {
+    super();    
+  }
 
-    private htmlElement!: HTMLElement; 
-    constructor() {
-        super();
+  // Contruction du rectangle
+  build(container: SquareContainer): void {
+    let containerElt = container.getHtmlElement();
+    this.htmlElement = document.createElement("div");
+    this.coords.x = 100;
+    this.coords.y = 0;
+    containerElt.appendChild(this.htmlElement);
+  }
 
-    }
+  // affichage du rectangle en utlisant les propriétés CSS 
+  display(x: number, color: string): void {
+    this.htmlElement.style.setProperty("--x-position", `${x}px`);
+    this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
+    this.htmlElement.style.setProperty("--color", `${color}`);
+    this.htmlElement.classList.add("rect");
+  }
 
-    build(container : SquareContainer) : void {
-        let containerElt = container.getHtmlElement();
-        this.htmlElement = document.createElement('div');
-        this.coords.x = 100;
-        this.coords.y = 0;
-        containerElt.appendChild(this.htmlElement);
+  // récupération de l'élement html correspondant à ce rectangle
+  getHtmlElement(): HTMLElement {
+    return this.htmlElement;
+  }
 
-    }
+  move(vInit: number = 1, accel: number = 0): void {
+    let acceleration = 1;
+    let lastTime: number | null = null;
 
-    display(x : number, color: string) : void {
-        this.htmlElement.style.setProperty('--x-position', `${x}px`);
-        this.htmlElement.style.setProperty('--y-position', `${this.coords.y}px`);
-        this.htmlElement.style.setProperty('--color', `${color}`);
-        this.htmlElement.classList.add('rect');
-    }
+    const animate = (time: number) => {
+      if (lastTime !== null) {
+        // delta : temps entre le temps gobal et le deriet temps 
+        const deltaTime = time - lastTime;
 
-    getHtmlElement() : HTMLElement {
-        return this.htmlElement;
-    }
+        // Utilisez deltaTime pour rendre l'animation indépendante du taux de rafraîchissement
+        this.coords.y += vInit * acceleration * (deltaTime / 100);
 
-    move(vInit : number = 1, accel: number = 0 ) : void {
-        let acceleration = 1;
-        let ratio = 1;
-        setInterval( () => {
-            this.coords.y += (vInit * acceleration);
-            acceleration += accel;
-            this.htmlElement.style.setProperty('--y-position', `${this.coords.y}px`);
-            if(this.coords.y >= 430){
-                this.coords.y = 430;
-                acceleration *= -1
-                this.htmlElement.classList.add('off');
-            } else if(this.coords.y <= 0){
-                this.coords.y = 0;
-                acceleration *= -1
-                
-                // ratio = 1;
-            }
-        }, 100)
-    }
+        // Appliquez les limites
+        if (this.coords.y >= 430) {
+          this.coords.y = 430;
+          acceleration *= -1;
+          this.htmlElement.classList.add("off");
+          this.htmlElement.remove();
+        } else if (this.coords.y <= 0) {
+          this.coords.y = 0;
+          acceleration *= -1;
+        }
+
+        // Mettez à jour la propriété CSS
+        this.htmlElement.style.setProperty(
+          "--y-position",
+          `${this.coords.y}px`
+        );
+      }
+
+      lastTime = time;
+
+      // Planifiez la prochaine itération
+      requestAnimationFrame(animate);
+    };
+
+    // Lancez l'animation
+    requestAnimationFrame(animate);
+  }
 }
-
-
-
-
 
 
 
@@ -161,12 +219,24 @@ export class Blob extends Shape implements IhtmlElementInterface  {
 
 
     constructor(
-        private htmlElement : HTMLElement = document.querySelector('[data-object="square"]')!
+        private htmlElement : HTMLElement = document.querySelector('[data-object="square"]')!,
+        private bulletContainer : Bullet[] = [] // tableau d'objets bullets
         
     ){  
         super();
+        // this.bullet = new Bullet(super.coords);  
         this.animateSquare();
-    }   
+    }
+    
+
+    shoot() : void {
+        let bullet = new Bullet();
+        bullet.setCoord(this.getCoords().x, this.getCoords().y);
+        this.bulletContainer.push(bullet);
+    }
+
+    
+    
     
     getCoords() : squareCoords {
         return this.coords;
@@ -177,39 +247,69 @@ export class Blob extends Shape implements IhtmlElementInterface  {
     }
 
     // fonction fléchée -> 
-    animateSquare = () : void => {
-        setInterval( () => {
-            if (this.htmlElement.classList.contains('square')) {
+    animateSquare = (): void => {
+        let lastTime: number | null = null;
+        let totalTime = 0;
+      
+        const animate = (time: number) => {
+          if (lastTime !== null) {
+            const deltaTime = time - lastTime;
+            totalTime += deltaTime;
+      
+            if (totalTime >= 1000) {
+              // Faites la commutation toutes les 1000 millisecondes (1 seconde)
+              if (this.htmlElement.classList.contains('square')) {
                 this.htmlElement.classList.remove('square');
                 this.htmlElement.classList.add('circle');
-            } else {
+              } else {
                 this.htmlElement.classList.remove('circle');
                 this.htmlElement.classList.add('square');
+              }
+      
+              // Réinitialiser totalTime pour le prochain intervalle
+              totalTime = 0;
             }
-        }, 1000)
-        
-    }
+          }
+      
+          lastTime = time;
+      
+          // Planifiez la prochaine itération
+          requestAnimationFrame(animate);
+        };
+      
+        // Lancez l'animation
+        requestAnimationFrame(animate);
+      };
+      
+      
 
     moveSquare(e :  Event, button: HTMLElement | null,  square: HTMLElement | null, squareContainerElement: HTMLElement | null )  : void {
         
             if(square instanceof HTMLElement) {
-              
+
+                // mise à jour des positions du Blob ET de son tir Bullet 
                     let posX = square.offsetLeft;
                     let posY = square.offsetTop;
+                    // let bulletX = this.bullet.getHtmlElement().offsetLeft;
+                    // let bulletY = this.bullet.getHtmlElement().offsetTop;
                     if (e instanceof MouseEvent) {
                         if(button){
                             switch (button.getAttribute('data-button')) {
                                 case "right":
                                     posX += 10;
+                                    
                                     break;
                                 case "left":
                                     posX -= 10;
+                                
                                     break;
                                 case "down":
                                     posY += 10;
+                                
                                     break;
                                 case "up":
                                     posY -= 10;
+                                 
                                     break;
                         }
                         } else {

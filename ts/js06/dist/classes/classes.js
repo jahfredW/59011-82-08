@@ -1,7 +1,13 @@
 // Shape : classe abstraite qui permet de servir de base pour construire les éléments 
 export class Shape {
+    static DEFAULT_WIDTH = 50;
+    static DEFAULT_HEIGHT = 50;
     coords = { x: 0, y: 0 };
-    dimensions = { width: Blob.DEFAULT_WIDTH, height: Blob.DEFAULT_HEIGHT };
+    dimensions = { width: Shape.DEFAULT_WIDTH, height: Shape.DEFAULT_HEIGHT };
+}
+export class Bullet {
+    constructor(coords = { x: 0, y: 0 }, dimensions = { width: 5, height: 5 }) {
+    }
 }
 /**
  * classe rectangle : classe abstraite qui permet de servir de base pour construire les rectangles,
@@ -12,40 +18,53 @@ export class Rect extends Shape {
     constructor() {
         super();
     }
+    // Contruction du rectangle
     build(container) {
         let containerElt = container.getHtmlElement();
-        this.htmlElement = document.createElement('div');
+        this.htmlElement = document.createElement("div");
         this.coords.x = 100;
         this.coords.y = 0;
         containerElt.appendChild(this.htmlElement);
     }
+    // affichage du rectangle
     display(x, color) {
-        this.htmlElement.style.setProperty('--x-position', `${x}px`);
-        this.htmlElement.style.setProperty('--y-position', `${this.coords.y}px`);
-        this.htmlElement.style.setProperty('--color', `${color}`);
-        this.htmlElement.classList.add('rect');
+        this.htmlElement.style.setProperty("--x-position", `${x}px`);
+        this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
+        this.htmlElement.style.setProperty("--color", `${color}`);
+        this.htmlElement.classList.add("rect");
     }
+    // récupération de l'élement html correspondant à ce rectangle
     getHtmlElement() {
         return this.htmlElement;
     }
     move(vInit = 1, accel = 0) {
         let acceleration = 1;
-        let ratio = 1;
-        setInterval(() => {
-            this.coords.y += (vInit * acceleration);
-            acceleration += accel;
-            this.htmlElement.style.setProperty('--y-position', `${this.coords.y}px`);
-            if (this.coords.y >= 430) {
-                this.coords.y = 430;
-                acceleration *= -1;
-                this.htmlElement.classList.add('off');
+        let lastTime = null;
+        const animate = (time) => {
+            if (lastTime !== null) {
+                // delta : temps entre le temps gobal et le deriet temps 
+                const deltaTime = time - lastTime;
+                // Utilisez deltaTime pour rendre l'animation indépendante du taux de rafraîchissement
+                this.coords.y += vInit * acceleration * (deltaTime / 100);
+                // Appliquez les limites
+                if (this.coords.y >= 430) {
+                    this.coords.y = 430;
+                    acceleration *= -1;
+                    this.htmlElement.classList.add("off");
+                }
+                else if (this.coords.y <= 0) {
+                    this.coords.y = 0;
+                    acceleration *= -1;
+                }
+                // Mettez à jour la propriété CSS
+                this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
             }
-            else if (this.coords.y <= 0) {
-                this.coords.y = 0;
-                acceleration *= -1;
-                // ratio = 1;
-            }
-        }, 100);
+            lastTime = time;
+            // Planifiez la prochaine itération
+            requestAnimationFrame(animate);
+        };
+        // Lancez l'animation
+        requestAnimationFrame(animate);
     }
 }
 export class SquareContainer {
@@ -94,9 +113,11 @@ export class Blob extends Shape {
     static startY = 0;
     static initialX = 0;
     static initialY = 0;
+    bullet;
     constructor(htmlElement = document.querySelector('[data-object="square"]')) {
         super();
         this.htmlElement = htmlElement;
+        this.bullet = new Bullet(super.coords);
         this.animateSquare();
     }
     getCoords() {
@@ -107,16 +128,32 @@ export class Blob extends Shape {
     }
     // fonction fléchée -> 
     animateSquare = () => {
-        setInterval(() => {
-            if (this.htmlElement.classList.contains('square')) {
-                this.htmlElement.classList.remove('square');
-                this.htmlElement.classList.add('circle');
+        let lastTime = null;
+        let totalTime = 0;
+        const animate = (time) => {
+            if (lastTime !== null) {
+                const deltaTime = time - lastTime;
+                totalTime += deltaTime;
+                if (totalTime >= 1000) {
+                    // Faites la commutation toutes les 1000 millisecondes (1 seconde)
+                    if (this.htmlElement.classList.contains('square')) {
+                        this.htmlElement.classList.remove('square');
+                        this.htmlElement.classList.add('circle');
+                    }
+                    else {
+                        this.htmlElement.classList.remove('circle');
+                        this.htmlElement.classList.add('square');
+                    }
+                    // Réinitialiser totalTime pour le prochain intervalle
+                    totalTime = 0;
+                }
             }
-            else {
-                this.htmlElement.classList.remove('circle');
-                this.htmlElement.classList.add('square');
-            }
-        }, 1000);
+            lastTime = time;
+            // Planifiez la prochaine itération
+            requestAnimationFrame(animate);
+        };
+        // Lancez l'animation
+        requestAnimationFrame(animate);
     };
     moveSquare(e, button, square, squareContainerElement) {
         if (square instanceof HTMLElement) {
