@@ -3,8 +3,9 @@ import { SquareContainer, GamePad, Rect, Blob } from './classes/classes.js';
 const squareContainer = new SquareContainer();
 const gamePad = new GamePad();
 const blob = new Blob();
+blob.build(squareContainer);
 // récupération des éléments HTML correspondants à la classe
-const squareElement = squareContainer.getBlob().getHtmlElement();
+const blobElement = blob.getHtmlElement();
 const squareContainerElement = squareContainer.getHtmlElement();
 const directionButtons = gamePad.getHtmlElement();
 let colorTab = ['red', 'green', 'blue', 'yellow', 'purple'];
@@ -28,11 +29,11 @@ executeInterval();
 // Button Events
 directionButtons.forEach(button => {
     if (button instanceof HTMLElement) {
-        button.addEventListener('click', (e) => squareContainer.getBlob().moveSquare(e, button, squareElement, squareContainerElement));
+        button.addEventListener('click', (e) => squareContainer.getBlob().moveSquare(e, button, blobElement, squareContainerElement));
     }
 });
 // Global Events
-document.addEventListener('keydown', (e) => squareContainer.getBlob().moveSquare(e, null, squareElement, squareContainerElement));
-document.addEventListener('mousedown', (e) => squareContainer.getBlob().moveSquare(e, null, squareElement, squareContainerElement));
-document.addEventListener('mousemove', (e) => squareContainer.getBlob().moveSquare(e, null, squareElement, squareContainerElement));
-document.addEventListener('mouseup', (e) => squareContainer.getBlob().moveSquare(e, null, squareElement, squareContainerElement));
+document.addEventListener('keydown', (e) => squareContainer.getBlob().moveSquare(e, null, blobElement, squareContainerElement));
+document.addEventListener('mousedown', (e) => squareContainer.getBlob().moveSquare(e, null, blobElement, squareContainerElement));
+document.addEventListener('mousemove', (e) => squareContainer.getBlob().moveSquare(e, null, blobElement, squareContainerElement));
+document.addEventListener('mouseup', (e) => squareContainer.getBlob().moveSquare(e, null, blobElement, squareContainerElement));

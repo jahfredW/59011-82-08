@@ -2,7 +2,7 @@
 export class Shape {
     static DEFAULT_WIDTH = 50;
     static DEFAULT_HEIGHT = 50;
-    coords = { x: 0, y: 0 };
+    coords = { x: 250, y: 430 };
     dimensions = { width: Shape.DEFAULT_WIDTH, height: Shape.DEFAULT_HEIGHT };
 }
 export class Bullet {
@@ -18,6 +18,8 @@ export class Bullet {
     build(container) {
         this.htmlElement = document.createElement("div");
         this.htmlElement.classList.add("bullet");
+        this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
+        this.htmlElement.style.setProperty("--x-position", `${this.coords.x}px`);
         container.appendChild(this.htmlElement);
     }
     getHtmlElement() {
@@ -26,6 +28,9 @@ export class Bullet {
     setCoord(x, y) {
         this.coords.x = x;
         this.coords.y = y;
+    }
+    getCoord() {
+        return { "x": this.coords.x, "y": this.coords.y };
     }
     display() {
         let vInit = 1;
@@ -39,6 +44,7 @@ export class Bullet {
                     this.htmlElement.remove();
                 }
                 this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
+                this.htmlElement.style.setProperty("--x-position", `${this.coords.x}px`);
             }
             lastime = time;
             requestAnimationFrame(animate);
@@ -160,10 +166,18 @@ export class Blob extends Shape {
         // this.bullet = new Bullet(super.coords);  
         this.animateSquare();
     }
+    build(container) {
+        this.htmlElement = document.createElement("div");
+        this.htmlElement.classList.add("square");
+        this.htmlElement.style.setProperty("--x-position", `${this.coords.x}px`);
+        this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
+        container.getHtmlElement().appendChild(this.htmlElement);
+    }
     shoot(squareContainer) {
         let bullet = new Bullet();
+        bullet.setCoord(this.coords.x, this.coords.y); // Définir les coordonnées avant de construire
+        console.log(bullet.getCoord());
         bullet.build(squareContainer);
-        bullet.setCoord(this.getCoords().x, this.getCoords().y);
         this.bulletContainer.push(bullet);
         bullet.display();
     }
@@ -249,15 +263,19 @@ export class Blob extends Shape {
                 switch (e.key) {
                     case "ArrowRight":
                         posX += 10;
+                        this.coords.x += 10;
                         break;
                     case "ArrowLeft":
                         posX -= 10;
+                        this.coords.x -= 10;
                         break;
                     case "ArrowDown":
                         posY += 10;
+                        this.coords.y += 10;
                         break;
                     case "ArrowUp":
                         posY -= 10;
+                        this.coords.y -= 10;
                         break;
                     case " ":
                         console.log("touche espace pressée");
