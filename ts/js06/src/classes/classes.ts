@@ -237,17 +237,25 @@ export class Blob extends Shape implements IhtmlElementInterface  {
     static initialX = 0; 
     static initialY = 0;
 
+    private htmlElement : HTMLElement;
 
     constructor(
-        private htmlElement : HTMLElement = document.querySelector('[data-object="square"]')!,
+        
         private bulletContainer : Bullet[] = [] // tableau d'objets bullets
         
     ){  
         super();
         // this.bullet = new Bullet(super.coords);  
+        this.htmlElement = document.createElement('div');
         this.animateSquare();
     }
     
+
+    display(posX : number, posY : number){
+        this.htmlElement.style.setProperty("--x-position", `${posX}px`);
+        this.htmlElement.style.setProperty("--y-position", `${posY}px`);
+    }
+
     build(container : SquareContainer){
         this.htmlElement = document.createElement("div");
         this.htmlElement.classList.add("square");
@@ -313,15 +321,12 @@ export class Blob extends Shape implements IhtmlElementInterface  {
       
       
 
-    moveSquare(e :  Event, button: HTMLElement | null,  square: HTMLElement | null, squareContainerElement: HTMLElement)  : void {
+    moveSquare(e :  Event, button: HTMLElement | null, squareContainerElement: HTMLElement)  : void {
         
-            if(square instanceof HTMLElement) {
-
                 // mise à jour des positions du Blob ET de son tir Bullet 
-                    let posX = square.offsetLeft;
-                    let posY = square.offsetTop;
-                    // let bulletX = this.bullet.getHtmlElement().offsetLeft;
-                    // let bulletY = this.bullet.getHtmlElement().offsetTop;
+                    let posX = this.htmlElement.offsetLeft;
+                    let posY = this.htmlElement.offsetTop;
+                    
                     if (e instanceof MouseEvent) {
                         if(button){
                             switch (button.getAttribute('data-button')) {
@@ -364,6 +369,7 @@ export class Blob extends Shape implements IhtmlElementInterface  {
                 } else if (e instanceof KeyboardEvent) {
                     switch (e.key) {
                         case "ArrowRight":
+                            console.log('roght');
                             posX += 10;
                             this.coords.x += 10;
                             break;
@@ -383,17 +389,21 @@ export class Blob extends Shape implements IhtmlElementInterface  {
                             console.log("touche espace pressée")
                             this.shoot(squareContainerElement);  
                     }
-                }
+           
 
                 // Limite les positions à l'intérieur du conteneur
                 let containerWidth = squareContainerElement?.getBoundingClientRect().width || 0;
                 let containerHeigth = squareContainerElement?.getBoundingClientRect().height || 0;
                 posX = Math.min(Math.max(posX, 0), containerWidth - 50);
                 posY = Math.min(Math.max(posY, 0), containerHeigth - 50);  // Peut-être utiliser containerHeight ici ?
+                
 
+                
                 // Applique les nouvelles positions
-                square.style.left = `${posX}px`;
-                square.style.top = `${posY}px`;
+                // square.style.left = `${posX}px`;
+                // square.style.top = `${posY}px`;
+
+                this.display(posX, posY)
                 
     }
     

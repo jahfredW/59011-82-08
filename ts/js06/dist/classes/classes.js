@@ -149,7 +149,6 @@ export class SquareContainer {
     }
 }
 export class Blob extends Shape {
-    htmlElement;
     bulletContainer;
     static DEFAULT_WIDTH = 50;
     static DEFAULT_HEIGHT = 50;
@@ -158,13 +157,18 @@ export class Blob extends Shape {
     static startY = 0;
     static initialX = 0;
     static initialY = 0;
-    constructor(htmlElement = document.querySelector('[data-object="square"]'), bulletContainer = [] // tableau d'objets bullets
+    htmlElement;
+    constructor(bulletContainer = [] // tableau d'objets bullets
     ) {
         super();
-        this.htmlElement = htmlElement;
         this.bulletContainer = bulletContainer;
         // this.bullet = new Bullet(super.coords);  
+        this.htmlElement = document.createElement('div');
         this.animateSquare();
+    }
+    display(posX, posY) {
+        this.htmlElement.style.setProperty("--x-position", `${posX}px`);
+        this.htmlElement.style.setProperty("--y-position", `${posY}px`);
     }
     build(container) {
         this.htmlElement = document.createElement("div");
@@ -216,71 +220,68 @@ export class Blob extends Shape {
         // Lancez l'animation
         requestAnimationFrame(animate);
     };
-    moveSquare(e, button, square, squareContainerElement) {
-        if (square instanceof HTMLElement) {
-            // mise à jour des positions du Blob ET de son tir Bullet 
-            let posX = square.offsetLeft;
-            let posY = square.offsetTop;
-            // let bulletX = this.bullet.getHtmlElement().offsetLeft;
-            // let bulletY = this.bullet.getHtmlElement().offsetTop;
-            if (e instanceof MouseEvent) {
-                if (button) {
-                    switch (button.getAttribute('data-button')) {
-                        case "right":
-                            posX += 10;
-                            break;
-                        case "left":
-                            posX -= 10;
-                            break;
-                        case "down":
-                            posY += 10;
-                            break;
-                        case "up":
-                            posY -= 10;
-                            break;
-                    }
-                }
-                else {
-                    if (e.type === 'mousedown') {
-                        Blob.isDragging = true;
-                        Blob.startX = e.clientX;
-                        Blob.startY = e.clientY;
-                        Blob.initialX = posX;
-                        Blob.initialY = posY;
-                    }
-                    if (e.type === 'mousemove' && Blob.isDragging) {
-                        const dx = e.clientX - Blob.startX;
-                        const dy = e.clientY - Blob.startY;
-                        posX = Blob.initialX + dx;
-                        posY = Blob.initialY + dy;
-                    }
-                    if (e.type === 'mouseup') {
-                        Blob.isDragging = false;
-                    }
+    moveSquare(e, button, squareContainerElement) {
+        // mise à jour des positions du Blob ET de son tir Bullet 
+        let posX = this.htmlElement.offsetLeft;
+        let posY = this.htmlElement.offsetTop;
+        if (e instanceof MouseEvent) {
+            if (button) {
+                switch (button.getAttribute('data-button')) {
+                    case "right":
+                        posX += 10;
+                        break;
+                    case "left":
+                        posX -= 10;
+                        break;
+                    case "down":
+                        posY += 10;
+                        break;
+                    case "up":
+                        posY -= 10;
+                        break;
                 }
             }
-            else if (e instanceof KeyboardEvent) {
-                switch (e.key) {
-                    case "ArrowRight":
-                        posX += 10;
-                        this.coords.x += 10;
-                        break;
-                    case "ArrowLeft":
-                        posX -= 10;
-                        this.coords.x -= 10;
-                        break;
-                    case "ArrowDown":
-                        posY += 10;
-                        this.coords.y += 10;
-                        break;
-                    case "ArrowUp":
-                        posY -= 10;
-                        this.coords.y -= 10;
-                        break;
-                    case " ":
-                        console.log("touche espace pressée");
-                        this.shoot(squareContainerElement);
+            else {
+                if (e.type === 'mousedown') {
+                    Blob.isDragging = true;
+                    Blob.startX = e.clientX;
+                    Blob.startY = e.clientY;
+                    Blob.initialX = posX;
+                    Blob.initialY = posY;
                 }
+                if (e.type === 'mousemove' && Blob.isDragging) {
+                    const dx = e.clientX - Blob.startX;
+                    const dy = e.clientY - Blob.startY;
+                    posX = Blob.initialX + dx;
+                    posY = Blob.initialY + dy;
+                }
+                if (e.type === 'mouseup') {
+                    Blob.isDragging = false;
+                }
+            }
+        }
+        else if (e instanceof KeyboardEvent) {
+            switch (e.key) {
+                case "ArrowRight":
+                    console.log('roght');
+                    posX += 10;
+                    this.coords.x += 10;
+                    break;
+                case "ArrowLeft":
+                    posX -= 10;
+                    this.coords.x -= 10;
+                    break;
+                case "ArrowDown":
+                    posY += 10;
+                    this.coords.y += 10;
+                    break;
+                case "ArrowUp":
+                    posY -= 10;
+                    this.coords.y -= 10;
+                    break;
+                case " ":
+                    console.log("touche espace pressée");
+                    this.shoot(squareContainerElement);
             }
             // Limite les positions à l'intérieur du conteneur
             let containerWidth = squareContainerElement?.getBoundingClientRect().width || 0;
@@ -288,8 +289,9 @@ export class Blob extends Shape {
             posX = Math.min(Math.max(posX, 0), containerWidth - 50);
             posY = Math.min(Math.max(posY, 0), containerHeigth - 50); // Peut-être utiliser containerHeight ici ?
             // Applique les nouvelles positions
-            square.style.left = `${posX}px`;
-            square.style.top = `${posY}px`;
+            // square.style.left = `${posX}px`;
+            // square.style.top = `${posY}px`;
+            this.display(posX, posY);
         }
     }
 }
