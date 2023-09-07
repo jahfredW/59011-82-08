@@ -244,13 +244,13 @@ export class Blob extends Shape {
                 }
             }
             else {
-                if (e.type === 'mousedown') {
-                    // Blob.isDragging = true;
-                    // Blob.startX = e.clientX;
-                    // Blob.startY = e.clientY;
-                    // Blob.initialX = this.coords.x;
-                    // Blob.initialY = this.coords.y;
-                }
+                // if (e.type === 'mousedown') {
+                //     // Blob.isDragging = true;
+                //     // Blob.startX = e.clientX;
+                //     // Blob.startY = e.clientY;
+                //     // Blob.initialX = this.coords.x;
+                //     // Blob.initialY = this.coords.y;
+                // }
                 if (e.type === 'mousemove') { // &Blob.isDragging
                     const dx = e.clientX - this.coords.x;
                     const dy = e.clientY - this.coords.y;
@@ -258,7 +258,7 @@ export class Blob extends Shape {
                     this.coords.x = this.coords.x + dx;
                     this.coords.y = this.coords.y + dy;
                 }
-                if (e.type === 'mouseup') {
+                if (e.type === 'mousedown') {
                     this.shoot(squareContainerElement);
                 }
             }

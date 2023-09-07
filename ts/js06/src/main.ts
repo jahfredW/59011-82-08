@@ -42,7 +42,7 @@ directionButtons.forEach(button => {
 });
 
 // Global Events
-document.addEventListener('keydown', (e) => blob.moveSquare(e, null, squareContainerElement));
+document.addEventListener('keyup', (e) => blob.moveSquare(e, null, squareContainerElement));
 document.addEventListener('mousedown', (e) => blob.moveSquare(e, null, squareContainerElement));
 document.addEventListener('mousemove', (e) => blob.moveSquare(e, null, squareContainerElement));
 document.addEventListener('mouseup', (e) => blob.moveSquare(e, null, squareContainerElement));
