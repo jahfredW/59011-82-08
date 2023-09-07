@@ -1,8 +1,9 @@
-import { SquareContainer, GamePad, Rect } from './classes/classes';
+import { SquareContainer, GamePad, Rect, Blob } from './classes/classes';
 
 // Instanciation des éléments 
 const squareContainer = new SquareContainer();
 const gamePad = new GamePad();
+const blob = new Blob();
 
 // récupération des éléments HTML correspondants à la classe
 const squareElement = squareContainer.getBlob().getHtmlElement();
@@ -44,4 +45,5 @@ document.addEventListener('keydown', (e) => squareContainer.getBlob().moveSquare
 document.addEventListener('mousedown', (e) => squareContainer.getBlob().moveSquare(e, null, squareElement, squareContainerElement));
 document.addEventListener('mousemove', (e) => squareContainer.getBlob().moveSquare(e, null, squareElement, squareContainerElement));
 document.addEventListener('mouseup', (e) => squareContainer.getBlob().moveSquare(e, null, squareElement, squareContainerElement));
+
 

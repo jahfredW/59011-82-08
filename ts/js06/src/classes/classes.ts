@@ -59,6 +59,13 @@ export class Bullet implements IhtmlElementInterface  {
           
     }
 
+    // Contruction de la bullet en html
+    build(container: HTMLElement): void {
+        this.htmlElement = document.createElement("div");
+        this.htmlElement.classList.add("bullet");
+        container.appendChild(this.htmlElement);
+    }
+
     getHtmlElement(): HTMLElement {
         return this.htmlElement;
     }
@@ -83,7 +90,13 @@ export class Bullet implements IhtmlElementInterface  {
                 
                 this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
             }
+
+            lastime = time;
+
+            requestAnimationFrame(animate);
         }
+
+        requestAnimationFrame(animate);
     }
 }
 
@@ -229,15 +242,14 @@ export class Blob extends Shape implements IhtmlElementInterface  {
     }
     
 
-    shoot() : void {
+    shoot(squareContainer : HTMLElement) : void {
         let bullet = new Bullet();
+        bullet.build(squareContainer)
         bullet.setCoord(this.getCoords().x, this.getCoords().y);
         this.bulletContainer.push(bullet);
+        bullet.display();
     }
 
-    
-    
-    
     getCoords() : squareCoords {
         return this.coords;
     }
@@ -283,7 +295,7 @@ export class Blob extends Shape implements IhtmlElementInterface  {
       
       
 
-    moveSquare(e :  Event, button: HTMLElement | null,  square: HTMLElement | null, squareContainerElement: HTMLElement | null )  : void {
+    moveSquare(e :  Event, button: HTMLElement | null,  square: HTMLElement | null, squareContainerElement: HTMLElement)  : void {
         
             if(square instanceof HTMLElement) {
 
@@ -345,6 +357,9 @@ export class Blob extends Shape implements IhtmlElementInterface  {
                         case "ArrowUp":
                             posY -= 10;
                             break;
+                        case " ":
+                            console.log("touche espace pressée")
+                            this.shoot(squareContainerElement);  
                     }
                 }
 
