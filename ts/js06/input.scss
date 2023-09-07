@@ -116,3 +116,13 @@ h1 {
     justify-content: space-evenly;
 }
 
+
+.bullet {
+    position: absolute;
+    background-color: rgb(224, 18, 18);
+    width: 10px;
+    height: 10px;
+    left: var(--x-position);
+    top: var(--y-position);
+    border-radius: 100%;
+}

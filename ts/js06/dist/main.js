@@ -1,7 +1,8 @@
-import { SquareContainer, GamePad, Rect } from './classes/classes';
+import { SquareContainer, GamePad, Rect, Blob } from './classes/classes.js';
 // Instanciation des éléments 
 const squareContainer = new SquareContainer();
 const gamePad = new GamePad();
+const blob = new Blob();
 // récupération des éléments HTML correspondants à la classe
 const squareElement = squareContainer.getBlob().getHtmlElement();
 const squareContainerElement = squareContainer.getHtmlElement();

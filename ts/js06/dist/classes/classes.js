@@ -6,7 +6,44 @@ export class Shape {
     dimensions = { width: Shape.DEFAULT_WIDTH, height: Shape.DEFAULT_HEIGHT };
 }
 export class Bullet {
-    constructor(coords = { x: 0, y: 0 }, dimensions = { width: 5, height: 5 }) {
+    coords;
+    dimensions;
+    htmlElement;
+    constructor(coords = { x: 0, y: 0 }, dimensions = { width: 5, height: 5 }, htmlElement = document.querySelector('.bullet')) {
+        this.coords = coords;
+        this.dimensions = dimensions;
+        this.htmlElement = htmlElement;
+    }
+    // Contruction de la bullet en html
+    build(container) {
+        this.htmlElement = document.createElement("div");
+        this.htmlElement.classList.add("bullet");
+        container.appendChild(this.htmlElement);
+    }
+    getHtmlElement() {
+        return this.htmlElement;
+    }
+    setCoord(x, y) {
+        this.coords.x = x;
+        this.coords.y = y;
+    }
+    display() {
+        let vInit = 1;
+        let lastime = null;
+        const animate = (time) => {
+            if (lastime !== null) {
+                const deltaTime = time - lastime;
+                this.coords.y -= vInit * (deltaTime / 100);
+                if (this.coords.y < 0) {
+                    this.htmlElement.classList.add("off");
+                    this.htmlElement.remove();
+                }
+                this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
+            }
+            lastime = time;
+            requestAnimationFrame(animate);
+        };
+        requestAnimationFrame(animate);
     }
 }
 /**
@@ -26,7 +63,7 @@ export class Rect extends Shape {
         this.coords.y = 0;
         containerElt.appendChild(this.htmlElement);
     }
-    // affichage du rectangle
+    // affichage du rectangle en utlisant les propriétés CSS 
     display(x, color) {
         this.htmlElement.style.setProperty("--x-position", `${x}px`);
         this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
@@ -51,6 +88,7 @@ export class Rect extends Shape {
                     this.coords.y = 430;
                     acceleration *= -1;
                     this.htmlElement.classList.add("off");
+                    this.htmlElement.remove();
                 }
                 else if (this.coords.y <= 0) {
                     this.coords.y = 0;
@@ -106,6 +144,7 @@ export class SquareContainer {
 }
 export class Blob extends Shape {
     htmlElement;
+    bulletContainer;
     static DEFAULT_WIDTH = 50;
     static DEFAULT_HEIGHT = 50;
     static isDragging = false;
@@ -113,12 +152,20 @@ export class Blob extends Shape {
     static startY = 0;
     static initialX = 0;
     static initialY = 0;
-    bullet;
-    constructor(htmlElement = document.querySelector('[data-object="square"]')) {
+    constructor(htmlElement = document.querySelector('[data-object="square"]'), bulletContainer = [] // tableau d'objets bullets
+    ) {
         super();
         this.htmlElement = htmlElement;
-        this.bullet = new Bullet(super.coords);
+        this.bulletContainer = bulletContainer;
+        // this.bullet = new Bullet(super.coords);  
         this.animateSquare();
+    }
+    shoot(squareContainer) {
+        let bullet = new Bullet();
+        bullet.build(squareContainer);
+        bullet.setCoord(this.getCoords().x, this.getCoords().y);
+        this.bulletContainer.push(bullet);
+        bullet.display();
     }
     getCoords() {
         return this.coords;
@@ -157,8 +204,11 @@ export class Blob extends Shape {
     };
     moveSquare(e, button, square, squareContainerElement) {
         if (square instanceof HTMLElement) {
+            // mise à jour des positions du Blob ET de son tir Bullet 
             let posX = square.offsetLeft;
             let posY = square.offsetTop;
+            // let bulletX = this.bullet.getHtmlElement().offsetLeft;
+            // let bulletY = this.bullet.getHtmlElement().offsetTop;
             if (e instanceof MouseEvent) {
                 if (button) {
                     switch (button.getAttribute('data-button')) {
@@ -209,6 +259,9 @@ export class Blob extends Shape {
                     case "ArrowUp":
                         posY -= 10;
                         break;
+                    case " ":
+                        console.log("touche espace pressée");
+                        this.shoot(squareContainerElement);
                 }
             }
             // Limite les positions à l'intérieur du conteneur
