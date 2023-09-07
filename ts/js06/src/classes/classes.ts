@@ -324,26 +324,26 @@ export class Blob extends Shape implements IhtmlElementInterface  {
     moveSquare(e :  Event, button: HTMLElement | null, squareContainerElement: HTMLElement)  : void {
         
                 // mise à jour des positions du Blob ET de son tir Bullet 
-                    let posX = this.htmlElement.offsetLeft;
-                    let posY = this.htmlElement.offsetTop;
+                    // let posX = this.htmlElement.offsetLeft;
+                    // let posY = this.htmlElement.offsetTop;
                     
                     if (e instanceof MouseEvent) {
                         if(button){
                             switch (button.getAttribute('data-button')) {
                                 case "right":
-                                    posX += 10;
+                                    this.coords.x += 10;
                                     
                                     break;
                                 case "left":
-                                    posX -= 10;
+                                    this.coords.x -= 10;
                                 
                                     break;
                                 case "down":
-                                    posY += 10;
+                                    this.coords.y+= 10;
                                 
                                     break;
                                 case "up":
-                                    posY -= 10;
+                                    this.coords.y -= 10;
                                  
                                     break;
                         }
@@ -352,14 +352,14 @@ export class Blob extends Shape implements IhtmlElementInterface  {
                                 Blob.isDragging = true;
                                 Blob.startX = e.clientX;
                                 Blob.startY = e.clientY;
-                                Blob.initialX = posX;
-                                Blob.initialY = posY;
+                                Blob.initialX = this.coords.x;
+                                Blob.initialY = this.coords.y;
                             }
                             if (e.type === 'mousemove' && Blob.isDragging) {
                                 const dx = e.clientX - Blob.startX;
                                 const dy = e.clientY - Blob.startY;
-                                posX = Blob.initialX + dx;
-                                posY = Blob.initialY + dy;
+                                this.coords.x = Blob.initialX + dx;
+                                this.coords.y = Blob.initialY + dy;
                             }
                             if (e.type === 'mouseup') {
                                 Blob.isDragging = false;
@@ -370,19 +370,17 @@ export class Blob extends Shape implements IhtmlElementInterface  {
                     switch (e.key) {
                         case "ArrowRight":
                             console.log('roght');
-                            posX += 10;
                             this.coords.x += 10;
                             break;
                         case "ArrowLeft":
-                            posX -= 10;
+                      
                             this.coords.x -= 10;
                             break;
                         case "ArrowDown":
-                            posY += 10;
+                     
                             this.coords.y += 10;
                             break;
                         case "ArrowUp":
-                            posY -= 10;
                             this.coords.y -= 10;
                             break;
                         case " ":
@@ -394,16 +392,16 @@ export class Blob extends Shape implements IhtmlElementInterface  {
                 // Limite les positions à l'intérieur du conteneur
                 let containerWidth = squareContainerElement?.getBoundingClientRect().width || 0;
                 let containerHeigth = squareContainerElement?.getBoundingClientRect().height || 0;
-                posX = Math.min(Math.max(posX, 0), containerWidth - 50);
-                posY = Math.min(Math.max(posY, 0), containerHeigth - 50);  // Peut-être utiliser containerHeight ici ?
+                this.coords.x = Math.min(Math.max(this.coords.x, 0), containerWidth - 50);
+                this.coords.y = Math.min(Math.max(this.coords.y, 0), containerHeigth - 50);  // Peut-être utiliser containerHeight ici ?
                 
 
                 
                 // Applique les nouvelles positions
-                // square.style.left = `${posX}px`;
-                // square.style.top = `${posY}px`;
+                this.htmlElement.style.left = `${this.coords.x}px`;
+                this.htmlElement.style.top = `${this.coords.y}px`;
 
-                this.display(posX, posY)
+                // this.display(posX, posY)
                 
     }
     
