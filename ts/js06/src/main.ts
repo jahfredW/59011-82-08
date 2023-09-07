@@ -21,15 +21,11 @@ function executeInterval() {
     const rect = new Rect();
     rect.build(squareContainer);
     rect.display(x, colorTab[i]);
+    squareContainer.addShape(rect);
     vInit = Math.floor(Math.random() * 10) / 10 + 1;
     accel = Math.floor(Math.random() * 10) / 100;
     rect.move(vInit, accel);
     x = Math.floor(Math.random() * 1000) + 1;
-    timer -= 100;
-
-    if (timer <= 100) {
-        timer = 100;
-    }
 
     setTimeout(executeInterval, timer);
 }
