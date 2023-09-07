@@ -46,7 +46,7 @@ interface IShapeBuilderInterface {
 export abstract class Shape {
     static DEFAULT_WIDTH : number = 50;
     static DEFAULT_HEIGHT : number = 50;
-    protected coords : squareCoords = { x : 0, y : 0 };
+    protected coords : squareCoords = { x : 250, y : 430 };
     protected dimensions : squareDimensions = { width : Shape.DEFAULT_WIDTH, height : Shape.DEFAULT_HEIGHT};
 }
 
@@ -63,6 +63,8 @@ export class Bullet implements IhtmlElementInterface  {
     build(container: HTMLElement): void {
         this.htmlElement = document.createElement("div");
         this.htmlElement.classList.add("bullet");
+        this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
+        this.htmlElement.style.setProperty("--x-position", `${this.coords.x}px`);
         container.appendChild(this.htmlElement);
     }
 
@@ -73,6 +75,10 @@ export class Bullet implements IhtmlElementInterface  {
     setCoord(x : number, y : number) : void {
         this.coords.x = x ;
         this.coords.y = y ;
+    }
+
+    getCoord(){
+        return { "x" : this.coords.x, "y" : this.coords.y }
     }
 
     display(){
@@ -89,6 +95,7 @@ export class Bullet implements IhtmlElementInterface  {
                 }
                 
                 this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
+                this.htmlElement.style.setProperty("--x-position", `${this.coords.x}px`);
             }
 
             lastime = time;
@@ -241,14 +248,25 @@ export class Blob extends Shape implements IhtmlElementInterface  {
         this.animateSquare();
     }
     
+    build(container : SquareContainer){
+        this.htmlElement = document.createElement("div");
+        this.htmlElement.classList.add("square");
+        this.htmlElement.style.setProperty("--x-position", `${this.coords.x}px`);
+        this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
+        container.getHtmlElement().appendChild(this.htmlElement);
+        
+    }
 
     shoot(squareContainer : HTMLElement) : void {
         let bullet = new Bullet();
-        bullet.build(squareContainer)
-        bullet.setCoord(this.getCoords().x, this.getCoords().y);
+        
+        bullet.setCoord(this.coords.x, this.coords.y);  // Définir les coordonnées avant de construire
+        console.log(bullet.getCoord());
+        bullet.build(squareContainer);
         this.bulletContainer.push(bullet);
         bullet.display();
     }
+    
 
     getCoords() : squareCoords {
         return this.coords;
@@ -347,15 +365,19 @@ export class Blob extends Shape implements IhtmlElementInterface  {
                     switch (e.key) {
                         case "ArrowRight":
                             posX += 10;
+                            this.coords.x += 10;
                             break;
                         case "ArrowLeft":
                             posX -= 10;
+                            this.coords.x -= 10;
                             break;
                         case "ArrowDown":
                             posY += 10;
+                            this.coords.y += 10;
                             break;
                         case "ArrowUp":
                             posY -= 10;
+                            this.coords.y -= 10;
                             break;
                         case " ":
                             console.log("touche espace pressée")
