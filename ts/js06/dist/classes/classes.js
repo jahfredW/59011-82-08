@@ -16,8 +16,9 @@ export class Bullet {
     }
     // Contruction de la bullet en html
     build(container) {
-        this.htmlElement = document.createElement("div");
+        this.htmlElement = document.createElement("img");
         this.htmlElement.classList.add("bullet");
+        this.htmlElement.src = " ../../assets/plane/missile.png";
         this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
         this.htmlElement.style.setProperty("--x-position", `${this.coords.x}px`);
         container.appendChild(this.htmlElement);
@@ -38,7 +39,7 @@ export class Bullet {
         const animate = (time) => {
             if (lastime !== null) {
                 const deltaTime = time - lastime;
-                this.coords.y -= vInit * (deltaTime / 100);
+                this.coords.y -= vInit * (deltaTime);
                 if (this.coords.y < 0) {
                     this.htmlElement.classList.add("off");
                     this.htmlElement.remove();
@@ -64,7 +65,8 @@ export class Rect extends Shape {
     // Contruction du rectangle
     build(container) {
         let containerElt = container.getHtmlElement();
-        this.htmlElement = document.createElement("div");
+        this.htmlElement = document.createElement("img");
+        this.htmlElement.src = " ../../assets/cruiser/ship.png";
         this.coords.x = 100;
         this.coords.y = 0;
         containerElt.appendChild(this.htmlElement);
@@ -163,16 +165,16 @@ export class Blob extends Shape {
         super();
         this.bulletContainer = bulletContainer;
         // this.bullet = new Bullet(super.coords);  
-        this.htmlElement = document.createElement('div');
-        this.animateSquare();
+        this.htmlElement = document.createElement('img');
+        // this.animateSquare();
     }
     display(posX, posY) {
         this.htmlElement.style.setProperty("--x-position", `${posX}px`);
         this.htmlElement.style.setProperty("--y-position", `${posY}px`);
     }
     build(container) {
-        this.htmlElement = document.createElement("div");
         this.htmlElement.classList.add("square");
+        this.htmlElement.src = "../../assets/plane/plane.png";
         this.htmlElement.style.setProperty("--x-position", `${this.coords.x}px`);
         this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
         container.getHtmlElement().appendChild(this.htmlElement);
@@ -192,39 +194,39 @@ export class Blob extends Shape {
         return this.htmlElement;
     }
     // fonction fléchée -> 
-    animateSquare = () => {
-        let lastTime = null;
-        let totalTime = 0;
-        const animate = (time) => {
-            if (lastTime !== null) {
-                const deltaTime = time - lastTime;
-                totalTime += deltaTime;
-                if (totalTime >= 1000) {
-                    // Faites la commutation toutes les 1000 millisecondes (1 seconde)
-                    if (this.htmlElement.classList.contains('square')) {
-                        this.htmlElement.classList.remove('square');
-                        this.htmlElement.classList.add('circle');
-                    }
-                    else {
-                        this.htmlElement.classList.remove('circle');
-                        this.htmlElement.classList.add('square');
-                    }
-                    // Réinitialiser totalTime pour le prochain intervalle
-                    totalTime = 0;
-                }
-            }
-            lastTime = time;
-            // Planifiez la prochaine itération
-            requestAnimationFrame(animate);
-        };
-        // Lancez l'animation
-        requestAnimationFrame(animate);
-    };
+    // animateSquare = (): void => {
+    //     let lastTime: number | null = null;
+    //     let totalTime = 0;
+    //     const animate = (time: number) => {
+    //       if (lastTime !== null) {
+    //         const deltaTime = time - lastTime;
+    //         totalTime += deltaTime;
+    //         if (totalTime >= 1000) {
+    //           // Faites la commutation toutes les 1000 millisecondes (1 seconde)
+    //           if (this.htmlElement.classList.contains('square')) {
+    //             this.htmlElement.classList.remove('square');
+    //             this.htmlElement.classList.add('circle');
+    //           } else {
+    //             this.htmlElement.classList.remove('circle');
+    //             this.htmlElement.classList.add('square');
+    //           }
+    //           // Réinitialiser totalTime pour le prochain intervalle
+    //           totalTime = 0;
+    //         }
+    //       }
+    //       lastTime = time;
+    //       // Planifiez la prochaine itération
+    //       requestAnimationFrame(animate);
+    //     };
+    //     // Lancez l'animation
+    //     requestAnimationFrame(animate);
+    //   };
     moveSquare(e, button, squareContainerElement) {
         // mise à jour des positions du Blob ET de son tir Bullet 
         // let posX = this.htmlElement.offsetLeft;
         // let posY = this.htmlElement.offsetTop;
         if (e instanceof MouseEvent) {
+            e.preventDefault();
             if (button) {
                 switch (button.getAttribute('data-button')) {
                     case "right":
@@ -243,20 +245,21 @@ export class Blob extends Shape {
             }
             else {
                 if (e.type === 'mousedown') {
-                    Blob.isDragging = true;
-                    Blob.startX = e.clientX;
-                    Blob.startY = e.clientY;
-                    Blob.initialX = this.coords.x;
-                    Blob.initialY = this.coords.y;
+                    // Blob.isDragging = true;
+                    // Blob.startX = e.clientX;
+                    // Blob.startY = e.clientY;
+                    // Blob.initialX = this.coords.x;
+                    // Blob.initialY = this.coords.y;
                 }
-                if (e.type === 'mousemove' && Blob.isDragging) {
-                    const dx = e.clientX - Blob.startX;
-                    const dy = e.clientY - Blob.startY;
-                    this.coords.x = Blob.initialX + dx;
-                    this.coords.y = Blob.initialY + dy;
+                if (e.type === 'mousemove') { // &Blob.isDragging
+                    const dx = e.clientX - this.coords.x;
+                    const dy = e.clientY - this.coords.y;
+                    console.log(dx, dy);
+                    this.coords.x = this.coords.x + dx;
+                    this.coords.y = this.coords.y + dy;
                 }
                 if (e.type === 'mouseup') {
-                    Blob.isDragging = false;
+                    this.shoot(squareContainerElement);
                 }
             }
         }
@@ -276,19 +279,18 @@ export class Blob extends Shape {
                     this.coords.y -= 10;
                     break;
                 case " ":
-                    console.log("touche espace pressée");
                     this.shoot(squareContainerElement);
             }
-            // Limite les positions à l'intérieur du conteneur
-            let containerWidth = squareContainerElement?.getBoundingClientRect().width || 0;
-            let containerHeigth = squareContainerElement?.getBoundingClientRect().height || 0;
-            this.coords.x = Math.min(Math.max(this.coords.x, 0), containerWidth - 50);
-            this.coords.y = Math.min(Math.max(this.coords.y, 0), containerHeigth - 50); // Peut-être utiliser containerHeight ici ?
-            // Applique les nouvelles positions
-            this.htmlElement.style.left = `${this.coords.x}px`;
-            this.htmlElement.style.top = `${this.coords.y}px`;
             // this.display(posX, posY)
         }
+        // Limite les positions à l'intérieur du conteneur
+        let containerWidth = squareContainerElement?.getBoundingClientRect().width || 0;
+        let containerHeigth = squareContainerElement?.getBoundingClientRect().height || 0;
+        this.coords.x = Math.min(Math.max(this.coords.x, 0), containerWidth - 50);
+        this.coords.y = Math.min(Math.max(this.coords.y, 0), containerHeigth - 50); // Peut-être utiliser containerHeight ici ?
+        // Applique les nouvelles positions
+        this.htmlElement.style.left = `${this.coords.x}px`;
+        this.htmlElement.style.top = `${this.coords.y}px`;
     }
 }
 export class GamePad {

@@ -29,11 +29,11 @@ executeInterval();
 // Button Events
 directionButtons.forEach(button => {
     if (button instanceof HTMLElement) {
-        button.addEventListener('click', (e) => squareContainer.getBlob().moveSquare(e, button, squareContainerElement));
+        button.addEventListener('click', (e) => blob.moveSquare(e, button, squareContainerElement));
     }
 });
 // Global Events
 document.addEventListener('keydown', (e) => blob.moveSquare(e, null, squareContainerElement));
-// document.addEventListener('mousedown', (e) => squareContainer.getBlob().moveSquare(e, null, squareContainerElement));
-// document.addEventListener('mousemove', (e) => squareContainer.getBlob().moveSquare(e, null, squareContainerElement));
-// document.addEventListener('mouseup', (e) => squareContainer.getBlob().moveSquare(e, null, squareContainerElement));
+document.addEventListener('mousedown', (e) => blob.moveSquare(e, null, squareContainerElement));
+document.addEventListener('mousemove', (e) => blob.moveSquare(e, null, squareContainerElement));
+document.addEventListener('mouseup', (e) => blob.moveSquare(e, null, squareContainerElement));

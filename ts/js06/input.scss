@@ -15,12 +15,30 @@
 }
 
 .container {
+
     
     box-sizing: border-box;
     padding: 10px;
     text-align: center;
 
+    &__square::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: url("../assets/sea.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;  /* Rend l'image plus transparente */
+        filter: contrast(80%);  /* Ajuste le contraste */
+        z-index: -1;  /* Place l'image derrière le contenu */
+    }
+
     &__square{
+        overflow: hidden;
         position: relative;
         border: 1px solid blueviolet;
         min-height: 500px;
@@ -35,7 +53,6 @@ h1 {
 
 .circle {
     position: absolute;
-    background-color: red;
     width: 50px;
     height: 50px;
     left: var(--x-position);
@@ -47,12 +64,10 @@ h1 {
 
 .rect{
     position: absolute;
-    background-color: rgb(28, 160, 88);
-    width: 20px;
-    height: 70px;
+    width: 23px;
+    height: 128px;
     left: var(--x-position);
     top: var(--y-position);
-    background-color: var(--color);
     border-radius: 0%;
 }
 
@@ -61,14 +76,13 @@ h1 {
 }
 
 .square{
+    z-index: 10;
     position: absolute;
-    background-color: rgb(31, 55, 136);
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 40px;
     left: var(--x-position);
     top: var(--y-position);
-    border-radius: 0%;
-    transition : border-radius 1s ease, background-color 1s ease, left 0.1s linear top 0.1s linear;
+    
 }
 
 .directionButton {
@@ -86,7 +100,7 @@ h1 {
         cursor: pointer;
         box-shadow: 10px 10px 10px grey;
         color: white;
-        background-color: darkblue;
+       
     }
 }
 
@@ -119,7 +133,7 @@ h1 {
 
 .bullet {
     position: absolute;
-    background-color: rgb(224, 18, 18);
+    // background-color: rgb(224, 18, 18);
     width: 10px;
     height: 10px;
     left: var(--x-position);
