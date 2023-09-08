@@ -121,9 +121,11 @@ export class Bullet implements IhtmlElementInterface  {
  * en leur ajouter la classe 'rect' définie dans le fichier input.scss
  */
 export class Ship extends Shape implements IShipInterface {
+    static allShips : Ship[] = [];
 
   constructor() {
-    super();    
+    super();  
+    Ship.allShips.push(this);  
   }
 
   // Contruction du rectangle
@@ -149,44 +151,30 @@ export class Ship extends Shape implements IShipInterface {
     return this.htmlElement;
   }
 
-  move(vInit: number = 1, accel: number = 0): void {
+  move(deltaTime: number = 0): void {
     let acceleration = 1;
-    let lastTime: number | null = null;
+    let vInit = 1;
 
-    const animate = (time: number) => {
-      if (lastTime !== null) {
-        // delta : temps entre le temps gobal et le deriet temps 
-        const deltaTime = time - lastTime;
+    // Utilisez deltaTime pour rendre l'animation indépendante du taux de rafraîchissement
+    this.coords.y += vInit * acceleration * (deltaTime / 100);
 
-        // Utilisez deltaTime pour rendre l'animation indépendante du taux de rafraîchissement
-        this.coords.y += vInit * acceleration * (deltaTime / 100);
+    // Appliquez les limites
+    if (this.coords.y >= 430) {
+        this.coords.y = 430;
+        acceleration *= -1;
+        this.htmlElement.classList.add("off");
+        this.htmlElement.remove();
+    } else if (this.coords.y <= 0) {
+        this.coords.y = 0;
+        acceleration *= -1;
+    }
 
-        // Appliquez les limites
-        if (this.coords.y >= 430) {
-          this.coords.y = 430;
-          acceleration *= -1;
-          this.htmlElement.classList.add("off");
-          this.htmlElement.remove();
-        } else if (this.coords.y <= 0) {
-          this.coords.y = 0;
-          acceleration *= -1;
-        }
+    // Mettez à jour la propriété CSS
+    this.htmlElement.style.setProperty(
+        "--y-position",
+        `${this.coords.y}px`
+    );
 
-        // Mettez à jour la propriété CSS
-        this.htmlElement.style.setProperty(
-          "--y-position",
-          `${this.coords.y}px`
-        );
-      }
-
-      lastTime = time;
-
-      // Planifiez la prochaine itération
-      requestAnimationFrame(animate);
-    };
-
-    // Lancez l'animation
-    requestAnimationFrame(animate);
   }
 }
 
@@ -209,6 +197,24 @@ export class Cruiser extends Ship {
   }
 }
 
+export class Submarine extends Ship {
+    constructor(){
+        super();
+    }
+
+    // Surcharge de la méthode build
+    build(container: SquareContainer): void {
+    let containerElt = container.getHtmlElement();
+    this.htmlElement = document.createElement("img");
+    this.htmlElement.src=  " ../../assets/submarine/ship.png";
+    this.coords.x = 100;
+    this.coords.y = 0;
+    containerElt.appendChild(this.htmlElement);    
+    
+  }
+}
+
+
 export abstract class ShipFactory {
 
     shipOrder(ship_type : string, container : SquareContainer){
@@ -226,6 +232,8 @@ export class ConcreteEnnemyShipFactory extends ShipFactory {
     shipCreate(ship_type: string): Ship {
         if (ship_type === "cruiser") {
             return new Cruiser();
+        } else if (ship_type === "submarine") {
+            return new Submarine();
         } else {
             throw new Error("ship type not found");
         }
@@ -470,4 +478,59 @@ export class GamePad implements IhtmlElementInterface{
     
 
 }
+
+/**
+ * permet de spawn les ennenies à intervales de temps définis
+ */
+export class SpawnManager {
+    private lastTime: number = 0;
+    private accumulatedTime: number = 0;
+    private nextSpawnTime: { [key: string]: number } = {};
+    private shipSpawnRate: { [key: string]: number } = {
+      'cruiser': 10000,
+      'submarine': 6000,
+      // Ajoutez d'autres types de bateaux ici
+    };
+    private shipTypes: string[] = ['cruiser', 'submarine'];
+
+    // On définit les temps du prochain respawn à celui défini au départ : 
+    // ( au départ 10s pour le cruiser et 6 s pour un sous-marin)
+    constructor(private squareContainer: SquareContainer) {
+        for (const shipType of this.shipTypes) {
+            this.nextSpawnTime[shipType] = this.shipSpawnRate[shipType];
+        }
+    }
+
+    /**
+     * La méthode update prend le timestamp de la fonction de callBack ( GameLoop ) , 
+     * passée à requestAnimationFrame
+     */
+    
+    update(timestamp: number): void {
+        // mise à jour du deltatime : différence entre le temps global passé - le temps  à la denrirèe exectution de update
+        // à la première itération il sera 0. 
+        const deltaTime: number = timestamp - this.lastTime;
+        // attribution du temps global au nouveau lastime 
+        this.lastTime = timestamp;
+        // incrémentation du temps accumulé ( c'est juste l'ajout successif des deltas)
+        this.accumulatedTime += deltaTime; // PAS UTILE ICI 
+
+        for (const shipType of this.shipTypes) {
+            // pour chaque bateau on réduit le delta du temps de respawn 
+            this.nextSpawnTime[shipType] -= deltaTime;
+
+            if (this.nextSpawnTime[shipType] <= 0) {
+                // si le temps de res est egale à 0, on produit le bateau 
+                console.log("Spawning", shipType);
+                // on réinitialise le temps de respawn 
+                this.nextSpawnTime[shipType] = this.shipSpawnRate[shipType];
+                const shipFactory = new ConcreteEnnemyShipFactory();
+                let ship = shipFactory.shipOrder(shipType, this.squareContainer);
+            }
+        }
+    }
+}
+
+
+
 

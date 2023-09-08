@@ -1,10 +1,11 @@
-import { SquareContainer, GamePad, ConcreteEnnemyShipFactory, Blob } from './classes/classes';
+import { SquareContainer, GamePad, ConcreteEnnemyShipFactory, Blob, SpawnManager, Ship } from './classes/classes';
 
 // Instanciation des éléments 
 const squareContainer = new SquareContainer();
 const gamePad = new GamePad();
 const blob = new Blob();
 blob.build(squareContainer);
+
 
 // récupération des éléments HTML correspondants à la classe
 const blobElement = blob.getHtmlElement();
@@ -14,17 +15,18 @@ const directionButtons = gamePad.getHtmlElement();
 let lastTime = 0
 let accumulatedTime = 0;
 const shipSpawnRate = 2000;
+let spawnManager = new SpawnManager(squareContainer);
 function gameLoop(timestamp : number) : void {
 
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp;
-    accumulatedTime += deltaTime;
 
-    if (accumulatedTime >= shipSpawnRate) {
-        accumulatedTime -= shipSpawnRate;
-        const shipFactory = new ConcreteEnnemyShipFactory();
-        let cruiser = shipFactory.shipOrder("cruiser", squareContainer);
-    }
+    spawnManager.update(timestamp);
+
+    for (const ship of Ship.allShips) {
+        ship.move(deltaTime);
+      }
+
   
     // Mettez ici le code pour créer des bateaux, etc.
     // Vous pouvez utiliser deltaTime pour ajuster le timing
