@@ -36,11 +36,17 @@ interface IhtmlElementInterface<T = HTMLElement | NodeListOf<HTMLElement>>{
     getHtmlElement(): T;
 }
 
-// interface builder, pour construire les différents shapes 
-interface IShapeBuilderInterface {
-    build(container : SquareContainer): void;
-    display( x : number, color: string): void;
+
+/**
+ * Interface pour la construction des bateaux 
+ */
+interface IShipInterface {
+    build(container : SquareContainer) : void;
+    display(x : number) : void;
+    move(vInit : number, accel : number) : void;
+    getHtmlElement(): HTMLElement;
 }
+
 
 // Shape : classe abstraite qui permet de servir de base pour construire les éléments 
 export abstract class Shape {
@@ -48,6 +54,7 @@ export abstract class Shape {
     static DEFAULT_HEIGHT : number = 50;
     protected coords : squareCoords = { x : 250, y : 430 };
     protected dimensions : squareDimensions = { width : Shape.DEFAULT_WIDTH, height : Shape.DEFAULT_HEIGHT};
+    protected htmlElement!: HTMLImageElement;
 }
 
 
@@ -109,14 +116,12 @@ export class Bullet implements IhtmlElementInterface  {
 }
 
 
-
-
 /**
  * classe rectangle : classe abstraite qui permet de servir de base pour construire les rectangles,
  * en leur ajouter la classe 'rect' définie dans le fichier input.scss
  */
-export class Rect extends Shape implements IShapeBuilderInterface {
-  private htmlElement!: HTMLImageElement;
+export class Ship extends Shape implements IShipInterface {
+
   constructor() {
     super();    
   }
@@ -132,10 +137,10 @@ export class Rect extends Shape implements IShapeBuilderInterface {
   }
 
   // affichage du rectangle en utlisant les propriétés CSS 
-  display(x: number, color: string): void {
+  display(): void {
+    let x = Math.floor(Math.random() * 1000) + 1; 
     this.htmlElement.style.setProperty("--x-position", `${x}px`);
     this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
-    this.htmlElement.style.setProperty("--color", `${color}`);
     this.htmlElement.classList.add("rect");
   }
 
@@ -186,6 +191,46 @@ export class Rect extends Shape implements IShapeBuilderInterface {
 }
 
 
+export class Cruiser extends Ship {
+    // Contruction du rectangle
+    constructor(){
+        super();
+    }
+
+    // Surcharge de la méthode build
+    build(container: SquareContainer): void {
+    let containerElt = container.getHtmlElement();
+    this.htmlElement = document.createElement("img");
+    this.htmlElement.src=  " ../../assets/cruiser/ship.png";
+    this.coords.x = 100;
+    this.coords.y = 0;
+    containerElt.appendChild(this.htmlElement);    
+    
+  }
+}
+
+export abstract class ShipFactory {
+
+    shipOrder(ship_type : string, container : SquareContainer){
+        let ship = this.shipCreate(ship_type);
+        ship.build(container);
+        ship.display();
+        ship.move();
+    }
+
+    abstract shipCreate(ship_type : string) : Ship
+}
+
+
+export class ConcreteEnnemyShipFactory extends ShipFactory {
+    shipCreate(ship_type: string): Ship {
+        if (ship_type === "cruiser") {
+            return new Cruiser();
+        } else {
+            throw new Error("ship type not found");
+        }
+    }
+}
 
 export class SquareContainer implements IhtmlElementInterface {
     constructor( 
@@ -239,7 +284,6 @@ export class Blob extends Shape implements IhtmlElementInterface  {
     static initialX = 0; 
     static initialY = 0;
 
-    private htmlElement : HTMLImageElement;
 
     constructor(
         
@@ -427,4 +471,3 @@ export class GamePad implements IhtmlElementInterface{
 
 }
 
-    

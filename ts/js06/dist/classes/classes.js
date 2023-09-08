@@ -4,6 +4,7 @@ export class Shape {
     static DEFAULT_HEIGHT = 50;
     coords = { x: 250, y: 430 };
     dimensions = { width: Shape.DEFAULT_WIDTH, height: Shape.DEFAULT_HEIGHT };
+    htmlElement;
 }
 export class Bullet {
     coords;
@@ -57,8 +58,7 @@ export class Bullet {
  * classe rectangle : classe abstraite qui permet de servir de base pour construire les rectangles,
  * en leur ajouter la classe 'rect' définie dans le fichier input.scss
  */
-export class Rect extends Shape {
-    htmlElement;
+export class Ship extends Shape {
     constructor() {
         super();
     }
@@ -72,10 +72,10 @@ export class Rect extends Shape {
         containerElt.appendChild(this.htmlElement);
     }
     // affichage du rectangle en utlisant les propriétés CSS 
-    display(x, color) {
+    display() {
+        let x = Math.floor(Math.random() * 1000) + 1;
         this.htmlElement.style.setProperty("--x-position", `${x}px`);
         this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
-        this.htmlElement.style.setProperty("--color", `${color}`);
         this.htmlElement.classList.add("rect");
     }
     // récupération de l'élement html correspondant à ce rectangle
@@ -111,6 +111,39 @@ export class Rect extends Shape {
         };
         // Lancez l'animation
         requestAnimationFrame(animate);
+    }
+}
+export class Cruiser extends Ship {
+    // Contruction du rectangle
+    constructor() {
+        super();
+    }
+    // Surcharge de la méthode build
+    build(container) {
+        let containerElt = container.getHtmlElement();
+        this.htmlElement = document.createElement("img");
+        this.htmlElement.src = " ../../assets/cruiser/ship.png";
+        this.coords.x = 100;
+        this.coords.y = 0;
+        containerElt.appendChild(this.htmlElement);
+    }
+}
+export class ShipFactory {
+    shipOrder(ship_type, container) {
+        let ship = this.shipCreate(ship_type);
+        ship.build(container);
+        ship.display();
+        ship.move();
+    }
+}
+export class ConcreteEnnemyShipFactory extends ShipFactory {
+    shipCreate(ship_type) {
+        if (ship_type === "cruiser") {
+            return new Cruiser();
+        }
+        else {
+            throw new Error("ship type not found");
+        }
     }
 }
 export class SquareContainer {
@@ -159,7 +192,6 @@ export class Blob extends Shape {
     static startY = 0;
     static initialX = 0;
     static initialY = 0;
-    htmlElement;
     constructor(bulletContainer = [] // tableau d'objets bullets
     ) {
         super();
