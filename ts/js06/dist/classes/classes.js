@@ -59,8 +59,10 @@ export class Bullet {
  * en leur ajouter la classe 'rect' définie dans le fichier input.scss
  */
 export class Ship extends Shape {
+    static allShips = [];
     constructor() {
         super();
+        Ship.allShips.push(this);
     }
     // Contruction du rectangle
     build(container) {
@@ -82,35 +84,24 @@ export class Ship extends Shape {
     getHtmlElement() {
         return this.htmlElement;
     }
-    move(vInit = 1, accel = 0) {
+    move(deltaTime = 0) {
         let acceleration = 1;
-        let lastTime = null;
-        const animate = (time) => {
-            if (lastTime !== null) {
-                // delta : temps entre le temps gobal et le deriet temps 
-                const deltaTime = time - lastTime;
-                // Utilisez deltaTime pour rendre l'animation indépendante du taux de rafraîchissement
-                this.coords.y += vInit * acceleration * (deltaTime / 100);
-                // Appliquez les limites
-                if (this.coords.y >= 430) {
-                    this.coords.y = 430;
-                    acceleration *= -1;
-                    this.htmlElement.classList.add("off");
-                    this.htmlElement.remove();
-                }
-                else if (this.coords.y <= 0) {
-                    this.coords.y = 0;
-                    acceleration *= -1;
-                }
-                // Mettez à jour la propriété CSS
-                this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
-            }
-            lastTime = time;
-            // Planifiez la prochaine itération
-            requestAnimationFrame(animate);
-        };
-        // Lancez l'animation
-        requestAnimationFrame(animate);
+        let vInit = 1;
+        // Utilisez deltaTime pour rendre l'animation indépendante du taux de rafraîchissement
+        this.coords.y += vInit * acceleration * (deltaTime / 100);
+        // Appliquez les limites
+        if (this.coords.y >= 430) {
+            this.coords.y = 430;
+            acceleration *= -1;
+            this.htmlElement.classList.add("off");
+            this.htmlElement.remove();
+        }
+        else if (this.coords.y <= 0) {
+            this.coords.y = 0;
+            acceleration *= -1;
+        }
+        // Mettez à jour la propriété CSS
+        this.htmlElement.style.setProperty("--y-position", `${this.coords.y}px`);
     }
 }
 export class Cruiser extends Ship {
@@ -128,6 +119,20 @@ export class Cruiser extends Ship {
         containerElt.appendChild(this.htmlElement);
     }
 }
+export class Submarine extends Ship {
+    constructor() {
+        super();
+    }
+    // Surcharge de la méthode build
+    build(container) {
+        let containerElt = container.getHtmlElement();
+        this.htmlElement = document.createElement("img");
+        this.htmlElement.src = " ../../assets/submarine/ship.png";
+        this.coords.x = 100;
+        this.coords.y = 0;
+        containerElt.appendChild(this.htmlElement);
+    }
+}
 export class ShipFactory {
     shipOrder(ship_type, container) {
         let ship = this.shipCreate(ship_type);
@@ -140,6 +145,9 @@ export class ConcreteEnnemyShipFactory extends ShipFactory {
     shipCreate(ship_type) {
         if (ship_type === "cruiser") {
             return new Cruiser();
+        }
+        else if (ship_type === "submarine") {
+            return new Submarine();
         }
         else {
             throw new Error("ship type not found");
@@ -332,5 +340,37 @@ export class GamePad {
     }
     getHtmlElement() {
         return this.htmlElement;
+    }
+}
+export class SpawnManager {
+    squareContainer;
+    lastTime = 0;
+    accumulatedTime = 0;
+    nextSpawnTime = {};
+    shipSpawnRate = {
+        'cruiser': 10000,
+        'submarine': 6000,
+        // Ajoutez d'autres types de bateaux ici
+    };
+    shipTypes = ['cruiser', 'submarine'];
+    constructor(squareContainer) {
+        this.squareContainer = squareContainer;
+        for (const shipType of this.shipTypes) {
+            this.nextSpawnTime[shipType] = this.shipSpawnRate[shipType];
+        }
+    }
+    update(timestamp) {
+        const deltaTime = timestamp - this.lastTime;
+        this.lastTime = timestamp;
+        this.accumulatedTime += deltaTime;
+        for (const shipType of this.shipTypes) {
+            this.nextSpawnTime[shipType] -= deltaTime;
+            if (this.nextSpawnTime[shipType] <= 0) {
+                console.log("Spawning", shipType);
+                this.nextSpawnTime[shipType] = this.shipSpawnRate[shipType];
+                const shipFactory = new ConcreteEnnemyShipFactory();
+                let ship = shipFactory.shipOrder(shipType, this.squareContainer);
+            }
+        }
     }
 }
