@@ -1,0 +1,19 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.off {
+  display: none;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+/*# sourceMappingURL=style.css.map */

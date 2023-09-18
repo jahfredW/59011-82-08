@@ -31,7 +31,11 @@ class Formulaire
     public function inputHtmlBuilder(string $name, string $type)
     {
         $input = "";
-        $input = "<input type=\"$type\" name=\"$name\"" . PHP_EOL;
+        // pour les champos de type text et password, on ajoute le label. 
+        if($type ===  "text" || $type === "password"){
+            $input  .= "<label for=\"" . $name . "\"> Entrez votre $name </label>";
+        }
+        $input .= "<input type=\"$type\" name=\"$name\"" . PHP_EOL;
         self::$inputArray[] = $input;
     }
 
@@ -44,10 +48,10 @@ class Formulaire
     public function formHtmlBuilder(string $buttonValue) : string
     { 
         $this->form .= "<form action=\"$this->action\" method=\"$this->method\" id=\"$this->id\">" . PHP_EOL;
-        for ($i = 0; $i < count(self::$inputArray); $i++) 
+        for ($i = 1; $i <= count(self::$inputArray); $i++) 
         {
-            $input = self::$inputArray[$i];
-            $id = $i + 1;
+            $input = self::$inputArray[$i - 1];
+            $id = $i + 1 ;
             $input .= "id=\"$id\" " . "/>" . PHP_EOL;
             $this->form .= $input;
         }
