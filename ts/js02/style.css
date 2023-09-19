@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+
+
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.line-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.tab {
+    background-color: rgb(230, 121, 121);
+}
+
+.total-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
