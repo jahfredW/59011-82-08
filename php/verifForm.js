@@ -7,6 +7,12 @@ const red = "inputIncorrect";
 
 var listForms = document.querySelectorAll('form');
 
+
+// ajout de la class flex aux formulaires : 
+listForms.forEach( elt => {
+    elt.classList.add('form-design');
+})
+
 //Récupère tous les inputs du formulaire et effectue une première vérification & ajoute les eventListener sur chacun d'entre eux.
 listForms.forEach(formulaire => {
     // pour chaque formulaire, on récupère les inputs
