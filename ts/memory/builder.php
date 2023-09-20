@@ -11,7 +11,7 @@ function arrayMix(int $cardNumber)
 {
     $array = [];
     for ($i = 0; $i < $cardNumber; $i++){
-        $array[] = $i;
+        $array[] = ["cardId" => $i];
     }
     // mélange les éléments du tableau 
     shuffle($array);
@@ -29,8 +29,11 @@ function arrayBuilder($array)
 {
     // Puis on construits les sous tableaux de paires. 
     $newArray = [];
+    // Sous tableau
     $subArray = [];
+    // Src dynamique
     $srcIndex = 0;
+    // on bocule sur le array et on crée des sous groupes de tableau 
     for($i = 0; $i < count($array); $i++){
         if($i % 2 == 0 && $i != 0){
             array_push($newArray, $subArray);
@@ -38,27 +41,32 @@ function arrayBuilder($array)
             $srcIndex += 1;
         } 
         // attribution du même src pour le même groupe d'images 
-        $subArray[] = ['index' => $array[$i], 'src' => $srcIndex + 1 . ".png"];
+        $subArray[] = $array[$i];
+        $array[$i]['src'] = $srcIndex + 1;
+
+       
     
     }
-    return $newArray;
+    // on trie le tableau initial, par cardId. 
+    usort($array, function($a, $b) {
+        return $a['cardId'] <=> $b['cardId'];
+    });
+
+    
+    return [$newArray, $array];
 }
 
-function cardDisplay($card, $arrayCards)
+/**
+ * Function qui affiche les cards 
+ *
+ * @param [int] $cardId : id de la card
+ * @param [srting] $src : source de la card 
+ * @return void
+ */
+function cardDisplay($cardId, $src)
 {
-    foreach($arrayCards as $key => $pair){
-        foreach($pair as $key => $value){
-            foreach($value as $key => $v){
-                echo $v;
-            }
-        }
-    }
-    echo "<div class=\"img-box\"><img src=\"\" id=\"$card\" /></div>";
+    echo "<div class=\"img-box \"><img src=\"assets/$src.jpg\" data-image=\"$cardId\" class=\"off\" /></div>";
 }
 
-$array = arrayMix(10);
-$arrayCards = arraybuilder($array);
-cardDisplay(5, $arrayCards);
 
 
-print_r($arrayCards);
