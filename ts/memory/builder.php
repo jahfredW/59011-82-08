@@ -5,7 +5,7 @@
  *
  * @param integer $cardNumber
  * @param integer $cardPerLine
- * @return void
+ * @return array
  */
 function arrayMix(int $cardNumber)
 {
@@ -15,7 +15,6 @@ function arrayMix(int $cardNumber)
     }
     // mélange les éléments du tableau 
     shuffle($array);
-    print_r($array);
 
     return $array;
 }
@@ -31,19 +30,35 @@ function arrayBuilder($array)
     // Puis on construits les sous tableaux de paires. 
     $newArray = [];
     $subArray = [];
+    $srcIndex = 0;
     for($i = 0; $i < count($array); $i++){
         if($i % 2 == 0 && $i != 0){
             array_push($newArray, $subArray);
             $subArray = [];
+            $srcIndex += 1;
         } 
-        $subArray[] = $array[$i];
-        
+        // attribution du même src pour le même groupe d'images 
+        $subArray[] = ['index' => $array[$i], 'src' => $srcIndex + 1 . ".png"];
+    
     }
     return $newArray;
 }
 
+function cardDisplay($card, $arrayCards)
+{
+    foreach($arrayCards as $key => $pair){
+        foreach($pair as $key => $value){
+            foreach($value as $key => $v){
+                echo $v;
+            }
+        }
+    }
+    echo "<div class=\"img-box\"><img src=\"\" id=\"$card\" /></div>";
+}
+
+$array = arrayMix(10);
+$arrayCards = arraybuilder($array);
+cardDisplay(5, $arrayCards);
 
 
-$arrayCards = arraybuilder(20);
-
-
+print_r($arrayCards);

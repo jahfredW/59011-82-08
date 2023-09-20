@@ -6,7 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require "./builder.php"; ?>
+    <?php require "./builder.php"; 
+    $arrayCards = arrayMix(20);
+    
+    // itération sur le nombre de card est display 
+    foreach($arrayCards as $key => $value){
+        cardDisplay($value);
+    }
+    
+    
+    
+    ?>
     
 </body>
 </html>
