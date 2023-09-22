@@ -68,5 +68,20 @@ function cardDisplay($cardId, $src)
     echo "<div class=\"img-box \"><img src=\"assets/$src.jpg\" data-image=\"$cardId\" class=\"off\" /></div>";
 }
 
+function userInterface()
+{
+    $cardTodiscover = [2,4,6,8];
+    $cardSelect = "<select name=\"cards\" id=\"card-number\">";
+    $cardSelect .= "<option value default>Nombres de paires</option>";
 
+    foreach ($cardTodiscover as $card)
+    {
+        $cardSelect .= "<option value=\"$card\">$card</option>";
+
+    }
+
+    $cardSelect .= "</select>"; 
+
+    echo $cardSelect;
+}
 

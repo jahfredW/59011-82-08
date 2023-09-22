@@ -7,8 +7,14 @@
     <title>memory</title>
 </head>
 <body>
+    <div>
+        <?php 
+        require "./builder.php"; 
+            userInterface();
+         ?>
+    </div>
     <div class="img-global-container">
-        <?php require "./builder.php"; 
+        <?php
         $arrayCards = arrayMix(10);
         $arrayGroup = arrayBuilder($arrayCards);
         // itération sur le nombre de card est display 

@@ -69,7 +69,6 @@ function reset(e){
 }
 
 
-
 /**
  * fonction de retrounement d'une image : 
  * @param {event} e 
