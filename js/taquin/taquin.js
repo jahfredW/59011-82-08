@@ -1,3 +1,11 @@
+class GameStatus
+{
+    static attemps = 0;
+}
+
+
+
+
 class Cell
 {
     constructor(id, x, y){
@@ -15,13 +23,6 @@ class Cell
         // recherche de la cellule vide : si dans juste à coté de la cellule courante, alors ok
         let currentCell = this;
         let emptyCell = grid.cellTab.find(cell => cell.state == 0);
-
-        // récupération 
-
-
-        console.log("current", currentCell);
-        console.log("empty", emptyCell);
-        console.log('tableau', grid.cellTab);
 
         // on compare les coordonnées : 
         if ((emptyCell.x == this.x && Math.abs(emptyCell.y - this.y) == 1) 
@@ -59,6 +60,28 @@ class Cell
                 element.removeEventListener("click", () => this.globalCheck(grid));
             });
         }
+        
+        // récupération de la div de notification : 
+        let winDiv = document.querySelector(".notif");
+        if (winDiv){
+            winDiv.classList.remove('off');
+            let span = winDiv.querySelector("span");
+            if(span){
+                span.innerHTML = GameStatus.attemps;
+            }
+        }
+
+        // on demande si l'utilisateur veut rejouer : 
+        let button = document.querySelector("#retry-button");
+        if (button){
+            button.addEventListener('click', this.replay)
+        }
+        
+    }
+
+    // méthode qui permet de rejouer
+    replay(){
+        location.reload();
     }
 
     /**
@@ -70,6 +93,8 @@ class Cell
        
        if(isSorted){
           this.displayWin()
+       } else {
+        GameStatus.attemps += 1;
        }
     }
     /**
@@ -94,20 +119,31 @@ class Cell
         // Dans la méthode cellHTMLDisplay(grid)
         cellHtml.setAttribute("id", "cell-" + this.id);
 
+        // création et inseetion de l'image
+
+        let image = document.createElement("img");
+        image.src = "./assets/" + (this.state + 1) + ".jpg";
+        image.classList.add("img");
+
+       
+
         cellHtml.setAttribute("data-cell", this.state);
         cellHtml.setAttribute("class", "cell");
 
         // ajout d'un eventListener 
 
         cellHtml.addEventListener("click", () => this.globalCheck(grid))
+
         if( this.state != 0){
-             cellHtml.innerHTML = this.state;
+            //  cellHtml.innerHTML = this.state;
+              cellHtml.appendChild(image);
         }
        
         return cellHtml;
     }
 }
 
+// Grille de jeu
 class Grid
 {
     static LENGTH = 3;
@@ -138,10 +174,8 @@ class Grid
     randomTab(){
         // récupération des ids avec la méthode map
         const ids = this.cellTab.map( cell => cell.id);
-        console.log(ids);
         // tri des ids 
-        // ids.sort(() => Math.random() - 0.5);
-        console.log(ids);
+        ids.sort(() => Math.random() - 0.5);
         // ré attribution des ids 
         this.cellTab.forEach( (cell, index) => {
             cell.state = ids[index];
