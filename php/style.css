@@ -1,0 +1,33 @@
+.form-design {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  height: 300px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px grey;
+}
+
+.off {
+  display: none;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.container {
+  box-sizing: border-box;
+  margin: auto 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=style.css.map */

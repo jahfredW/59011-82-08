@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "target" : "ESNext",
+        "module" : "ESNext",
+        "noEmitOnError": true,
+        "strict": true,
+
+        "moduleResolution": "bundler",
+        // "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        // "noEmit": true,
+    },
+    "files": [
+        "src/main.ts",
+    ]
+}

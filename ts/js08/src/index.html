@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../../js08/dist/output.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <title>Formulaire</title>
+</head>
+<body>
+    <div class="container">
+        <div class="container__up">
+            <form class="container__up__form" action="">
+                <div class="container__up__form__line" data-input="firstname">
+                    <label for="firstname" >Firstname</label>
+                    <input type="text" name="firstname" >
+                </div>
+                <div class="container__up__form__line">
+                    <label for="phone">Phone number</label>
+                    <input type="phone" name="phone" data-user="phone">
+                </div>
+                <div class="container__up__form__line">
+                    <label for="postal">Postal</label>
+                    <input type="text" name="postal">
+                </div>
+                <div class="container__up__form__line">
+                    <label for="mail">Email</label>
+                    <input type="text" name="mail">
+                </div>
+                <div class="container__up__form__line">
+                    <label for="password">Password</label>
+                    <input type="text" name="password" >
+                </div>
+            </form>
+            <div class="container__up__img">
+                <img src="./../assets/logo.png" alt="" width="150">
+            </div>
+        </div>
+        <div class="container__submit">
+            <button type="submit" class="container__submit__button">Envoyer</button>
+        </div>
+    </div>
+    <script type="module" src="./../dist/main.js"></script>
+</body>
+</html>
