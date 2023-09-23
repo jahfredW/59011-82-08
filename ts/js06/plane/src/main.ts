@@ -1,33 +1,46 @@
-import { SquareContainer, GamePad, ConcreteEnnemyShipFactory, Blob, SpawnManager, Ship } from './classes/classes';
+import SquareContainer from './classes/SquareContainer';
+
+import Plane  from './classes/Plane';
+import SpawnManager  from './classes/SpawnManager';
+
+import Game  from './classes/Game';
 
 // Instanciation des éléments 
 const squareContainer = new SquareContainer();
-const gamePad = new GamePad();
-const blob = new Blob();
-blob.build(squareContainer);
+const plane = new Plane();
+plane.build(squareContainer);
+
+// const factory = new ConcreteEnnemyShipFactory();
+
+// factory.shipOrder('cruiser', squareContainer);
 
 
 // récupération des éléments HTML correspondants à la classe
-const blobElement = blob.getHtmlElement();
 const squareContainerElement = squareContainer.getHtmlElement();
-const directionButtons = gamePad.getHtmlElement();
 
 let lastTime = 0
-let accumulatedTime = 0;
-const shipSpawnRate = 2000;
 let spawnManager = new SpawnManager(squareContainer);
+
+
+// main Game Loop
 function gameLoop(timestamp : number) : void {
 
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp;
 
+    
+
     spawnManager.update(timestamp);
 
-    for (const ship of Ship.allShips) {
+    for (const ship of SquareContainer.shipList) {
         ship.move(deltaTime);
-      }
+    }
+    
+    for (const bullet of SquareContainer.bulletList) { // Assume BulletList est le tableau contenant toutes vos instances de Bullet
+        bullet.move(deltaTime);
+    }    
 
-  
+    Game.checkCollisions();
     // Mettez ici le code pour créer des bateaux, etc.
     // Vous pouvez utiliser deltaTime pour ajuster le timing
   
@@ -59,16 +72,16 @@ requestAnimationFrame(gameLoop);
 // executeInterval();
 
 // Button Events
-directionButtons.forEach(button => {
-    if (button instanceof HTMLElement) {
-        button.addEventListener('click', (e) => blob.moveSquare(e, button, squareContainerElement));
-    }
-});
+// directionButtons.forEach(button => {
+//     if (button instanceof HTMLElement) {
+//         button.addEventListener('click', (e) => blob.moveSquare(e, button, squareContainerElement));
+//     }
+// });
 
 // Global Events
-document.addEventListener('keyup', (e) => blob.moveSquare(e, null, squareContainerElement));
-document.addEventListener('mousedown', (e) => blob.moveSquare(e, null, squareContainerElement));
-document.addEventListener('mousemove', (e) => blob.moveSquare(e, null, squareContainerElement));
-document.addEventListener('mouseup', (e) => blob.moveSquare(e, null, squareContainerElement));
+document.addEventListener('keydown', (e) => plane.moveSquare(e, null, squareContainerElement));
+document.addEventListener('mousedown', (e) => plane.moveSquare(e, null, squareContainerElement));
+document.addEventListener('mousemove', (e) => plane.moveSquare(e, null, squareContainerElement));
+document.addEventListener('mouseup', (e) => plane.moveSquare(e, null, squareContainerElement));
 
 
