@@ -1,0 +1,95 @@
+body {
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 10vw; /* Définit la hauteur des lignes de la grille */
+    gap: 0.2vw;
+   
+}
+
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.cell {
+    height: 10vw;
+    width: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+}
+
+.game-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+     margin-top: 5vw;
+}
+
+.img-container {
+    height: 31vw;
+    width: 31vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* L'image couvre le conteneur tout en conservant son rapport d'aspect */
+    object-position: center; /* Centre l'image dans le conteneur */
+     border-radius: 2%;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover; /* L'image couvre le conteneur tout en conservant son rapport d'aspect */
+    object-position: center; /* Centre l'image dans le conteneur */
+    border-radius: 5%;
+}
+
+.img:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.off{
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+
+      body {
+    background-color: rgb(235, 236, 228);
+  }
+
+  .game-area {
+    height: 100vh;
+    flex-direction: column;
+    align-items: center; /* Centrer les enfants verticalement */
+  }
+
+  .container{
+    transform: scale(2.2);
+    margin: 0 10vh;
+  }
+
+  .img-container{
+    transform: scale(2.2);
+    margin: 0 10vh;
+  }
+
+  
+
+
+}

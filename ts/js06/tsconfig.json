@@ -1,19 +1,37 @@
-{
-    "compilerOptions": {
-        "outDir": "dist",
-        "target" : "ESNext",
-        "module" : "ESNext",
-        "noEmitOnError": true,
-        "strict": true,
+// {
+//     "compilerOptions": {
+//         "outDir": "dist",
+//         "target" : "ESNext",
+//         "module" : "commonjs",
+//         // "esModuleInterop": true,
+//         // "moduleResolution": "node",
+//         "noEmitOnError": true,
+//         "strict": true
+//     },
+//     "files": [
+//         "src/main.ts",
+        
+//     ]
+// }
 
-        "moduleResolution": "bundler",
-        "allowImportingTsExtensions": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "noEmit": true,
-    },
-    "files": [
-        "src/main.ts",
-        "src/classes/classes.ts"
-    ]
+{
+  "compilerOptions": {
+    "target": "esNext",
+    "module": "es6",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/*"
+      ]
+    }
+  },
+  "include": [
+    "src/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
