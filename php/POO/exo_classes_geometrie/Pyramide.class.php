@@ -59,7 +59,6 @@ class Pyramide extends TriangleRectangle
 
     public function getVolume()
     {
-        var_dump(parent::getArea());
         return parent::getArea() * $this->getWidth();
     }
 

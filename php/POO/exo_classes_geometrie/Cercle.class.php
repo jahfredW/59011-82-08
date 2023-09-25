@@ -17,7 +17,7 @@ class Cercle implements ICalculDimensionInterface
 
     public function setDiameter(float $diameter)
     {
-        $this->_height = $diameter;
+        $this->_diameter = $diameter;
     }
 
 

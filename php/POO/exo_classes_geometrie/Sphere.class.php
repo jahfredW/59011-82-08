@@ -41,33 +41,36 @@ class Sphere extends Cercle
     {
         return $this->display();
     }
-    
-
-    public function getVolume()
-    {
-        return 1/3 * parent::getArea() * ($this->getDiameter() / 2);
-    }
 
     public function getPerimeter()
     {
-        return 2 * parent::getPerimeter() + 3 * $this->getWidth();
+        return $this->roundResult(4 * parent::getPerimeter());
     }
+    
+    private function roundResult($result)
+    {
+        return round($result, 2);
+    }
+
+    public function getVolume()
+    {
+        return $this->roundResult(1/3 * parent::getArea() * ($this->getDiameter() / 2));
+    }
+
 
     private function display()
     {
         $output = "";
-        $output .= "Height:" . $this->getHeight() . "\n";
-        $output .= "Width:" . $this->getWidth() . "\n";
         $output .= "Perimetre:" . $this->getPerimeter() . " cm" . "\n";
         $output .= "Volume:" . $this->getVolume() . " cm3" . "\n";
 
-        $output .= $this->isSquare() ? "La base est carrée" : "La base en'est pas carrée";
 
         return $output;
     }
-
-
 }
+
+$s = new Sphere(["diameter" => 5]);
+echo $s;
 
 
 

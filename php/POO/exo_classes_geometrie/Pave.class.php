@@ -78,6 +78,5 @@ class Pave extends Rectangle
 
 }
 
-$pave = new Pave(["width" => 5, "height" => 5, "base" => 3]);
-echo $pave;
+
 

@@ -93,8 +93,3 @@ class Rectangle implements ICalculDimensionInterface
 
 }
 
-
-// public function getPerimeter();
-// public function getArea();
-// public function isSquare();
-// public function display();
