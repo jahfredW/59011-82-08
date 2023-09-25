@@ -1,12 +1,66 @@
-<?php 
+<?php
 
-class Snippet
+class Voiture
 {
 
     /*****************Attributs***************** */
-    private $_xxx;
+    private $_couleur = "";
+    private $_marque = "";
+    private $_modele = "";
+    private $_km = 0;
+    private $_motorisation = [];
 
     /*****************Accesseurs***************** */
+
+    public function getCouleur()
+    {
+        return $this->_couleur;
+    }
+
+    public function setCouleur($couleur)
+    {
+        $this->_couleur = $couleur;
+    }
+
+    public function getMarque()
+    {
+        return $this->_marque;
+    }
+
+    public function setMarque($marque)
+    {
+        $this->_marque = $marque;
+    }
+
+    public function getModele()
+    {
+        return $this->_modele;
+    }
+
+    public function setModele($modele)
+    {
+        $this->_modele = $modele;
+    }
+
+    public function getKm()
+    {
+        return $this->_km;
+    }
+
+    public function setKm($km)
+    {
+        $this->_km = $km;
+    }
+
+    public function getMotorisation()
+    {
+        return $this->_motorisation;
+    }
+
+    public function setMotorisation($motorisation)
+    {
+        $this->_motorisation = $motorisation;
+    }
 
     
     /*****************Constructeur***************** */
@@ -23,7 +77,7 @@ class Snippet
         foreach ($data as $key => $value)
         {
             $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
-            if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
+            if (is_callable([$this, $methode])) // is_callable verifie que la methode existe
             {
                 $this->$methode($value);
             }
@@ -66,4 +120,9 @@ class Snippet
     {
         return 0;
     }
+
+
+    
+
+   
 }
