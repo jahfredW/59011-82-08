@@ -8,7 +8,7 @@ class Voiture
     private $_marque = "";
     private $_modele = "";
     private $_km = 0;
-    private $_motorisation = [];
+    private $_motorisation = "Diesel";
 
     /*****************Accesseurs***************** */
 
@@ -67,7 +67,7 @@ class Voiture
 
     public function __construct(array $options = [])
     {
-        if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+        if (!empty($options)) // empty : renvoie vrai si le tableau est vide
         {
             $this->hydrate($options);
         }
@@ -91,38 +91,32 @@ class Voiture
      *
      * @return String
      */
-    public function toString()
+    public function __toString()
     {
-        return "";
+        return " Cette voiture est un " . $this->getModele() . " de la marque " 
+        . $this->getMarque() . " de couleur " . $this->getCouleur() . " de motorisation " . $this->getMotorisation()
+        . " avec " . $this->getKm() . " km";
     }
 
     /**
-     * Renvoi vrai si l'objet en paramètre est égal à l'objet appelant
+     * Mise à jour des kilomètres
      *
-     * @param [type] $obj
-     * @return bool
-     */
-    public function equalsTo($obj)
-    {
-        return true;
-    }
-    /**
-     * Compare 2 objets
-     * Renvoi 1 si le 1er est >
-     *        0 si ils sont égaux
-     *        -1 si le 1er est <
-     *
-     * @param [type] $obj1
-     * @param [type] $obj2
+     * @param integer $nb_km
      * @return void
      */
-    public static function compareTo($obj1, $obj2)
+    public function rouler(int $nb_km)
     {
-        return 0;
+        // récupérattion du nombre de kilomètres
+        $km = $this->getKm();
+        // incrémentation et mise à jour du nombre de kilomètres. 
+        $this->setKm($km + $nb_km);
     }
-
-
-    
-
-   
+ 
 }
+
+// main 
+
+$vehicule1 = new Voiture(["couleur" => "rouge", "marque" => "Citroen", "modele" => "kadjar"]);
+$vehicule2 = new Voiture(["couleur" => "rouge", "marque" => "Citroen", "modele" => "c4", "km" => 10000]);
+$vehicule2->rouler(40);
+
