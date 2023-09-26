@@ -28,17 +28,17 @@ class Pyramide extends TriangleRectangle
             $this->hydrate($options);
         }
     }
-    public function hydrate($data)
-    {
-        foreach ($data as $key => $value)
-        {
-            $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
-            if (is_callable([$this, $methode])) // is_callable verifie que la methode existe
-            {
-                $this->$methode($value);
-            }
-        }
-    }
+    // public function hydrate($data)
+    // {
+    //     foreach ($data as $key => $value)
+    //     {
+    //         $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+    //         if (is_callable([$this, $methode])) // is_callable verifie que la methode existe
+    //         {
+    //             $this->$methode($value);
+    //         }
+    //     }
+    // }
 
     /*****************Autres Méthodes***************** */
     
@@ -65,8 +65,8 @@ class Pyramide extends TriangleRectangle
     private function display()
     {
         $output = "";
-        $output .= "Height:" . $this->getHeight() . "\n";
-        $output .= "Width:" . $this->getWidth() . "\n";
+        $output .= "Height:" . $this->getHeight() . " cm" . "\n";
+        $output .= "Width:" . $this->getWidth() .  " cm" . "\n";
         $output .= "Perimetre:" . $this->getPerimeter() . " cm" . "\n";
         $output .= "Volume:" . $this->getVolume() . " cm3" . "\n";
 
