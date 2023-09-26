@@ -127,9 +127,9 @@ class Employe
         $nbre_annees = floor($this->anciennete() / 365);
         $pourcentage_anciennete = $salaire_annuel * 0.02;
         
+        // calcul de la prime totale 
         $prime_totale = $pourcentage_prime + $nbre_annees * $pourcentage_anciennete;
 
-        var_dump($prime_totale);
         return $prime_totale;
 
     }
@@ -145,7 +145,8 @@ class Employe
 
         // différence entre le nombre de jour : 
         $diff = $date_de_versement->diff($today); 
-        if($diff == 0)
+   
+        if($diff->days == 0)
         {
             return true;
         }
@@ -156,13 +157,6 @@ class Employe
 
 
 }
-// private $_nom;
-// private $_prenom;
-// private $_date_embauche;
-// private $_fonction;
-// private $_salaire;
-// private $_service;
-["nom" => "gruwe", "prenom" => "fred", "date_embauche" => "10-01-2022", "fonction" => "dev", "salaire" => 10000, "service" => "dev"];
-$employe = new Employe(["nom" => "gruwe", "prenom" => "fred", "date_embauche" => "10-01-2022", "fonction" => "dev", "salaire" => 10, "service" => "dev"]);
-$employe->calculPrime();
+
+
 
