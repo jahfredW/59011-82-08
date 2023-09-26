@@ -71,3 +71,5 @@ function nombre_employes(array $array)
 }
 
 nombre_employes($liste_objets);
+
+// méthode de tri des 

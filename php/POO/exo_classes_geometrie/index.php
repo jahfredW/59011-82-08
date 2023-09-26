@@ -6,3 +6,4 @@ function chargerClasse($classe)
 }
 
 spl_autoload_register("chargerClasse");
+
