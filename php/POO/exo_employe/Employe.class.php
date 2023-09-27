@@ -10,6 +10,7 @@ class Employe
     private $_fonction;
     private $_salaire;
     private $_service;
+    static $employe_liste;
 
     /*****************Accesseurs***************** */
     public function getNom()
@@ -80,6 +81,8 @@ class Employe
         {
             $this->hydrate($options);
         }
+        // ajout de l'employé créé à la liste statique 
+        self::$employe_liste[] = $this;
     }
     public function hydrate($data)
     {
@@ -103,6 +106,33 @@ class Employe
     public function toString()
     {
         return "";
+    }
+
+    public static function compareToNom($a, $b) {
+        return strcmp($a->getNom(), $b->getNom());
+    }
+
+    public static function compareToPrenom($a, $b) {
+        return strcmp($a->getPrenom(), $b->getPrenom());
+    }
+
+    public static function compareToService($a, $b) {
+        return strcmp($a->getService(), $b->getService());
+    }
+
+    public static function calculCout(){
+        // salaire + prime 
+        $salaire_total = 0;
+        foreach(self::$employe_liste as $employe){
+            $cout_pour_un_employe = $employe->getSalaire() + $employe->calculPrime();
+            $salaire_total += $cout_pour_un_employe;
+        }
+        return $salaire_total;
+    }
+    
+    public function display($elt_to_display)
+    {
+        echo gettype($elt_to_display);
     }
 
     // méthode de calcul d' ancienneté

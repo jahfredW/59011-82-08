@@ -56,20 +56,33 @@ $employe5 = [
 $employe_liste = [$employe1, $employe2, $employe3, $employe4, $employe5];
 $liste_objets = [];
 
+$employeTest = new Employe($employe5);
+
 foreach ($employe_liste as $employe){
     $employe = new Employe($employe);
-    $liste_objets[] = $employe;
     if($employe->versement()){
         echo $employe->calculPrime() . "K euros" . PHP_EOL;
     }
 }
 
+print_r(Employe::$employe_liste);
+
 // méthode nombre d'employés : 
 function nombre_employes(array $array)
 {
-    echo count($array) . "employés" . PHP_EOL;
+    echo count(Employe::$employe_liste) . " employés" . PHP_EOL;
 }
 
 nombre_employes($liste_objets);
 
-// méthode de tri des 
+// méthode de tri des employéspar ordre alphabétique 
+function sort_employes($liste_objets)
+{
+    usort($liste_objets, ["Employe", "compareToNom"]);
+
+    return $liste_objets;
+}
+
+print_r(sort_employes($liste_objets));
+
+$employeTest->display($employeTest->calculPrime());
