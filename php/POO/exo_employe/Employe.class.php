@@ -11,6 +11,7 @@ class Employe
     private $_salaire;
     private $_service;
     static $employe_liste;
+    private $agence;
 
     /*****************Accesseurs***************** */
     public function getNom()
@@ -72,6 +73,16 @@ class Employe
     {
         $this->_service = $service;
     }
+
+    public function getAgence()
+    {
+        return $this->agence;
+    }
+
+    public function setAgence(Agence $agence)
+    {
+        $this->agence = $agence;
+    }
     
     /*****************Constructeur***************** */
 
@@ -108,19 +119,19 @@ class Employe
         return "";
     }
 
-    public static function compareToNom($a, $b) {
-        return strcmp($a->getNom(), $b->getNom());
+    public static function compareToNom(Employe $a, Employe $b) : bool {
+        return $a->getNom() < $b->getNom();
     }
 
-    public static function compareToPrenom($a, $b) {
+    public static function compareToPrenom(Employe $a, Employe $b) : bool {
         return strcmp($a->getPrenom(), $b->getPrenom());
     }
 
-    public static function compareToService($a, $b) {
+    public static function compareToService(Employe $a, Employe $b) : bool {
         return strcmp($a->getService(), $b->getService());
     }
 
-    public static function calculCout(){
+    public static function calculCout() : float {
         // salaire + prime 
         $salaire_total = 0;
         foreach(self::$employe_liste as $employe){
@@ -130,9 +141,23 @@ class Employe
         return $salaire_total;
     }
     
-    public function display($elt_to_display)
+    // affiche et formate les datas
+    public static function display($elt_to_display) : void
     {
-        echo gettype($elt_to_display);
+        if(is_array($elt_to_display)){
+            foreach($elt_to_display as $elt){
+               if(is_object($elt)){
+                foreach($elt as $sous_elt){
+                    echo $sous_elt . " " . PHP_EOL;
+                }
+                echo PHP_EOL;
+               } else {
+                echo $elt . PHP_EOL;
+               }
+            }
+        } else {
+            echo $elt_to_display . PHP_EOL;
+        }
     }
 
     // méthode de calcul d' ancienneté
@@ -182,10 +207,6 @@ class Employe
         }
         return false;
     }
-
-
-
-
 }
 
 

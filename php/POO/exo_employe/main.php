@@ -8,13 +8,26 @@ spl_autoload_register("chargerClasse");
 
 
 
+
+// private $_nom;
+// private $_adresse;
+// private $_postal;
+// private $_ville;
+// private $_resto;
+#region liste agences
+$agence1 = new Agence(["nom" => "AGII", "adresse" => "Lille", "postal" => 59000, "ville" => "Lille", "resto" => true]);
+$agence2 = new Agence(["nom" => "CAPGEGEMI", "adresse" => "Paris", "postal" => 75000, "ville" => "Paris", "resto" => false]);
+
+
+#region liste employes
 $employe1 = [
     "nom" => "gruwe",
     "prenom" => "fred",
     "date_embauche" => "10-01-2022",
     "fonction" => "dev",
     "salaire" => 10,
-    "service" => "dev"
+    "service" => "dev",
+    "agence" => $agence1
 ];
 
 $employe2 = [
@@ -23,7 +36,8 @@ $employe2 = [
     "date_embauche" => "15-03-2021",
     "fonction" => "designer",
     "salaire" => 12,
-    "service" => "design"
+    "service" => "design",
+    "agence" => $agence2
 ];
 
 $employe3 = [
@@ -32,7 +46,8 @@ $employe3 = [
     "date_embauche" => "22-06-2020",
     "fonction" => "chef de projet",
     "salaire" => 15,
-    "service" => "management"
+    "service" => "management",
+    "agence" => $agence1
 ];
 
 $employe4 = [
@@ -41,7 +56,8 @@ $employe4 = [
     "date_embauche" => "03-09-2023",
     "fonction" => "dev",
     "salaire" => 11,
-    "service" => "dev"
+    "service" => "dev",
+    "agence" => $agence2
 ];
 
 $employe5 = [
@@ -50,8 +66,12 @@ $employe5 = [
     "date_embauche" => "08-12-2021",
     "fonction" => "marketing",
     "salaire" => 13,
-    "service" => "marketing"
+    "service" => "marketing",
+    "agence" => $agence1
 ];
+#endregion
+
+
 
 $employe_liste = [$employe1, $employe2, $employe3, $employe4, $employe5];
 $liste_objets = [];
@@ -65,7 +85,7 @@ foreach ($employe_liste as $employe){
     }
 }
 
-print_r(Employe::$employe_liste);
+// print_r(Employe::$employe_liste);
 
 // méthode nombre d'employés : 
 function nombre_employes(array $array)
@@ -83,6 +103,7 @@ function sort_employes($liste_objets)
     return $liste_objets;
 }
 
-print_r(sort_employes($liste_objets));
 
-$employeTest->display($employeTest->calculPrime());
+
+Employe::display(sort_employes(Employe::$employe_liste));
+Employe::display(Employe::calculCout(Employe::$employe_liste));
