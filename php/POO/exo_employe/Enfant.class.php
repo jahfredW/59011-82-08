@@ -1,66 +1,22 @@
 <?php 
 
-class Agence
+class Enfant
 {
 
     /*****************Attributs***************** */
-    private $_nom;
-    private $_adresse;
-    private $_postal;
-    private $_ville;
-    private $_resto;
+    private $_age;
 
-    #region /*****************Accesseurs***************** */
-    public function getNom()
+    /*****************Accesseurs***************** */
+
+    public function getAge()
     {
-        return $this->_nom;
+        return $this->_age;
     }
 
-    public function setNom($nom)
+    public function setAge($age)
     {
-        $this->_nom = $nom;
+        $this->_age = $age;
     }
-
-    public function getAdresse()
-    {
-        return $this->_adresse;
-    }
-
-    public function setAdresse($adresse)
-    {
-        $this->_adresse = $adresse;
-    }
-
-    public function getPostal()
-    {
-        return $this->_postal;
-    }
-
-    public function setPostal($postal)
-    {
-        $this->_postal = $postal;
-    }
-
-    public function getVille()
-    {
-        return $this->_ville;
-    }
-
-    public function setVille($ville)
-    {
-        $this->_ville = $ville;
-    }
-
-    public function getResto()
-    {
-        return $this->_resto;
-    }
-
-    public function setResto(bool $resto)
-    {
-        $this->_resto = $resto;
-    }
-    #endregion
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
@@ -94,10 +50,6 @@ class Agence
         return "";
     }
 
-    public function displayRestaurant(){
-        echo $this->getResto() ? " l'agence a un restaurant" : "l'agence n'a pas de restaurant";
-    }
-
     /**
      * Renvoi vrai si l'objet en paramètre est égal à l'objet appelant
      *
@@ -122,4 +74,6 @@ class Agence
     {
         return 0;
     }
+
+    
 }

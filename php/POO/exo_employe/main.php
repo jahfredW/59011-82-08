@@ -18,6 +18,12 @@ spl_autoload_register("chargerClasse");
 $agence1 = new Agence(["nom" => "AGII", "adresse" => "Lille", "postal" => 59000, "ville" => "Lille", "resto" => true]);
 $agence2 = new Agence(["nom" => "CAPGEGEMI", "adresse" => "Paris", "postal" => 75000, "ville" => "Paris", "resto" => false]);
 
+$enfant1 = new Enfant(["age" => 18]);
+$enfant2 = new Enfant(["age" => 15]);
+$enfant3 = new Enfant(["age" => 12]);
+$enfant4 = new Enfant(["age" => 5]);
+$enfant5 = new Enfant(["age" => 9]);
+
 
 #region liste employes
 $employe1 = [
@@ -27,7 +33,8 @@ $employe1 = [
     "fonction" => "dev",
     "salaire" => 10,
     "service" => "dev",
-    "agence" => $agence1
+    "agence" => $agence1,
+    "enfants" => [$enfant1, $enfant2]
 ];
 
 $employe2 = [
@@ -37,7 +44,8 @@ $employe2 = [
     "fonction" => "designer",
     "salaire" => 12,
     "service" => "design",
-    "agence" => $agence2
+    "agence" => $agence2,
+    "enfants" => [$enfant1, $enfant2]
 ];
 
 $employe3 = [
@@ -47,7 +55,8 @@ $employe3 = [
     "fonction" => "chef de projet",
     "salaire" => 15,
     "service" => "management",
-    "agence" => $agence1
+    "agence" => $agence1,
+    "enfants" => [$enfant3, $enfant2]
 ];
 
 $employe4 = [
@@ -57,7 +66,8 @@ $employe4 = [
     "fonction" => "dev",
     "salaire" => 11,
     "service" => "dev",
-    "agence" => $agence2
+    "agence" => $agence2,
+    "enfants" => [$enfant1, $enfant4]
 ];
 
 $employe5 = [
@@ -67,7 +77,8 @@ $employe5 = [
     "fonction" => "marketing",
     "salaire" => 13,
     "service" => "marketing",
-    "agence" => $agence1
+    "agence" => $agence1,
+    "enfants" => [$enfant1, $enfant2, $enfant1, $enfant3]
 ];
 #endregion
 
@@ -105,5 +116,10 @@ function sort_employes($liste_objets)
 
 
 
-Employe::display(sort_employes(Employe::$employe_liste));
+// Employe::display(sort_employes(Employe::$employe_liste));
 Employe::display(Employe::calculCout(Employe::$employe_liste));
+
+// afficher le mode de restauration 
+
+
+$employeTest->displayChequesNoel($employeTest->calculNoelCheque());

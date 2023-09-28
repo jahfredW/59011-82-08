@@ -12,8 +12,19 @@ class Employe
     private $_service;
     static $employe_liste;
     private $agence;
+    private array $enfants;
 
-    /*****************Accesseurs***************** */
+    #region  /*****************Accesseurs***************** */ 
+    public function getEnfants()
+    {
+        return $this->enfants;
+    }
+
+    public function setEnfants(Array $enfants)
+    {
+        $this->enfants = $enfants;
+    }
+
     public function getNom()
     {
         return $this->_nom;
@@ -83,6 +94,8 @@ class Employe
     {
         $this->agence = $agence;
     }
+
+    #endregion
     
     /*****************Constructeur***************** */
 
@@ -160,6 +173,11 @@ class Employe
         }
     }
 
+    public function displayResto()
+    {
+        echo $this->getAgence()->getResto() ? "il peut manger au resto" : "prévoir son repas" . PHP_EOL;
+    }
+
     // méthode de calcul d' ancienneté
     public function anciennete(){
         $today = new \DateTime();
@@ -207,6 +225,66 @@ class Employe
         }
         return false;
     }
+
+    // méthode qui permet de déterminer si l'employé peut bénéficier de chêques vacances.
+    public function canHaveHolidaysCheques() : bool
+    {
+        return $this->anciennete() > 365;
+    }
+
+    // méthode qui permet de déterminer si l'employé peut bénéficier des chêques Noel
+    public function canHaveNoelCheques() : bool 
+    {
+        // déterminer le nomber d'enfants 
+        return count($this->getEnfants()) > 0;
+    }
+
+    // affiche si les employés peuvent 
+    public function displayNoelCheques(): void
+    {
+        echo $this->canHaveNoelCheques() ? "Oui" : "non";
+    }
+
+
+    // function de calcul des cheques de Noel 
+    public function calculNoelCheque() : array
+    {   
+        $tabCheques = ["20" => 0, "30" => 0, "50" => 0];
+      
+        if($this->canHaveNoelCheques()){
+            foreach($this->getEnfants() as $enfant){
+                if($enfant->getAge() < 11)
+                {
+                    $tabCheques["20"] += 1;
+                }
+
+                else if($enfant->getAge() < 16){
+                    $tabCheques["30"] += 1;
+                }
+                else 
+                {
+                    $tabCheques["50"] += 1;
+                }
+            }
+        }
+
+        return $tabCheques;
+    }
+    
+    public function displayChequesNoel(array $chequeArray) : void
+    {
+        $total = 0;
+        foreach($chequeArray as $key => $value)
+        {
+            if($value != 0){
+                echo "cheque de " . $key . " euros, nombre : " . $value . PHP_EOL;
+                $total += $value * (int)$key;
+            }                
+        }
+
+        echo "Total " . $total;
+    }
+
 }
 
 
