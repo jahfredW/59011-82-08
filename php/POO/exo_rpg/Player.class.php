@@ -6,6 +6,8 @@ class Player
     /*****************Attributs***************** */
     private $_life;
     private $_score;
+    public static $easy = 0;
+    public static $hard = 0;
 
     #region /*****************Accesseurs***************** */
     public function getLife()
@@ -88,8 +90,11 @@ class Player
             echo "***                                hero gagne" . PHP_EOL;
             //  monstre tué, on incrémente le score du tué de 1 si monsre facile ou 2 si difficile 
             if($monster instanceof EasyMonster){
+                self::$easy += 1;
                 $this->setScore($score += 1);
+
             } else {
+                self::$hard += 1;
                 $this->setScore($score += 2);
             }
             // on défini le status is_alive du monstre sur false
@@ -115,6 +120,8 @@ class Player
 
         echo "hero subi des degats : " . $degats . " , reste " . $this->getLife() . PHP_EOL;
     }
+
+
 }
 
 

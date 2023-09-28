@@ -9,10 +9,8 @@ spl_autoload_register("chargerClasse");
 // main
 
 // instanciation des joueurs : 
-
 $hero = new Player();
 echo "points de vie: " . $hero->getLife() . PHP_EOL;
-
 
 // game Loop 
 While($hero->getLife() > 0)
@@ -42,3 +40,6 @@ While($hero->getLife() > 0)
 
     echo $hero->getLife() . PHP_EOL;
 }
+
+echo "Score : " . $hero->getScore() . PHP_EOL;
+echo "Tu as tué " . $hero::$easy . "monstres faciles et " . $hero::$hard . " monstres difficiles" . PHP_EOL;  

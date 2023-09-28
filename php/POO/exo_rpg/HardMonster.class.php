@@ -28,10 +28,10 @@ class HardMonster extends EasyMonster
         return "";
     }
 
-    public function attaque(&$player) : void
+    public function attaque($player) : void
     {
-        $scoreJoueur = De::lanceDe();
-        $scoreMonstre = De::lanceDe();
+        $scoreJoueur = Game::lanceDe();
+        $scoreMonstre = Game::lanceDe();
         echo "le montre attaque : " . $scoreMonstre . "joueur  " . $scoreJoueur . PHP_EOL;
         // attauqe normale 
         if($scoreJoueur < $scoreMonstre)
@@ -41,7 +41,7 @@ class HardMonster extends EasyMonster
         }
 
         // attaque avec le sort magique 
-        $scoreMagique = De::lanceDe();
+        $scoreMagique = Game::lanceDe();
         if($scoreMagique != 6){
             $player->subirDegats($scoreMagique * 5);
         }

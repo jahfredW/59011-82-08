@@ -55,8 +55,8 @@ class EasyMonster
     public function attaque($player) : void
     {
         
-        $scoreJoueur = De::lanceDe();
-        $scoreMonstre = De::lanceDe();
+        $scoreJoueur = Game::lanceDe();
+        $scoreMonstre = Game::lanceDe();
 
 
 
