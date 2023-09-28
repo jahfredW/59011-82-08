@@ -10,9 +10,11 @@ spl_autoload_register("chargerClasse");
 
 // instanciation des joueurs : 
 $hero = new Player();
-echo "points de vie: " . $hero->getLife() . PHP_EOL;
+// echo "points de vie: " . $hero->getLife() . PHP_EOL;
 
-// game Loop 
+
+function startGame(Object $hero, bool $debug){
+    // game Loop 
 While($hero->getLife() > 0)
 {
     // choix aléatoire d'un monstre 
@@ -27,19 +29,25 @@ While($hero->getLife() > 0)
             break;
     }
 
-    // le héro attaque le monstre : 
-    $hero->attaque($monster);
+    
     
     // vérification si le monstre est en Vie : 
-    if($monster->getIsAlive()){
+    do {
+
+        // le héro attaque le monstre : 
+        $hero->attaque($monster, $debug);
        
         // le monstre attaque le joueur : 
-        $monster->attaque($hero);
+        $monster->attaque($hero, $debug);
        
-    }
-
-    echo $hero->getLife() . PHP_EOL;
+    }  while($monster->getIsAlive() && $hero->getLife() > 0);
 }
 
 echo "Score : " . $hero->getScore() . PHP_EOL;
-echo "Tu as tué " . $hero::$easy . "monstres faciles et " . $hero::$hard . " monstres difficiles" . PHP_EOL;  
+echo "Tu as tué " . $hero::$easy . " monstres faciles et " . $hero::$hard . " monstres difficiles." . PHP_EOL;  
+
+}
+
+startGame($hero, false);
+
+

@@ -13,7 +13,7 @@ class HardMonster extends EasyMonster
             $this->hydrate($options);
         }
         $this->setIsAlive(true);
-        echo "C'est un montre difficile" . PHP_EOL;
+
     }
 
     /*****************Autres Méthodes***************** */
@@ -28,22 +28,24 @@ class HardMonster extends EasyMonster
         return "";
     }
 
-    public function attaque($player) : void
+    public function attaque($player, $debug) : void
     {
         $scoreJoueur = Game::lanceDe();
         $scoreMonstre = Game::lanceDe();
-        echo "le montre attaque : " . $scoreMonstre . "joueur  " . $scoreJoueur . PHP_EOL;
+        if($debug){
+            echo "le montre attaque : " . $scoreMonstre . "joueur  " . $scoreJoueur . PHP_EOL;
+        } 
         // attauqe normale 
         if($scoreJoueur < $scoreMonstre)
         {
             //  l'attaque du monstre réussi, le joueur subi des dégats  
-            $player->subirDegats(10);
+            $player->subirDegats(10, $debug);
         }
 
         // attaque avec le sort magique 
         $scoreMagique = Game::lanceDe();
         if($scoreMagique != 6){
-            $player->subirDegats($scoreMagique * 5);
+            $player->subirDegats($scoreMagique * 5, $debug);
         }
               
            

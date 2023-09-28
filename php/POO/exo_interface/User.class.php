@@ -1,20 +1,20 @@
-<?php 
+<?php
 
-class EasyMonster
+class User
 {
 
     /*****************Attributs***************** */
-    private $_isAlive;
+    protected $_username;
 
     /*****************Accesseurs***************** */
-    public function getIsAlive()
+    public function getUsername()
     {
-        return $this->_isAlive;
+        return $this->_username;
     }
 
-    public function setIsAlive(bool $isAlive)
+    public function setUsername(string $username)
     {
-        $this->_isAlive = $isAlive;
+        $this->_username = $username;
     }
     
     /*****************Constructeur***************** */
@@ -25,8 +25,6 @@ class EasyMonster
         {
             $this->hydrate($options);
         }
-        $this->setIsAlive(true);
-
     }
     public function hydrate($data)
     {
@@ -47,29 +45,14 @@ class EasyMonster
      *
      * @return String
      */
-    public function toString()
+    public function __toString()
     {
-        return "";
+        return $this->getUsername() . ": " . ($this->isReading() ? "reading" : "not reading");
     }
 
-    public function attaque($player, bool $debug) : void
+    public function isReading()
     {
-        
-        $scoreJoueur = Game::lanceDe();
-        $scoreMonstre = Game::lanceDe();
-
-
-
-        if($debug){
-            echo "le montre attaque : " . $scoreMonstre . "joueur  " . $scoreJoueur . PHP_EOL;
-        } 
-        if($scoreJoueur < $scoreMonstre)
-        {
-            //  l'attaque du monstre réussi, le joueur subi des dégats  
-            $player->subirDegats(10, $debug);
-        }
-              
-           
+        return random_int(0,1) == 1 ? true : false;
     }
 
 

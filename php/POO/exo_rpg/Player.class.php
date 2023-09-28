@@ -76,32 +76,35 @@ class Player
     }
 
 
-    public function attaque($monster) : void
+    public function attaque($monster, bool $debug) : void
     {
         $scoreJoueur = Game::lanceDe();
         $scoreMonstre = Game::lanceDe();
 
-        echo "mon hero attaque : " . $scoreJoueur . "monstre  " . $scoreMonstre . PHP_EOL;
+        if ($debug) echo "mon hero attaque : " . $scoreJoueur . "monstre  " . $scoreMonstre . PHP_EOL;
 
         $score = $this->getScore();
 
         if($scoreJoueur >= $scoreMonstre)
         {
-            echo "***                                hero gagne" . PHP_EOL;
+            if($debug) 
+            {
+                echo "***                                hero gagne" . PHP_EOL;
+            };
             //  monstre tué, on incrémente le score du tué de 1 si monsre facile ou 2 si difficile 
-            if($monster instanceof EasyMonster){
-                self::$easy += 1;
-                $this->setScore($score += 1);
-
-            } else {
+            if($monster instanceof HardMonster){
                 self::$hard += 1;
                 $this->setScore($score += 2);
+
+            } else {
+                self::$easy += 1;
+                $this->setScore($score += 1);
             }
             // on défini le status is_alive du monstre sur false
             $monster->setIsAlive(false);
     }}
 
-    public function subirDegats($degats) : void
+    public function subirDegats($degats, $debug) : void
     {
         $life = $this->getLife();
       
@@ -118,7 +121,7 @@ class Player
         }
     
 
-        echo "hero subi des degats : " . $degats . " , reste " . $this->getLife() . PHP_EOL;
+        if($debug) echo "hero subi des degats : " . $degats . " , reste " . $this->getLife() . PHP_EOL;
     }
 
 
