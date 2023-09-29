@@ -55,5 +55,7 @@ class User
         return random_int(0,1) == 1 ? true : false;
     }
 
+    
+
 
 }
