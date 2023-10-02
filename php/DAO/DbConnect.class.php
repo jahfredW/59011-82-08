@@ -4,7 +4,8 @@ class DbConnect
 {
 
     /*****************Attributs***************** */
-    public static $_instance = [];
+    public static $_instance = null;
+    private $pdo = null;
 
     /*****************Accesseurs***************** */
 
@@ -17,7 +18,7 @@ class DbConnect
         {
             $this->hydrate($options);
         }
-        $this->_instance = new PDO($options["dsn"], $options["user"], $options["password"], $options["driver_options"] = NULL);
+        $this->pdo = new PDO($options["dsn"], $options["user"], $options["password"], $options["driver_options"] = NULL);
     }
     public function hydrate($data)
     {
@@ -44,18 +45,18 @@ class DbConnect
     }
 
     // instanciation de l'objet selon le design pattern Singleton
-    public function getInstance()
+    public static function getInstance()
     {
-        if (!self::$_instance){
+        if (self::$_instance == null){
             try {
-                $db = new DbConnect(["dsn" => "bd", "user" => "fred", "password" => "admin"]);
+                $dsn = "mysql:host=localhost;dbname=test;charset=utf8";
+                $db = new DbConnect(["dsn" => $dsn, "user" => "admin", "password" => "admin"]);
                 self::$_instance = $db;
             } catch (\Exception $e) {
                 echo "Error: ".$e->getMessage();
-            }
-            
-            
+            }  
         }
+        return self::$_instance;
     }
 
     
