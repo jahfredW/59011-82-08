@@ -9,7 +9,15 @@ class DbConnect
 
     /*****************Accesseurs***************** */
 
-    
+    public function getPdo()
+    {
+        return $this->pdo;
+    }
+
+    public function setPdo($pdo)
+    {
+        $this->pdo = $pdo;
+    }
     /*****************Constructeur***************** */
 
     private function __construct(array $options = [])
@@ -19,6 +27,7 @@ class DbConnect
             $this->hydrate($options);
         }
         $this->pdo = new PDO($options["dsn"], $options["user"], $options["password"], $options["driver_options"] = NULL);
+        $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
     public function hydrate($data)
     {
@@ -45,13 +54,14 @@ class DbConnect
     }
 
     // instanciation de l'objet selon le design pattern Singleton
-    public static function getInstance()
+    public static function getInstance($options)
     {
         if (self::$_instance == null){
             try {
-                $dsn = "mysql:host=localhost;dbname=test;charset=utf8";
-                $db = new DbConnect(["dsn" => $dsn, "user" => "admin", "password" => "admin"]);
+                
+                $db = new DbConnect($options);
                 self::$_instance = $db;
+                echo "connexion réussie";
             } catch (\Exception $e) {
                 echo "Error: ".$e->getMessage();
             }  
@@ -60,4 +70,6 @@ class DbConnect
     }
 
     
+
+
 }
