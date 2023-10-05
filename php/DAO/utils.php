@@ -37,7 +37,7 @@ function handleConditions(?array $conditions, string $sql)
                 else if (strpos($value, "->"))
                 {
                     
-                    // function de gestion des between. 
+                    handleBetween($value);
                     
                 } else {
                     // cas d'une recherche simple 
@@ -97,6 +97,12 @@ function handleLike(string $key, string $value, string $sql)
 
 
     // recherche de la position des / du like  
+}
+
+function handleBetween(string $value)
+{
+    // fonction de gestion des between.
+
 }
 
 
