@@ -20,13 +20,14 @@ class DbConnect
     }
     /*****************Constructeur***************** */
 
-    private function __construct(array $options = [])
+    private function __construct()
     {
         if (!empty($options)) // empty : renvoi vrai si le tableau est vide
         {
             $this->hydrate($options);
         }
-        $this->pdo = new PDO($options["dsn"], $options["user"], $options["password"], $options["driver_options"] = NULL);
+        $dsn = "mysql:host=localhost;dbname=personne;charset=utf8";
+        $this->pdo = new PDO($dsn, "root", "", $options["driver_options"] = NULL);
         $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
     public function hydrate($data)

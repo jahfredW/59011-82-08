@@ -1,10 +1,17 @@
 <?php
 
-function chargerClasse($classe)
+function ChargerClasse($classe)
 {
-require $classe. ".class.php";
+    if(file_exists("./" . $classe . ".class.php"))
+    require "./" . $classe . ".class.php";
+    else if (file_exists("./Controllers/".$classe.".class.php"))
+    require "./Controllers/".$classe.".class.php";
+    else if (file_exists("./Models/".$classe.".class.php"))
+    require "./Models/".$classe.".class.php";
+    else if (file_exists("./Entities/".$classe.".class.php"))
+    require "./Entities/".$classe.".class.php";
 }
-spl_autoload_register("chargerClasse");
+spl_autoload_register("ChargerClasse");
 
 // connexion localhost 
 $dsn = "mysql:host=localhost;dbname=test;charset=utf8";
@@ -12,13 +19,19 @@ $dsn = "mysql:host=localhost;dbname=test;charset=utf8";
 // conexion docker 
 $dsn2 = "mysql:host=db;dbname=test;charset=utf8";
 
-$pdo = DbConnect::getInstance(["dsn" => $dsn, "user" => "root", "password" => ""]);
+$pdo = DbConnect::getInstance(null);
+
+Manager::select("personne",[],['nom' => 'fred', "prenom" => "gruwe"], [], "3;", false);
+
+
+
+
 
 
 // // getAllUsers
 // print_r(Manager::getAll($pdo, "User"));
 
 // // getOneUser By name 
-print_r(Manager::getOne($pdo, "User", "gruwe", "nom"));
+// print_r(Manager::findById($pdo, "User", "gruwe", "nom"));
 
 // Manager::create($pdo, ['nom' => 'gr', 'prenom' => 'fred'], "User");

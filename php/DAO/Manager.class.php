@@ -1,5 +1,7 @@
 <?php   
 
+require "./utils.php";
+
 class Manager
 {
     // get All 
@@ -14,8 +16,76 @@ class Manager
         return $result;
     }
 
+    // fonction select 
+    public static function select(string $entity, ?array $colonnes = null, ? array $conditions = null, ?array $orderBy = null, ?string $limit = null, ?bool $debug=false)
+    {
+        $db = DbConnect::getInstance(null);
+        $sql = "SELECT ";
+        // test si $colonnes n'est pas vide :
+        if(count($colonnes) > 0)
+        {
+            $sql.= implode(", ", $colonnes);
+           
+        } 
+        
+        // test si $conditions n'est pas vide :
+        else {
+            // récupération de tous les attributs de l'objets : 
+            $p = new Personne();
+            $sql .= $p->toString();
+     
+        }
 
-    public static function getOne(DBConnect $connexion,  string $entity,  string $name, string $columnName)
+        $sql.= " FROM $entity WHERE ";
+       
+        // test si $conditions n'est pas vide
+        $sql = handleConditions($conditions, $sql);
+       
+
+        // test si $orderBy n'est pas vide
+        if(count($orderBy) > 0)
+        {
+            $sql.= " ORDER BY ";
+            $sql.= implode(", ", $orderBy);
+        }
+        // test si $limit n'est pas vide
+        if($limit != "")
+        {
+            $sql.= " LIMIT ". $limit;
+        }
+
+        // if($debug)
+        // {
+        //     echo $sql;
+        // }
+        var_dump($sql);die();
+        
+        // on requête en base de données 
+        $stmt = $db->getPdo()->query(
+            $sql
+        );
+
+       
+        // var_dump($stmt->fetch(PDO::FETCH_ASSOC)); die();
+        // fetch 
+        $datas = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        // passages des datas à l'objet 
+        $p = new Personne($datas);
+
+        // verification de l'objet 
+        // echo $p;
+       
+        
+        
+         
+
+    } 
+
+
+
+    public static function findById(DBConnect $connexion,  string $entity,  string $name, string $columnName)
     {
         $sql = "SELECT * from user where :columnName = :name";
         $stmt = $connexion->getPdo()->prepare($sql);
@@ -26,6 +96,8 @@ class Manager
         
         return $result;
     }
+
+    // 
 
     // create 
     public static function create(DbConnect $connexion, array $arrayParams,  string $entity)
