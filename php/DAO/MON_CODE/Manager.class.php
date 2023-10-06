@@ -37,7 +37,11 @@ class Manager
         }
 
         $sql.= " FROM $entity WHERE ";
-       
+        
+        if(count($conditions))
+        {
+            $sql .= "WHERE";
+        }
         // test si $conditions n'est pas vide
         $sql = handleConditions($conditions, $sql);
        
