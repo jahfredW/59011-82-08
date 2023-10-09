@@ -23,4 +23,4 @@ DbConnect::init();
 // var_dump(DAO::select("Personnes",[],null,["nom"=>true,"prenom"=>false],"2,3",true));
 // var_dump(DAO::add("Personnes",['nom' => "Gruwe", "prenom" => "fredy"],true));
 var_dump(DAO::update("Personnes",['idPersonne' => 2,'nom' => "Gru", "prenom" => "fredd"],true));
-var_dump(DAO::delete("Personnes",['idPersonne' => 2],true));
+// var_dump(DAO::delete("Personnes",['idPersonne' => 2],true));

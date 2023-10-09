@@ -255,6 +255,8 @@ class DAO
             // méthode setColonnes pour gérer les colonnes 
             $requete .= $classe . " SET ";
 
+            $globalTab = self::setValues($values);
+
             $requete .= implode(", ", self::setValues($values));
 
             $requete .= " WHERE " . self::setValues($values)[0];
@@ -263,7 +265,7 @@ class DAO
             $requete .= ";";
 
             // bind des params 
-            $query = self::bindValuesUpdate($requete);
+            $query = self::bindValuesUpdate($requete, $globalTab);
 
             // execution de la requete 
             self::execute($query);
@@ -280,33 +282,18 @@ class DAO
     
    
 
-    // crée un tableau global avec les conditions et les valeurs de l'input
-    public static function mergeInput(array $conditions, array $values)
-    {
-        return array_merge($conditions, $values);
-    }
-
     // permet de binder les params et d'éxécuter la requete
-    private static function bindValuesUpdate(string $requete, array $conditionsMap = null)
+    private static function bindValuesUpdate(string $requete, array $globalTab = null)
     {
         
         $db = DbConnect::getDb();
         $query = $db->prepare($requete);
 
-        if($globalInput)
-        {
-            foreach ($globalInput as $key => $value){   
+       
+        foreach ($globalTab as $key => $value){   
             $query->bindValue(":" . $key, $value);  
-
-            return $query;
         }
-        } else {
-            foreach ($conditionsMap as $key => $value){   
-            $query->bindValue(":". $key, $value);
-        }
-    }
         
-
         return $query;
         
         
@@ -323,6 +310,7 @@ class DAO
         //return count($liste) > 0 ? $liste : false;
     }
 
+    
     public static function delete(string $table, array $conditions, bool $debug)
     {
         $verif = $table . json_encode($conditions);
