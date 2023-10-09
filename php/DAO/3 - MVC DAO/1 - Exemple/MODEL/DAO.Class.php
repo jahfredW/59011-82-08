@@ -140,53 +140,36 @@ class DAO
         return $retour;
     }
 
-    public static function add(string $table, ?array $colonnes = null, ?array $values = null, ?bool $debug = false)
+    public static function add(string $table, ?array $values = null, ?bool $debug = false)
     {
-    // verif : On converti en str et on check si présence d'un point virgule. 
+    
 
 
-
-
-    // public static function add(Personnes $p)
-    // {
-    //     $db = DbConnect::getDb();
-    //     $query = $db->prepare("INSERT INTO Personnes (nom,prenom,adresse,ville) VALUES (:nom,:prenom,:adresse,:ville)");
-    //     $query->bindValue(":nom", $p->getNom());
-    //     $query->bindValue(":prenom", $p->getPrenom());
-    //     $query->bindValue(":adresse", $p->getAdresse());
-    //     $query->bindValue(":ville", $p->getVille());
-    //     $query->execute();
-    // }
-
-
-    $verif = $table . json_encode($colonnes) . json_encode($values);
+    $verif = $table . json_encode($values);
     if (!strpos($verif, ";"))
     {
         // le nom de la classe
         $classe = ucfirst($table);
         
-        $liste = [];
-        // connexion à la base de donnée
         
         $requete = "INSERT INTO ";
 
         // méthode setColonnes pour gérer les colonnes 
         $requete .= $classe . " ( ";
-        $requete .= self::setColonnes($colonnes, $classe);
+        $requete .= self::setAttributs($values, $classe);
 
         $requete .= " ) ";
 
         $requete .= " VALUES ";
 
-        $props = self::setValues($colonnes, $classe);
+        $props = self::setValues($values, $classe);
 
         $requete .= self::buildStr($props);
 
-
+      
         self::bindValues($props, $requete, $values);
 
 
- 
         if ($debug)
         {
             var_dump($requete);
@@ -197,68 +180,47 @@ class DAO
     return false;
     }
 
-    private static function setValues(array $colonnes, ?string $classe) : array 
+
+    private static function setAttributs(?array $values) : string
     {
-        // récupération des propriétés de la classe
-        $properties = self::getProperties($classe);
-        
-
-        // cas où les colonnes sot vides 
-        // pour chaque propriété on ajoutes les :devant : 
-        $props = "";
-
-        if(count($colonnes) == 0)
+        if ($values != null)
         {
-            $props = $properties;
-        } else 
-        {
-            // on récupère les propriétés seules passée en paramètres
-
-            // var_dump($properties);
-            // var_dump($colonnes); die();
-            $props = array_intersect_key(array_values($colonnes), $properties);
-            
-
-            // var_dump($props); die();
+            return implode(', ', array_keys($values));
         }
-        
-        foreach($props as $key => $value)
-        {
-            $props[$key] = ":". $value;
-        }
+        return false;
+    }
 
-        // var_dump($props);die();
+    private static function setValues(array $values)
+    {
+
+        // on récupère les propriétés seules passée en paramètre
+        $props = array_map(function($key) {
+            return $key .':' . $key;
+        }, array_keys($values));
+        
+        
         return $props;
 
-        
     }
 
     private static function buildStr(array $props)
     {
-        $requete = "( ";
-            foreach ($props as $property)
-            {
-                $requete.= $property. ", ";
-            }
-            $requete = substr($requete, 0, -2);
 
-            $requete .= " )";
-
-            return $requete;
+        $props = implode(', ', array_map(function($key) {
+            return $key;
+        }, array_values($props)));
+       
+        return $props ;
+        
     }
 
     private static function bindValues(?array $props, string $requete, array $values)
     {
         
-        if(count($values) != count($props) || count($values) == 0 )
-        {
-            return false;
-        }
 
         $db = DbConnect::getDb();
         $query = $db->prepare($requete);
 
-        $req = $db->prepare($requete);
         foreach ($props as $value)
         {   
             
@@ -279,6 +241,125 @@ class DAO
         //return count($liste) > 0 ? $liste : false;
     }
 
+    public static function update(string $table,?array $values = null, ?bool $debug = false)
+    {
+        // récupérer le tableau ! 
+        $verif = $table . json_encode($values);
+        if (!strpos($verif, ";"))
+        {
+            // le nom de la classe
+            $classe = ucfirst($table);
+            
+            $requete = "UPDATE ";
+
+            // méthode setColonnes pour gérer les colonnes 
+            $requete .= $classe . " SET ";
+
+            $requete .= implode(", ", self::setValues($values));
+
+            $requete .= " WHERE " . self::setValues($values)[0];
+
+            // fermieture de la requete
+            $requete .= ";";
+
+            // bind des params 
+            $query = self::bindValuesUpdate($requete);
+
+            // execution de la requete 
+            self::execute($query);
+    
+            if ($debug)
+            {
+                var_dump($requete);
+            }
+
+            
+        }
+        return false;
+    }
+    
+   
+
+    // crée un tableau global avec les conditions et les valeurs de l'input
+    public static function mergeInput(array $conditions, array $values)
+    {
+        return array_merge($conditions, $values);
+    }
+
+    // permet de binder les params et d'éxécuter la requete
+    private static function bindValuesUpdate(string $requete, array $conditionsMap = null)
+    {
+        
+        $db = DbConnect::getDb();
+        $query = $db->prepare($requete);
+
+        if($globalInput)
+        {
+            foreach ($globalInput as $key => $value){   
+            $query->bindValue(":" . $key, $value);  
+
+            return $query;
+        }
+        } else {
+            foreach ($conditionsMap as $key => $value){   
+            $query->bindValue(":". $key, $value);
+        }
+    }
+        
+
+        return $query;
+        
+        
+    }
+
+    private static function execute($query)
+    {
+        $query->execute();
+        // while ($donnees = $req->fetch(PDO::FETCH_ASSOC))
+        // {
+        //     $liste[] = new $classe($donnees);
+        // }
+        $query->closeCursor();
+        //return count($liste) > 0 ? $liste : false;
+    }
+
+    public static function delete(string $table, array $conditions, bool $debug)
+    {
+        $verif = $table . json_encode($conditions);
+        if (!strpos($verif, ";"))
+        {
+            // le nom de la classe
+            $classe = ucfirst($table);
+
+            $requete = "DELETE FROM ";
+
+            // méthode setColonnes pour gérer les colonnes 
+            $requete .= $classe . " WHERE ";
+
+            // 
+            $conditionsMap = self::setCond($conditions);
+
+            $requete .= self::buildStr($conditionsMap);
+
+            // fermeture de la requete
+            $requete .= ";";
+
+
+            // bind des params 
+            $query = self::bindValuesUpdate($requete, null,  $conditions);
+
+            // execution de la requete 
+            self::execute($query);
+    
+            if ($debug)
+            {
+                var_dump($requete);
+            }
+
+            
+        }
+        return false;
+    }
 
 }
 
