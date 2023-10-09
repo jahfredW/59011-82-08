@@ -21,3 +21,4 @@ DbConnect::init();
 // $tab = ["idPersonne"=>1,"nom"=>"dupond2","prenom"=>"toto"];
 // echo json_encode($tab);
 var_dump(DAO::select("Personnes",[],null,["nom"=>true,"prenom"=>false],"2,3",true));
+var_dump(DAO::add("Personnes",[],[],true));
