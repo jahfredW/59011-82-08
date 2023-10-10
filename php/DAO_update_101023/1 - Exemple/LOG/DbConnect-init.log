@@ -1,0 +1,23 @@
+2023-10-10 15:50:57 :initialisation de la base de donnée
+2023-10-10 16:02:42 :initialisation de la base de donnée
+2023-10-10 16:04:10 :initialisation de la base de donnée
+2023-10-10 16:04:31 :!ERROR! 2023-10-10 14:04:31 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON)
+
+2023-10-10 16:06:02 :!ERROR! 2023-10-10 14:06:02 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON)
+
+2023-10-10 16:06:06 :!ERROR! 2023-10-10 14:06:06 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON)
+
+2023-10-10 16:06:28 :!ERROR! 2023-10-10 14:06:28 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON)
+
+2023-10-10 16:43:02 :!ERROR! 2023-10-10 14:43:02 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON)
+
+2023-10-10 16:53:42 :!ERROR! 2023-10-10 14:53:42 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON)
+
+2023-10-10 16:56:00 :initialisation de la base de donnée
+2023-10-10 16:56:25 :!ERROR! 2023-10-10 14:56:25 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON)
+
+2023-10-10 17:03:13 :!ERROR! 2023-10-10 15:03:13 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON)
+
+2023-10-10 17:03:14 :!ERROR! 2023-10-10 15:03:14 : SQLSTATE[HY000] [1045] Accès refusé pour l'utilisateur: ''@'@localhost' (mot de passe: NON)
+
+2023-10-10 17:04:47 :initialisation de la base de donnée
