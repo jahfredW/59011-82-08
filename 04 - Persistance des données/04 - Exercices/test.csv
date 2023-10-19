@@ -1,0 +1,23 @@
+id;name;email;;;;
+1;Adria Miles;mauris.elit.dictum@hotmail.ca;;;;"INSERT INTO `user` (`name`, `email`) VALUES ('Adria Miles', 'mauris.elit.dictum@hotmail.ca');"
+2;Isabella Figueroa;duis.elementum@icloud.couk;;;;"INSERT INTO `user` (`Adria Miles`, `mauris.elit.dictum@hotmail.ca`) VALUES ('Isabella Figueroa', 'duis.elementum@icloud.couk');"
+3;Megan Black;nunc@protonmail.com;;;;"INSERT INTO `user` (`Isabella Figueroa`, `duis.elementum@icloud.couk`) VALUES ('Megan Black', 'nunc@protonmail.com');"
+4;Neville Larson;massa.integer@protonmail.com;;;;"INSERT INTO `user` (`Megan Black`, `nunc@protonmail.com`) VALUES ('Neville Larson', 'massa.integer@protonmail.com');"
+5;Timothy Dawson;ut.quam@yahoo.edu;;;;"INSERT INTO `user` (`Neville Larson`, `massa.integer@protonmail.com`) VALUES ('Timothy Dawson', 'ut.quam@yahoo.edu');"
+6;Burke Morton;donec.nibh@icloud.couk;;;;"INSERT INTO `user` (`Timothy Dawson`, `ut.quam@yahoo.edu`) VALUES ('Burke Morton', 'donec.nibh@icloud.couk');"
+7;Kirk Ferguson;tellus@protonmail.net;;;;"INSERT INTO `user` (`Burke Morton`, `donec.nibh@icloud.couk`) VALUES ('Kirk Ferguson', 'tellus@protonmail.net');"
+8;Meghan Hinton;ipsum.suspendisse@aol.edu;;;;"INSERT INTO `user` (`Kirk Ferguson`, `tellus@protonmail.net`) VALUES ('Meghan Hinton', 'ipsum.suspendisse@aol.edu');"
+9;Samuel Sexton;tincidunt@outlook.edu;;;;"INSERT INTO `user` (`Meghan Hinton`, `ipsum.suspendisse@aol.edu`) VALUES ('Samuel Sexton', 'tincidunt@outlook.edu');"
+10;Porter Gallagher;faucibus.orci@google.org;;;;"INSERT INTO `user` (`Samuel Sexton`, `tincidunt@outlook.edu`) VALUES ('Porter Gallagher', 'faucibus.orci@google.org');"
+11;Brian Mcknight;quis.massa@outlook.org;;;;"INSERT INTO `user` (`Porter Gallagher`, `faucibus.orci@google.org`) VALUES ('Brian Mcknight', 'quis.massa@outlook.org');"
+12;Castor Benton;mus@outlook.net;;;;"INSERT INTO `user` (`Brian Mcknight`, `quis.massa@outlook.org`) VALUES ('Castor Benton', 'mus@outlook.net');"
+13;Brady Mays;magna.a@protonmail.net;;;;"INSERT INTO `user` (`Castor Benton`, `mus@outlook.net`) VALUES ('Brady Mays', 'magna.a@protonmail.net');"
+14;Hilel Mendez;nascetur.ridiculus.mus@outlook.org;;;;"INSERT INTO `user` (`Brady Mays`, `magna.a@protonmail.net`) VALUES ('Hilel Mendez', 'nascetur.ridiculus.mus@outlook.org');"
+15;Olivia Gallagher;etiam.bibendum@yahoo.couk;;;;"INSERT INTO `user` (`Hilel Mendez`, `nascetur.ridiculus.mus@outlook.org`) VALUES ('Olivia Gallagher', 'etiam.bibendum@yahoo.couk');"
+16;Coby Wheeler;ac@google.com;;;;"INSERT INTO `user` (`Olivia Gallagher`, `etiam.bibendum@yahoo.couk`) VALUES ('Coby Wheeler', 'ac@google.com');"
+17;Rachel Contreras;donec.nibh@hotmail.couk;;;;"INSERT INTO `user` (`Coby Wheeler`, `ac@google.com`) VALUES ('Rachel Contreras', 'donec.nibh@hotmail.couk');"
+18;Randall English;ut@aol.net;;;;"INSERT INTO `user` (`Rachel Contreras`, `donec.nibh@hotmail.couk`) VALUES ('Randall English', 'ut@aol.net');"
+19;Maxine Weber;dignissim.lacus.aliquam@protonmail.ca;;;;"INSERT INTO `user` (`Randall English`, `ut@aol.net`) VALUES ('Maxine Weber', 'dignissim.lacus.aliquam@protonmail.ca');"
+20;Leroy Howell;imperdiet.ornare@yahoo.edu;;;;"INSERT INTO `user` (`Maxine Weber`, `dignissim.lacus.aliquam@protonmail.ca`) VALUES ('Leroy Howell', 'imperdiet.ornare@yahoo.edu');"
+;;;;;;
+;;;10/12/2023;2023-12-10;;
