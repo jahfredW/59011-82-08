@@ -1,0 +1,38 @@
+Ecrivez des requêtes SELECT (A chaquefois ,vous stockerez la requete dans un fichier texte» pour
+a. Affichez la totalité de la table « client ».
+b. Affichez les noms de tous les clients.
+c. Affichez les différentes dates de commandes sans répétition.
+d. Affichez les clients qui se prénomment « sophie ».
+e. Affichez les numéros des articles et leur quantite commandés par le client1.
+f. Affichez les noms des clients en majuscules-.
+g. Affichez les noms des clients avec la première lettre en majuscule.
+h. Affichez les noms des clients qui ont 5caractères.
+i. Affichez les noms des clients qui commencent par « t » ou qui ont un « l » en troisième position.
+j. Affichez le numéro de client, le numéro de commande, la date de commande et la date de paiement
+attendue des commandes (=date_cde+15jours).
+k. Affichez la date et l'heure actuelles.
+l. Affichez l'ancienneté des clients.
+m. Affichez la quantite maximale achetée par un client.
+n. Affichez la quantite totale achetée par le client1.
+o. Affichez la quantite moyenne achetée par le client 2.
+p. Affichez les clients classés par ordre alphabétique de leur nom.
+q. Affichez les articles classés selon leur prix décroissant. 
+
+a - select * from clients;
+b - select c.nomClient from clients c;
+c - select DISTINCT c.dateCommande from commandes c;
+d - select * from clients c where c.prenomClient like "sop%";
+e - select count(a.idArticle) from articles a inner join commandes co on a.idArticle = co.idArticle INNER join clients c  on c.idClient = co.idClient where c.idClient = 1
+f -select upper(c.nomClient) from clients c;
+g - select concat(upper(substring(c.nomClient, 1, 1)), substring(c.nomClient, 2, LENGTH(c.nomClient))) from clients c;
+h - select c.nomClient from clients c where length(c.nomClient) = 5;
+i - select c.nomClient from clients c where left(c.nomClient,1) = "t" OR left(c.nomClient,3) = "l"; 
+j - select DATE_ADD(c.dateCommande, INTERVAL 15 DAY) from commandes c 
+k - select now()
+l - select DATEDIFF(CURRENT_DATE(),c.dateEntreeClient) from clients c;
+m - select c.idClient, sum(c.quantiteCommande) from commandes c GROUP BY c.idClient;
+n - select c.idClient, sum(c.quantiteCommande) from commandes c GROUP BY c.idClient HAVING c.idClient = 1;
+o - select c.idClient, AVG(c.quantiteCommande) from commandes c GROUP BY c.idClient HAVING c.idClient = 2;
+p - select * from clients c order by c.nomClient ASC;
+q - select * from articles a order by a.prixArticle DESC;
+

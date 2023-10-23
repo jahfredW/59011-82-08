@@ -1,0 +1,49 @@
+executer les 2 instructions suivantes sur la base
+ALTER TABLE commandes ADD cde_total int;
+UPDATE commandes SET cde_total = quantiteCommande * (select prixArticle from articles where articles.idArticle = commandes.idArticle)
+
+Affichez le contenu de la table commande. Qu'y a-t-il de changé dans cette table ? Comment le total de la
+commande a-t-il été calculé ? 
+
+Ecrire des requêtes SELECT. Vous vérifierez que le résultat de la requête correspond à votre inspection des
+tables correspondantes. 
+A)Afficher le montant le plus élevé de commande.
+B) Afficher le montant moyen des commandes.
+C) Afficher le montant le plus bas de commande.
+D) Afficher le nombre de commandes qui ont été passées.
+E) Afficher le montant moyen de commande par client
+F) Afficher le montant le plus élevé de commande par client.
+G) Afficher le nombre de commandes par client.
+H) Afficher le nombre d 'articles commandés en moyenne par client
+I) Afficher le nombre d'articles commandés en moyenne par article.
+J) Afficher le nombre total d'articles commandés par article.
+K) Afficher le nombre moyen d'articles par client et par date.
+L) Afficher le nombre de commandes par jour.
+M) Afficher le nombre de clients dans la table.
+N) Afficher le nombre de clients différents qui ont passé commande.
+O) Afficher le nombre d' articles différents qui ont été commandés.
+P) Afficher le nombre de jours différents de commandes
+
+
+a - select max(c.cde_total) from commandes c
+b - SELECT avg(c.quantiteCommande) from commandes c
+c - select min(c.cde_total) from commandes c 
+d - select sum(c.quantiteCommande) from commandes c 
+e - select avg(c.quantiteCommande), c.idClient from commandes c group by c.idClient
+f - select co.idClient , max(co.cde_total) from commandes co group by co.idClient
+g - select sum(co.quantiteCommande) from commandes co group by co.idClient
+h - select sum(co.quantiteCommande) from commandes co group by co.idClient
+i - select co.idArticle, avg(co.quantiteCommande) from commandes co group by co.idArticle
+j - select co.idArticle, sum(co.quantiteCommande) from commandes co group by co.idArticle
+k - select co.idClient, co.dateCommande, avg(co.quantiteCommande) from commandes co 
+group by co.idClient, co.idCommande 
+l - select sum(co.quantiteCommande), co.dateCommande from commandes co
+group by co.dateCommande
+m - select count(c.idClient) from clients c
+n - select count( distinct co.idClient) from commandes co
+o - select count( distinct co.idArticle) from commandes co
+p - select count( distinct co.dateCommande) from commandes co
+
+
+
+
