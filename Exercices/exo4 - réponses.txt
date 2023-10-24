@@ -1,0 +1,69 @@
+1 - select * from departement d
+2 - select d.nodep, d.nomdep from departement d
+3 - select * from employe e
+4 - select f.intitulé from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction
+5 - select distinct f.intitulé as "fonctions" from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction
+6 - select e.nomemp as nom , date_add(e.datemb, interval 1 day) as datePlus1 from employe e 
+7 - select CONCAT(e.nomemp, " ", f.intitulé) from employe e inner join histofonction h on h.noemp = e.noemp inner join fonction f on f.Id_Fonction = h.Id_Fonction
+
+// REQUETES AVEC WHERE 
+
+1 - select e.noemp, e.nomemp from employe e where e.nodep = 30;
+2 - select e.noemp, e.nomemp from employe e inner join histofonction h on h.noemp = e.noemp inner join fonction f on f.Id_Fonction = h.Id_Fonction where f.intitulé = "ouvrier";
+3 - select d.nomdep, d.nodep from departement d where d.nodep >= 30
+4 - select e.nomemp, e.sala, e.comm from employe e where e.comm > e.sala
+5 - select e.nomemp, e.sala from employe e where e.nodep = 30 and e.sala > 1500;
+6 - select e.nomemp, f.intitulé, e.sala from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction where f.intitulé = "directeur" or f.intitulé = "president";
+7 - select e.nomemp, f.intitulé, e.sala from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction where e.sala > 2500;
+8 - select e.nomemp, f.intitulé, e.sala from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction 
+where e.nodep = 10 and (f.intitulé = "ouvrier" or f.intitulé = "directeur");
+9 - select e.nomemp, f.intitulé, e.sala from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction 
+where e.nodep = 10 and (f.intitulé != "ouvrier" and f.intitulé != "directeur");
+10 - select e.nomemp, f.intitulé, e.nodep from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction 
+where e.nodep != 30 or f.intitulé != "directeur";
+11 - select e.nomemp, f.intitulé, e.sala from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction 
+where e.sala >= 1200 and e.sala <= 1300;
+12 - select e.nomemp, f.intitulé, e.nodep from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction 
+where f.intitulé = "ouvrier" or f.intitulé = "analyste" or f.intitulé = "vendeur"
+12b - select e.nomemp, f.intitulé, e.nodep from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction 
+where f.intitulé in ('ouvrier', 'analyste', 'vendeur')
+13 - select * from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction 
+where f.intitulé != "vendeur"
+14 - select * from employe e where substring(e.nomemp, 1, 1) = "C";
+15 - select e.nomemp  from employe ewhere e.comm = null or e.comm = 0;
+16 - select * from employe e where e.comm != 0 and e.nodep not in (30,20)
+
+// C order by 
+
+1 - select e.sala, f.intitulé, e.nomemp from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction
+where e.nodep = 30 order by e.sala ASC;
+2 - select e.sala, f.intitulé, e.nomemp select e.sala, f.intitulé, e.nomemp from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction
+order by e.sala DESC, f.intitulé ASC;
+3 - from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction
+where e.nodep = 30 order by e.sala DESC;
+4 - select e.comm, e.sala, e.nomemp from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction
+order by e.comm ASC;
+5 - select e.comm, e.sala, e.nomemp from employe e inner join histofonction h on e.noemp = h.noemp inner join fonction f on h.Id_Fonction = f.Id_Fonction
+order by e.comm DESC;
+
+// Multi tables
+
+1 - select d.ville from employe e 
+inner join departement d 
+on e.nodep = d.nodep 
+where e.nomemp = "Costanza"
+
+2 - select e.nomemp, f.intitulé, d.nomdep  from employe e 
+inner join departement d 
+on e.nodep = d.nodep 
+inner join histofonction h 
+on h.noemp = e.noemp
+inner join fonction f 
+on f.Id_Fonction = h.Id_Fonction
+where e.nodep in (30,40)
+
+3 - 
+
+
+
+
