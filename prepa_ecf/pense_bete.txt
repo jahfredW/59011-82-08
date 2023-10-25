@@ -1,0 +1,4 @@
+1 - Si notion de emprunte ou réservation avec date : relation n-n, création de table d'association - Date - Attention date RetourPrévu et date retour effectif ! 
+2 - Si notion de hiérarchie : relation récursive : 1-n : La clé étrangère fait référence à la clé primaire. 
+3 - Si type ou catégorie : création d'une nouvelle table : 1-n. 
+4 - Exemplaires - versions : nouvelle table ! 

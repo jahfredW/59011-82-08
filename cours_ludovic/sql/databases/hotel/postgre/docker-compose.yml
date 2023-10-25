@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+    postgres:
+        image: postgres:15
+        # on force le UID et GID pour un fonctionnement sur Linux. Attention, bien lire le README pour le premier lancement de la BDD.
+        container_name: team
+        restart: always
+        environment:
+          POSTGRES_USER : postgres
+          POSTGRES_PASSWORD: B@nLgU4qz*9?D~3n83
+          POSTGRES_DB: team
+        ports:
+          - '5440:5432' # redirection de port, le nombre de gauche correspond au port local et le nombre de droite au utilisé sur le conteneur
+        volumes:
+          # on monte le volume pointant vers le dossier contenant les informations des BDD 
+          - ./postgres-data:/var/lib/postgresql/data
+          # on monte également le dossier contenant les variables d'exécution (/var/run sur Linux).
+          # ce dossier contient, par exemple, un fichier ".lock" protégeant l'accès en écriture aux fichiers de BDD
+          # lorsque le SGBDR est démarré 
+          - ./postgres-run:/var/run/postgresql
+          # copie du script SQL de création de base de données sur le conteneur
+          - ./hostel.sql:/docker-entrypoint-initdb.d/1_db-creation.sql

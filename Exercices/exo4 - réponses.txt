@@ -65,5 +65,66 @@ where e.nodep in (30,40)
 3 - 
 
 
+// group by 
+
+1 - select e.nodep, avg(e.sala) as salaire_moyen from employe e 
+group by e.nodep
+2 - SELECT
+    e.nodep,
+    AVG(e.sala) * 12
+FROM
+    employe e
+INNER JOIN histofonction h ON
+    h.noemp = e.noemp
+INNER JOIN fonction f ON
+    f.Id_Fonction = h.Id_Fonction
+WHERE
+    f.intitulé NOT IN(
+        "president",
+        "directeur",
+        "responsable"
+    )
+GROUP BY
+    e.nodep
+
+3 - SELECT
+    f.Id_Fonction,
+    f.intitulé,
+    d.nodep,
+    COUNT(e.noemp),
+    AVG(e.sala) * 12
+FROM
+    employe e
+INNER JOIN departement d ON
+    e.nodep = d.nodep
+INNER JOIN histofonction h ON
+    h.noemp = e.noemp
+INNER JOIN fonction f ON
+    f.Id_Fonction = h.Id_Fonction
+GROUP BY
+    f.Id_Fonction
+
+4 - SELECT
+    f.Id_Fonction,
+    f.intitulé,
+    d.nodep,
+    COUNT(e.noemp) as nombre_employes,
+    AVG(e.sala) * 12
+FROM
+    employe e
+INNER JOIN departement d ON
+    e.nodep = d.nodep
+INNER JOIN histofonction h ON
+    h.noemp = e.noemp
+INNER JOIN fonction f ON
+    f.Id_Fonction = h.Id_Fonction
+GROUP BY
+    f.Id_Fonction
+HAVING 
+	nombre_employes >= 2
+
+
+
+
 
 
