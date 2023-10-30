@@ -1,0 +1,14 @@
+C:\Users\fredg\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\fredg\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\fredg\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\fredg\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+C:\Users\fredg\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\fredg\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\fredg\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+U:\59011-82-08\CSHARP\exercices\C-\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+U:\59011-82-08\CSHARP\exercices\C-\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+U:\59011-82-08\CSHARP\exercices\C-\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+U:\59011-82-08\CSHARP\exercices\C-\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+U:\59011-82-08\CSHARP\exercices\C-\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+U:\59011-82-08\CSHARP\exercices\C-\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+U:\59011-82-08\CSHARP\exercices\C-\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
