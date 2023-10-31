@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
@@ -672,6 +673,56 @@ namespace ConsoleApp1
         }
 
         // exercice 4-4-10 Calculatrice de poche
+        static void Calculatrice()
+        {
+            int a;
+            int b;
+            int result;
+            int total;
+            string op = "";
+            string[] opListe = { "-", "+", "*", "/" };
+
+            while(op != "=")
+            {
+                do
+                {
+                    Console.Write("nombre 1: ");
+                } while (!int.TryParse(Console.ReadLine(), out a) || a < 0);
+
+                do
+                {
+                    Console.Write("nombre 2: ");
+                } while (!int.TryParse(Console.ReadLine(), out b) || b < 0);
+
+                do
+                {
+                    Console.Write("opérateur: ");
+                    op = Console.ReadLine();
+                } while (!opListe.Contains(op));
+
+                switch(op)
+                {
+                    case "+":
+                        result = a + b;
+                        total += result;
+                        break;
+                    case "-":
+                        result = a - b;
+                        break;
+
+                }
+                    
+
+
+            }
+
+
+
+
+
+        }
+
+
 
 
 
