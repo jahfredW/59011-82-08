@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+
 namespace ConsoleApp1
 {
     internal class Exercices
@@ -554,12 +555,10 @@ namespace ConsoleApp1
             Console.WriteLine("Coordonnées y?");
             int.TryParse(Console.ReadLine(), out y);
 
-            Console.WriteLine(x >= x1 && x <= x2 && y >= y1 && y <= y2 ? " Dedans" : " Den dehors");
+            Console.WriteLine(x >= x1 && x <= x2 && y >= y1 && y <= y2 ? " Dedans" : " Dehors");
 
 
         }
-
-        
 
 
         // Exercice 4-1 
@@ -585,7 +584,7 @@ namespace ConsoleApp1
 
 
         // exercice 4-2-5 factorielle
-        static int factorielle(int a)
+        static double factorielle(double a)
         {
             
             if(a >= 1)
@@ -675,56 +674,187 @@ namespace ConsoleApp1
         // exercice 4-4-10 Calculatrice de poche
         static void Calculatrice()
         {
-            int a;
-            int b;
-            int result;
-            int total;
+            double a = 0;
+            double result = 0;
             string op = "";
-            string[] opListe = { "-", "+", "*", "/" };
+            string[] opListe = { "-", "+", "*", "/", "=", "$", "µ", "fac" };
 
-            while(op != "=")
+
+            do
             {
-                do
-                {
-                    Console.Write("nombre 1: ");
-                } while (!int.TryParse(Console.ReadLine(), out a) || a < 0);
+                Console.Write("nombre 1: ");
+            } while (!double.TryParse(Console.ReadLine(), out result) || result < 0);
 
-                do
-                {
-                    Console.Write("nombre 2: ");
-                } while (!int.TryParse(Console.ReadLine(), out b) || b < 0);
 
+            while (op != "=")
+            {
                 do
                 {
                     Console.Write("opérateur: ");
                     op = Console.ReadLine();
                 } while (!opListe.Contains(op));
 
+
+                if(op != "=" && op != "µ" && op != "fac")
+                {
+                    Console.WriteLine("nombre 2: ");
+                    double.TryParse(Console.ReadLine(), out a);
+                    
+                };
+
+                
                 switch(op)
                 {
                     case "+":
-                        result = a + b;
-                        total += result;
+                        result += a;
                         break;
                     case "-":
-                        result = a - b;
+                        result -= a;
                         break;
-
+                    case "/":
+                        result /= a;
+                        break;
+                    case "*":
+                        result *= a;
+                        break;
+                    case "$":
+                        result = Math.Pow(result, a);
+                        break;
+                    case "µ":
+                        result = Math.Sqrt(result);
+                        break;
+                    case "fac":
+                        result = factorielle(result);
+                        break;
                 }
+
+                Console.WriteLine("resultat : " + result);
                     
-
-
             }
 
+            
 
+        }
+        // exercice 5-1
+        static void affichage()
+        {
+            string toDisplay = "mes couilles sont poilues";
 
+            foreach( var car in toDisplay)
+            {
+                Console.WriteLine(car);
+            }
+        }
+
+        // exercice 5-2
+        static void Extraction()
+        {
+            string t = "hello world";
+            int index_1;
+            int index_2;
+            int i = 0;
+
+            do
+            {
+                Console.WriteLine("index 1 ?");
+            } while (!int.TryParse(Console.ReadLine(), out index_1));
+
+            do
+            {
+                Console.WriteLine("index 2 ?");
+            } while (!int.TryParse(Console.ReadLine(), out index_2));
+
+            while(i <= (index_2 - index_1))
+            {
+                Console.Write(t[index_1 + i]);
+                i++;
+    
+            }
 
 
         }
 
+        // exercice 5-3
+        static void ExtractionBis()
+        {
+           
+            string t;
+
+            Console.WriteLine("quelle est votre phrase les gays? ");
+            t = Console.ReadLine();
+            
+            string u;
+            int index_1;
+            int index_2;
+            StringBuilder sb;
+          
+
+            do
+            {
+                Console.WriteLine("index 1 ?");
+            } while (!int.TryParse(Console.ReadLine(), out index_1));
+
+            do
+            {
+                Console.WriteLine("index 2 ?");
+            } while (!int.TryParse(Console.ReadLine(), out index_2));
 
 
+            sb = new StringBuilder("", index_2);
 
+            for(int i = index_1; i < index_2; i++)
+            {
+                sb.Insert(i - index_1, t[i]);
+            }
+            
+
+            Console.WriteLine(sb);
+
+        }
+
+        // exercice 5-4
+        static void Replace()
+        {
+            string t;
+            char a = 'a';
+            char b = 'b';
+
+            Console.WriteLine("Saisissez une chaine de caractère :");
+            t = Console.ReadLine();
+
+            string s = t.Replace(b, a);
+
+            Console.WriteLine("Votre nouvelle chaine de caractère : " + s );
+        }
+
+        // exercice 5-5 
+        static void SubWithoutReplace()
+        {
+            string t;
+            StringBuilder sb;
+            int l;
+            char a = 'a';
+            char b = 'b';
+
+            Console.WriteLine("Saisissez une phrase");
+            t = Console.ReadLine();
+
+            sb = new StringBuilder(t);
+            l = sb.Length;
+
+            for (int index = 0;  index < l; index ++)
+            {
+                if(sb[index] == a)
+                {
+                    sb.Remove(index, 1);
+                    sb.Insert(index, b);
+                }
+            }
+
+            Console.WriteLine(sb);
+        }
+
+        // Exercice 6 
 
 
 
@@ -775,7 +905,19 @@ namespace ConsoleApp1
 
             // Multiplication2d();
 
-            JoliCarre();
+            // JoliCarre();
+
+            // Calculatrice();
+
+            // affichage();
+
+            // Extraction();
+
+            // ExtractionBis();
+
+            // Replace();
+
+            SubWithoutReplace();
         }
     }
 
