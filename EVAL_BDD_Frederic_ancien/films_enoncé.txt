@@ -1,0 +1,7 @@
+Un fanatique de cinéma et de festivals de films décide de réaliser sa base de données personnelle 
+en y stockant les différents festivals de cinéma (Venise, Canne, Bruxelles,… avec pour chacun le lieu et le directeur) 
+et ce pour chaque année où ils se déroulent. Pour chaque festival, il désire également enregistrer 
+les films qui y furent en compétition (titre, réalisateur…), les acteurs (nom, nationalité, films en compétition dans lesquels ils ont tourné) 
+et les réalisateurs (nom, film en compétition qu’ils ont réalisé) présents durant le festival. 
+Finalement, il veut, et ce pour chaque festival encore, 
+encoder à part le film qui a remporté le grand prix et l’acteur ayant remporté le prix du meilleur rôle.

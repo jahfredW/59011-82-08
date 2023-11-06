@@ -1,0 +1,14 @@
+U:\59011-82-08\CSHARP\test_solution\test_solution\bin\Debug\net6.0\test_solution.exe
+U:\59011-82-08\CSHARP\test_solution\test_solution\bin\Debug\net6.0\test_solution.deps.json
+U:\59011-82-08\CSHARP\test_solution\test_solution\bin\Debug\net6.0\test_solution.runtimeconfig.json
+U:\59011-82-08\CSHARP\test_solution\test_solution\bin\Debug\net6.0\test_solution.dll
+U:\59011-82-08\CSHARP\test_solution\test_solution\bin\Debug\net6.0\test_solution.pdb
+U:\59011-82-08\CSHARP\test_solution\test_solution\obj\Debug\net6.0\test_solution.GeneratedMSBuildEditorConfig.editorconfig
+U:\59011-82-08\CSHARP\test_solution\test_solution\obj\Debug\net6.0\test_solution.AssemblyInfoInputs.cache
+U:\59011-82-08\CSHARP\test_solution\test_solution\obj\Debug\net6.0\test_solution.AssemblyInfo.cs
+U:\59011-82-08\CSHARP\test_solution\test_solution\obj\Debug\net6.0\test_solution.csproj.CoreCompileInputs.cache
+U:\59011-82-08\CSHARP\test_solution\test_solution\obj\Debug\net6.0\test_solution.dll
+U:\59011-82-08\CSHARP\test_solution\test_solution\obj\Debug\net6.0\refint\test_solution.dll
+U:\59011-82-08\CSHARP\test_solution\test_solution\obj\Debug\net6.0\test_solution.pdb
+U:\59011-82-08\CSHARP\test_solution\test_solution\obj\Debug\net6.0\test_solution.genruntimeconfig.cache
+U:\59011-82-08\CSHARP\test_solution\test_solution\obj\Debug\net6.0\ref\test_solution.dll

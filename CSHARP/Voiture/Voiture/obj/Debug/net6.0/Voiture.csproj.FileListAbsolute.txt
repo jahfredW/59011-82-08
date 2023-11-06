@@ -1,0 +1,14 @@
+U:\59011-82-08\CSHARP\Voiture\Voiture\bin\Debug\net6.0\Voiture.exe
+U:\59011-82-08\CSHARP\Voiture\Voiture\bin\Debug\net6.0\Voiture.deps.json
+U:\59011-82-08\CSHARP\Voiture\Voiture\bin\Debug\net6.0\Voiture.runtimeconfig.json
+U:\59011-82-08\CSHARP\Voiture\Voiture\bin\Debug\net6.0\Voiture.dll
+U:\59011-82-08\CSHARP\Voiture\Voiture\bin\Debug\net6.0\Voiture.pdb
+U:\59011-82-08\CSHARP\Voiture\Voiture\obj\Debug\net6.0\Voiture.GeneratedMSBuildEditorConfig.editorconfig
+U:\59011-82-08\CSHARP\Voiture\Voiture\obj\Debug\net6.0\Voiture.AssemblyInfoInputs.cache
+U:\59011-82-08\CSHARP\Voiture\Voiture\obj\Debug\net6.0\Voiture.AssemblyInfo.cs
+U:\59011-82-08\CSHARP\Voiture\Voiture\obj\Debug\net6.0\Voiture.csproj.CoreCompileInputs.cache
+U:\59011-82-08\CSHARP\Voiture\Voiture\obj\Debug\net6.0\Voiture.dll
+U:\59011-82-08\CSHARP\Voiture\Voiture\obj\Debug\net6.0\refint\Voiture.dll
+U:\59011-82-08\CSHARP\Voiture\Voiture\obj\Debug\net6.0\Voiture.pdb
+U:\59011-82-08\CSHARP\Voiture\Voiture\obj\Debug\net6.0\Voiture.genruntimeconfig.cache
+U:\59011-82-08\CSHARP\Voiture\Voiture\obj\Debug\net6.0\ref\Voiture.dll

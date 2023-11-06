@@ -1,0 +1,14 @@
+U:\59011-82-08\CSHARP\exercice7\bin\Debug\net6.0\exercice7.exe
+U:\59011-82-08\CSHARP\exercice7\bin\Debug\net6.0\exercice7.deps.json
+U:\59011-82-08\CSHARP\exercice7\bin\Debug\net6.0\exercice7.runtimeconfig.json
+U:\59011-82-08\CSHARP\exercice7\bin\Debug\net6.0\exercice7.dll
+U:\59011-82-08\CSHARP\exercice7\bin\Debug\net6.0\exercice7.pdb
+U:\59011-82-08\CSHARP\exercice7\obj\Debug\net6.0\exercice7.GeneratedMSBuildEditorConfig.editorconfig
+U:\59011-82-08\CSHARP\exercice7\obj\Debug\net6.0\exercice7.AssemblyInfoInputs.cache
+U:\59011-82-08\CSHARP\exercice7\obj\Debug\net6.0\exercice7.AssemblyInfo.cs
+U:\59011-82-08\CSHARP\exercice7\obj\Debug\net6.0\exercice7.csproj.CoreCompileInputs.cache
+U:\59011-82-08\CSHARP\exercice7\obj\Debug\net6.0\exercice7.dll
+U:\59011-82-08\CSHARP\exercice7\obj\Debug\net6.0\refint\exercice7.dll
+U:\59011-82-08\CSHARP\exercice7\obj\Debug\net6.0\exercice7.pdb
+U:\59011-82-08\CSHARP\exercice7\obj\Debug\net6.0\exercice7.genruntimeconfig.cache
+U:\59011-82-08\CSHARP\exercice7\obj\Debug\net6.0\ref\exercice7.dll

@@ -1,0 +1,14 @@
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\obj\Debug\net6.0\ExemplePOO.GeneratedMSBuildEditorConfig.editorconfig
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\obj\Debug\net6.0\ExemplePOO.AssemblyInfoInputs.cache
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\obj\Debug\net6.0\ExemplePOO.AssemblyInfo.cs
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\obj\Debug\net6.0\ExemplePOO.csproj.CoreCompileInputs.cache
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\bin\Debug\net6.0\ExemplePOO.exe
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\bin\Debug\net6.0\ExemplePOO.deps.json
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\bin\Debug\net6.0\ExemplePOO.runtimeconfig.json
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\bin\Debug\net6.0\ExemplePOO.dll
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\bin\Debug\net6.0\ExemplePOO.pdb
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\obj\Debug\net6.0\ExemplePOO.dll
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\obj\Debug\net6.0\refint\ExemplePOO.dll
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\obj\Debug\net6.0\ExemplePOO.pdb
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\obj\Debug\net6.0\ExemplePOO.genruntimeconfig.cache
+U:\GRP-82\Reference\05 - Composants d'interface\2 - Développer en C#\1 - C# CLI\Exemples\ExemplePOO\ExemplePOO\obj\Debug\net6.0\ref\ExemplePOO.dll

@@ -1,0 +1,7 @@
+U:\59011-82-08\CSHARP\exercice_7\exercice_7\bin\Debug\exercice_7.exe.config
+U:\59011-82-08\CSHARP\exercice_7\exercice_7\bin\Debug\exercice_7.exe
+U:\59011-82-08\CSHARP\exercice_7\exercice_7\bin\Debug\exercice_7.pdb
+U:\59011-82-08\CSHARP\exercice_7\exercice_7\obj\Debug\exercice_7.csproj.AssemblyReference.cache
+U:\59011-82-08\CSHARP\exercice_7\exercice_7\obj\Debug\exercice_7.csproj.CoreCompileInputs.cache
+U:\59011-82-08\CSHARP\exercice_7\exercice_7\obj\Debug\exercice_7.exe
+U:\59011-82-08\CSHARP\exercice_7\exercice_7\obj\Debug\exercice_7.pdb

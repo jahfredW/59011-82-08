@@ -317,7 +317,7 @@ namespace ConsoleApp1
 
         static bool Tour(int deplacementX, int deplacementY, int initX, int initY)
         {
-            if ((initY ==  deplacementY) || (initX == deplacementX))
+            if ((initY == deplacementY) || (initX == deplacementX))
             {
                 return true;
             }
@@ -354,7 +354,7 @@ namespace ConsoleApp1
             int heureFinInt;
             int minutesFinInt;
 
-            
+
             do
             {
                 Console.WriteLine("heure de début ? ");
@@ -382,11 +382,11 @@ namespace ConsoleApp1
                 minutesFin = Console.ReadLine();
                 minutesFinInt = Convert.ToInt32(minutesFin);
             } while (minutesFinInt >= 60 || minutesFinInt < 0);
-            
+
 
 
             // gestion de l'heure de fin supérieure 
-            if(heureFinInt > heureDebutInt)
+            if (heureFinInt > heureDebutInt)
             {
                 throw new InvalidOperationException("L'heure de fin ne peut pas être supérieure à l'heure de début.");
             }
@@ -399,7 +399,7 @@ namespace ConsoleApp1
             int diffMinutes = minutesFinInt + diffDebut;
 
             // reconversion des minutes et init 
-            if( diffMinutes == 60)
+            if (diffMinutes == 60)
             {
                 diffheure += 1;
                 diffMinutes = 0;
@@ -426,7 +426,7 @@ namespace ConsoleApp1
                 Console.WriteLine("jour ?");
                 day = Console.ReadLine();
                 dayInt = Convert.ToInt32(day);
-            } while ( dayInt > 31 || dayInt < 0  );
+            } while (dayInt > 31 || dayInt < 0);
 
             do
             {
@@ -452,8 +452,8 @@ namespace ConsoleApp1
                 }
                 else
                 {
-                       dayInt = 1;
-                       monthInt += 1;
+                    dayInt = 1;
+                    monthInt += 1;
                 }
             }
             else if (!month31days.Contains(monthInt) && monthInt != 2)
@@ -464,8 +464,8 @@ namespace ConsoleApp1
                 }
                 else
                 {
-                 dayInt = 1;
-                 monthInt += 1;
+                    dayInt = 1;
+                    monthInt += 1;
 
                 }
             }
@@ -503,7 +503,7 @@ namespace ConsoleApp1
         // exercice 13
         static void borne()
         {
-            
+
             int a;
             int b;
             int x;
@@ -572,10 +572,10 @@ namespace ConsoleApp1
         // exercice 4-2-4 compte à rebours
         static int Cab(int a)
         {
-            if(a >= 0)
+            if (a >= 0)
             {
                 Console.WriteLine(a);
-                return a - Cab(a - 1); 
+                return a - Cab(a - 1);
             }
             return a;
         }
@@ -586,14 +586,14 @@ namespace ConsoleApp1
         // exercice 4-2-5 factorielle
         static double factorielle(double a)
         {
-            
-            if(a >= 1)
+
+            if (a >= 1)
             {
                 return a * factorielle(a - 1);
             }
-            
+
             return 1;
-            
+
         }
 
         // exercice 4-3-6 tables de multiplication 
@@ -607,7 +607,7 @@ namespace ConsoleApp1
             } while (!int.TryParse(Console.ReadLine(), out number) || number > 10 || number < 0);
 
 
-            for(int i = 1;  i < 11; i++)
+            for (int i = 1; i < 11; i++)
             {
                 Console.WriteLine(i + " * " + number + " = " + number * i);
             }
@@ -617,13 +617,13 @@ namespace ConsoleApp1
         static void Multiplication2d()
         {
 
-            int[,] tables = new int [10, 10];
-            for( int i = 1; i < 11; i++)
+            int[,] tables = new int[10, 10];
+            for (int i = 1; i < 11; i++)
             {
-                for( int j = 1;  j < 11; j++)
+                for (int j = 1; j < 11; j++)
                 {
                     tables[i - 1, j - 1] = i * j;
-                    Console.Write(i*j);
+                    Console.Write(i * j);
                 }
                 Console.WriteLine();
             }
@@ -653,14 +653,14 @@ namespace ConsoleApp1
         static void JoliCarre()
         {
             int number;
-            
+
 
             do
             {
                 Console.WriteLine("Entre un nombre entier");
             } while (!int.TryParse(Console.ReadLine(), out number));
 
-           
+
             for (int i = 0; i < number; i++)
             {
                 for (int j = 0; j < number; j++)
@@ -695,15 +695,15 @@ namespace ConsoleApp1
                 } while (!opListe.Contains(op));
 
 
-                if(op != "=" && op != "µ" && op != "fac")
+                if (op != "=" && op != "µ" && op != "fac")
                 {
                     Console.WriteLine("nombre 2: ");
                     double.TryParse(Console.ReadLine(), out a);
-                    
+
                 };
 
-                
-                switch(op)
+
+                switch (op)
                 {
                     case "+":
                         result += a;
@@ -729,10 +729,10 @@ namespace ConsoleApp1
                 }
 
                 Console.WriteLine("resultat : " + result);
-                    
+
             }
 
-            
+
 
         }
         // exercice 5-1
@@ -740,7 +740,7 @@ namespace ConsoleApp1
         {
             string toDisplay = "mes couilles sont poilues";
 
-            foreach( var car in toDisplay)
+            foreach (var car in toDisplay)
             {
                 Console.WriteLine(car);
             }
@@ -764,11 +764,11 @@ namespace ConsoleApp1
                 Console.WriteLine("index 2 ?");
             } while (!int.TryParse(Console.ReadLine(), out index_2));
 
-            while(i <= (index_2 - index_1))
+            while (i <= (index_2 - index_1))
             {
                 Console.Write(t[index_1 + i]);
                 i++;
-    
+
             }
 
 
@@ -777,17 +777,17 @@ namespace ConsoleApp1
         // exercice 5-3
         static void ExtractionBis()
         {
-           
+
             string t;
 
-            Console.WriteLine("quelle est votre phrase les gays? ");
+            Console.WriteLine("quelle est votre phrase ? ");
             t = Console.ReadLine();
-            
+
             string u;
             int index_1;
             int index_2;
             StringBuilder sb;
-          
+
 
             do
             {
@@ -802,11 +802,11 @@ namespace ConsoleApp1
 
             sb = new StringBuilder("", index_2);
 
-            for(int i = index_1; i < index_2; i++)
+            for (int i = index_1; i < index_2; i++)
             {
                 sb.Insert(i - index_1, t[i]);
             }
-            
+
 
             Console.WriteLine(sb);
 
@@ -824,7 +824,7 @@ namespace ConsoleApp1
 
             string s = t.Replace(b, a);
 
-            Console.WriteLine("Votre nouvelle chaine de caractère : " + s );
+            Console.WriteLine("Votre nouvelle chaine de caractère : " + s);
         }
 
         // exercice 5-5 
@@ -842,9 +842,9 @@ namespace ConsoleApp1
             sb = new StringBuilder(t);
             l = sb.Length;
 
-            for (int index = 0;  index < l; index ++)
+            for (int index = 0; index < l; index++)
             {
-                if(sb[index] == a)
+                if (sb[index] == a)
                 {
                     sb.Remove(index, 1);
                     sb.Insert(index, b);
@@ -855,6 +855,236 @@ namespace ConsoleApp1
         }
 
         // Exercice 6 
+        static void getExtension()
+        {
+            string str = "hello.zip";
+            string substr;
+            char car = '.';
+            bool find = false;
+            int index;
+            int splitIndex = 0;
+
+            index = str.Length - 1;
+
+            while (index > 0 && !find)
+            {
+                if (str[index] == car)
+                {
+                    find = true;
+                    splitIndex = index;
+                } else
+                {
+                    index--;
+                }
+                
+
+            }
+
+            substr = str.Substring(splitIndex + 1, str.Length - splitIndex - 1);
+
+            Console.WriteLine(substr);
+        }
+
+        // test array 
+
+        static void testArray()
+        {
+            List<int> test = new List<int>();
+
+            void inPlace(List<int> testFunction)
+            {
+                testFunction.Add(5);
+            }
+
+            Console.WriteLine(test.Count);
+            inPlace(test);
+            Console.WriteLine(test[0]);
+
+        }
+
+
+        // exercice 6-1-1
+        // 'a', 'R', 'k', 'J'
+        // 'b', 'S', 'l', 'K'
+
+        // exercice 6-2 Prise en main
+        static void affichageArray()
+        {
+            int[] myTab = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+            foreach( var item in myTab)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        // exercice 6-5
+        static void initArray()
+        {
+            int[] myArray = new int[10];
+
+            for( int index = 0; index < myArray.Count(); index ++ )
+            {
+                myArray[index] = index + 1;
+            }
+
+        }
+
+        // exercice 6 - 6 
+        static void ArraySum()
+        {
+            int[] myArray = { 4, 5, 11 };
+            int sum = 0;
+
+            // Console.WriteLine(myArray.Sum());
+
+            foreach( var item in myArray)
+            {
+                sum += item;
+            }
+        }
+
+        // exercice 6 - 7 
+        static void InArray()
+        {
+            int[] myArray = { 10, 15, 2 };
+            int input;
+
+            do
+            {
+                Console.WriteLine("Entrez un nombre");
+            } while (int.TryParse(Console.ReadLine(), out input));
+
+            Console.WriteLine(myArray.Contains(input) ? " Nombre trouvé " : "non trouvé");
+        }
+
+        // exercice 6 - 8 permutation circulaire
+        static void Circulaire()
+        {
+            int[] tab1 = { 1, 2, 3, 4, 5 };
+            int[] tab2 = new int[5];
+
+            for ( int index = 0; index < tab1.Count(); index ++)
+            {
+                if(index == 0)
+                {
+                    tab2[index] = tab1[tab1.Count() - 1];
+                } else
+                {
+                    tab2[index] = tab1[index - 1];
+                }
+                
+            }
+
+            foreach( var item in tab2)
+            {
+                Console.WriteLine(item);
+            } 
+        }
+
+        // exercice 6-9 permutation circulaire sans tableau 
+        static void Circulaire2()
+        {
+            int[] tab1 = { 1, 2, 3, 4, 5 };
+            // 5 2 3 4 5
+            // 
+            int tampon;
+            int t;
+            int u;
+
+            tampon = tab1[tab1.Count() - 1];
+            for (int index = tab1.Count() - 1; index > 0 ; index --)
+            {
+                tab1[index] = tab1[index - 1];
+                
+            }
+            tab1[0] = tampon;
+            foreach (var item in tab1)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        // exercice 6-10 Miroir 
+        static void Mirror()
+        {
+            int[] tab = { 1, 2, 3, 4, 5, 6 };
+            int middle;
+            int tampon;
+
+            // SI le tableau n'est pas pair 
+            
+            
+            middle = Convert.ToInt32(Math.Floor((double)tab.Count() / 2));
+            for( int index = 0 ; index < middle ; index ++ )
+            {
+                tampon = tab[index];
+                tab[index] = tab[tab.Count() - 1 - index];
+                tab[tab.Count() - 1 - index] = tampon;
+            }
+           
+
+            foreach(var item in tab)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+
+
+        // exercice 11-12-13 Modification tableau
+        static void ModifArray()
+        {
+            double[] myArray = new double[20];
+            double a;
+
+            for ( int index = 0; index < myArray.Count(); index ++)
+            {
+                myArray[index] = (Math.Pow(index, 2)) % 17;
+            }
+
+            // 
+            Console.WriteLine("Minimum : " + myArray.Min());
+            Console.WriteLine("Maximum : " + myArray.Max());
+
+            do
+            {
+                Console.WriteLine("Entrez un nombre");
+            } 
+            while( !double.TryParse(Console.ReadLine(), out a));
+
+            for ( int index = 0; index < myArray.Count(); index ++)
+            {
+                if(myArray[index] == a)
+                {
+                    Console.WriteLine("indices : " + index);
+                }
+            }
+
+        }
+
+        // exercice 15 
+
+
+
+
+        /**
+         * regex  
+         * 
+         * 1 - chercher les multiplicateurs
+         * 2 - les parenthèses
+         * 3 - les crochets auquels ils se rapportent
+         * 4 - * 0 ou 1
+         * 5 - + 1 ou +, mais à cette position
+         * 6 - *? au moins 1 
+         * 7 - number : il en faut le number,   number, au moins number,    ,number : au plus regex.  
+         * 5 - ? : 0 ou 1 
+         * 
+         * 
+         * 
+         * 
+         * 
+         */
 
 
 
@@ -917,7 +1147,21 @@ namespace ConsoleApp1
 
             // Replace();
 
-            SubWithoutReplace();
+            // SubWithoutReplace();
+
+            // getExtension();
+
+            // testArray();
+
+            // ArraySum();
+
+            // Circulaire();
+
+            // Circulaire2();
+
+            // Mirror();
+
+            ModifArray();
         }
     }
 
