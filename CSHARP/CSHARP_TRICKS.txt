@@ -1,0 +1,6 @@
+Convert.ToDateTime()
+DateTime -> DateTime.Substract(DateTime) -> Donne un TimeSpan. 
+
+// méthode de tri d'une liste d'objets par attribut 
+var employesTries = Employe.employes.OrderBy(e => e.Nom).ToList();
+
