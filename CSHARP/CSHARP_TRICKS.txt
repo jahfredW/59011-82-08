@@ -4,3 +4,15 @@ DateTime -> DateTime.Substract(DateTime) -> Donne un TimeSpan.
 // méthode de tri d'une liste d'objets par attribut 
 var employesTries = Employe.employes.OrderBy(e => e.Nom).ToList();
 
+Possibilité d'ajouter des dossier dans le projet, mais du coup :
+Dans program, utiliser using Projet.Dossier -> Le dossier correspond à un sous-namespace
+
+Un enum : public enum <Nom> { Diesel, Essence } -> permet de choisir soit la chaine de caractère
+Diesel, soit Essence
+
+Override ToString :  En CSHARP, la surcharge n'est pas automatique : pour surcharger la méthode
+Qui est héritée du parent il faut utiliser le mot clé override. 
+
+
+
+
