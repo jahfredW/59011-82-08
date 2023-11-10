@@ -1,0 +1,4 @@
+U:\59011-82-08\CSHARP\space_invader\heritage\obj\Debug\net6.0\heritage.GeneratedMSBuildEditorConfig.editorconfig
+U:\59011-82-08\CSHARP\space_invader\heritage\obj\Debug\net6.0\heritage.AssemblyInfoInputs.cache
+U:\59011-82-08\CSHARP\space_invader\heritage\obj\Debug\net6.0\heritage.AssemblyInfo.cs
+U:\59011-82-08\CSHARP\space_invader\heritage\obj\Debug\net6.0\heritage.csproj.CoreCompileInputs.cache
