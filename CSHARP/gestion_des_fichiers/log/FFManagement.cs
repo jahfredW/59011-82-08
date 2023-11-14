@@ -170,6 +170,7 @@ namespace log
             
             try
             {
+                // Attention cross-plateforme ! 
                 if (CheckErrors(path))
                 {
                     File.AppendAllLines(path, text);

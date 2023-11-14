@@ -1,0 +1,14 @@
+﻿<Application x:Class="peche.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:peche"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <BitmapImage x:Key="imageTest" UriSource="Images/24.jpg"  />
+        <Color x:Key="GradientStopColor1">#FF73C7DE</Color>
+        <RadialGradientBrush x:Key="testGradient" GradientOrigin="1,0.5" RadiusX="1" RadiusY="1">
+            <GradientStop Color="{DynamicResource GradientStopColor1}" Offset="0.715"/>
+            <GradientStop Color="#FFBCBEBF" Offset="0.141"/>
+        </RadialGradientBrush>
+    </Application.Resources>
+</Application>
