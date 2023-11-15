@@ -42,7 +42,23 @@
                     
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Column="2" Header="Marée"/>
+            <GroupBox Grid.Column="2" Header="Marée">
+                    
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                        <Label Content="test" x:Name="lblTest" Grid.Row="0"/>
+                        <Label Content="test" x:Name="lblTest2" Grid.Row="2"/>
+                    </Grid>
+                    
+            </GroupBox>
             <GroupBox Grid.Column="4" Header="Programme d'observation"/>
             <GroupBox Grid.Column="6" Header="Saisisseur"/>
 

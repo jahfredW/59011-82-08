@@ -1,0 +1,86 @@
+﻿<Window x:Class="UEM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UEM"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="139*"/>
+            <RowDefinition Height="111*"/>
+            <RowDefinition Height="534*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="Header" Height="139" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="303*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="date">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="187*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="49*"/>
+                    <RowDefinition Height="39*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Date" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                <ListBox Grid.Row="3" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListBox_SelectionChanged"/>
+
+            </Grid>
+            <Grid x:Name="crudBtn" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Content="Save" HorizontalAlignment="Stretch" Grid.Row="1"/>
+                <Button Grid.Column="1" Content="Print" HorizontalAlignment="Stretch" Grid.Row="3"/>
+                <Button Grid.Column="3" Content="Delete" HorizontalAlignment="Stretch" Grid.Row="1"/>
+                <Button Grid.Column="3" Content="Update" HorizontalAlignment="Stretch" Grid.Row="3"/>
+                <Button Grid.Column="5" Content="select All" HorizontalAlignment="Stretch" Grid.Row="1"/>
+
+                <Button Grid.Column="7" Content="Create" HorizontalAlignment="Stretch" Grid.Row="1"/>
+
+            </Grid>
+        </Grid>
+        <Grid  Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38*"/>
+                <RowDefinition Height="73*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Interventions" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+            <DataGrid  Grid.Row="2" Height="auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="N°" />
+                    <DataGridTextColumn Header="Prestataire" Binding="{Binding Birthday}" />
+                    <DataGridTextColumn Header="Code" Binding="{Binding Birthday}" />
+                    <DataGridTextColumn Header="Type" Binding="{Binding Birthday}" />
+                    <DataGridTextColumn Header="PK1" Binding="{Binding Birthday}" />
+                    <DataGridTextColumn Header="PK2" Binding="{Binding Birthday}" />
+                    <DataGridTextColumn Header="Prestataire" Binding="{Binding Birthday}" />
+                    <DataGridTextColumn Header="Prix" Binding="{Binding Birthday}" />
+                    <DataGridTextColumn Header="Date Reception" Binding="{Binding Birthday}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>
