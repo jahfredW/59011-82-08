@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UEM"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
+        Title="MainWindow" MinHeight="800" MinWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="139*"/>
@@ -81,6 +81,230 @@
                     <DataGridTextColumn Header="Date Reception" Binding="{Binding Birthday}" />
                 </DataGrid.Columns>
             </DataGrid>
+        </Grid>
+        <Grid x:Name="gridDetails" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="gridDetails1">
+                <GroupBox Header="UEM" Grid.ColumnSpan="3" Grid.RowSpan="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.1*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="0.1*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="0.1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="UEM ACCES" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center"/>
+                        <Label Grid.Column="1" Content="CANAL type" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center"/>
+                        <Label Grid.Column="2" Content="Code" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="CEnter"/>
+                        <StackPanel Grid.Row="3" Orientation="Vertical" >
+                            <RadioButton Content="Canal" Checked="RadioButton_Checked" />
+                            <RadioButton Content="Tous"/>
+                        </StackPanel>
+                        <ListBox Grid.Column="1" Grid.Row="3" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                        <TextBox Grid.Column="2" HorizontalAlignment="CEnter" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center"/>
+
+                    </Grid>
+
+                </GroupBox>
+
+            </Grid>
+            <Grid Grid.Row="2" x:Name="gridDetails2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="Prévisions">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid Grid.ColumnSpan="3" Margin="0,0,0,32" Grid.RowSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Type de travail" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="26" Width="86"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="stretch" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,19" Grid.RowSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Type d'entretien" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.ColumnSpan="3" Margin="0,16,0,16" Grid.RowSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="PKS" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                        </Grid>
+
+                        <Grid Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Quantité" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                            <Label Content="Prix" Grid.Column="2" HorizontalAlignment="CEnter"  VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="3" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                        </Grid>
+
+
+                        <Grid Grid.Row="6" Grid.ColumnSpan="3" Margin="0,1,0,31" Grid.RowSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="57*"/>
+                                <ColumnDefinition Width="331*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Montant" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="26" Width="56"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="CEnter" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                        </Grid>
+                        <Grid Grid.Row="8" Grid.ColumnSpan="3" Margin="0,0,0,30" Grid.RowSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Nature défectuosité" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Grid.Column="1" Header="Réalisations">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1.5*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Type de travail" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                            <Label Grid.Column="2" Content="Partie" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                            <ListBox Grid.Column="1" />
+                            <ListBox Grid.Column="3" />
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="97*"/>
+                                <ColumnDefinition Width="97*"/>
+                                <ColumnDefinition Width="97*"/>
+                                <ColumnDefinition Width="73*"/>
+                                <ColumnDefinition Width="24*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Type d'entretien" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                            <Label Grid.Column="2" Content="Prestataire" HorizontalAlignment="CEnter"  VerticalAlignment="CEnter"/>
+                            <ListBox Grid.Column="3"  Grid.ColumnSpan="2"/>
+                            <ListBox Grid.Column="1" />
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="PK1" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                            <Label Grid.Column="2" Content="PK2" HorizontalAlignment="CEnter"  VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="3" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5"/>
+                            <Label Content="N° Contrat" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Top"/>
+                            <TextBox Grid.Column="1"  HorizontalAlignment="Stretch" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                            <Label Grid.Column="2" Content="Date" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
+                            <DatePicker Grid.Column="3" HorizontalAlignment="cEnter"  Grid.Row="1" VerticalAlignment="CEnter"/>
+                        </Grid>
+                        
+                            <Grid Grid.Row="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Quantité" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                                <TextBox Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                                <Label Content="Prix" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                                <TextBox Grid.Column="3" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                            </Grid>
+                        
+
+                        <Grid Grid.Row="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Montant" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                        </Grid>
+                        <Grid Grid.Row="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Observations" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Background="#FFEAE5E5" />
+                        </Grid>
+                        <Grid Grid.Row="9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Date mise à jour" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                            <DatePicker Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Center"/>
+
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+
+            </Grid>
+
+
         </Grid>
     </Grid>
 </Window>
