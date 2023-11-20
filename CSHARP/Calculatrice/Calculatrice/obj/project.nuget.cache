@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "55Gc7QTcpW4rd6w0quuREHzrOa6rM7rUWuX9xs6re3X7riP6La7NRFECxmetA6qM82uxz6u8j2yDeJrgAFL9aw==",
+  "success": true,
+  "projectFilePath": "U:\\59011-82-08\\CSHARP\\Calculatrice\\Calculatrice\\Calculatrice.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\59011-82-08\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
