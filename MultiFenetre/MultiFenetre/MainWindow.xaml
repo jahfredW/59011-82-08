@@ -1,0 +1,29 @@
+﻿<Window x:Class="MultiFenetre.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiFenetre"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="{ DynamicResource GradientFlashy}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="358*"/>
+            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="361*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="355*"/>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="31*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.RowSpan="3" Grid.ColumnSpan="3" Margin="275,0,0,0">
+            <TextBlock Text="&#xf03e;" FontSize="30" FontFamily="./#Font Awesome 6 Free Solid" Foreground="Yellow"/>
+            <Label x:Name="lblTitre" Content="nicolasPeltier.fr" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center"  
+                   VerticalAlignment="Top"/>
+            
+        </StackPanel>
+        <Button  Grid.Column="1" Grid.Row="1" Style="{ StaticResource ButtonDelete }" Click="Button_Click"/>
+        
+    </Grid>
+</Window>

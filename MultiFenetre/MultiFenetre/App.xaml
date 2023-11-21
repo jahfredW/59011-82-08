@@ -1,0 +1,115 @@
+﻿<Application x:Class="MultiFenetre.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MultiFenetre" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- Bouton Add -->
+        <Style x:Key="ButtonAdd" TargetType="Button">
+            <Setter Property="Content">
+                <Setter.Value>
+                    <TextBlock Text="&#x2b;" FontSize="22" FontFamily="./#Font Awesome 6 Free Solid"
+                                   Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="{DynamicResource ButtonNormalBackground2}" />
+        </Style>
+        <!-- Bouton Moins -->
+        <Style x:Key="ButtonMinus" TargetType="Button">
+            <Setter Property="Content">
+                <Setter.Value>
+                    <TextBlock Text="&#xf068;" FontSize="22" FontFamily="./#Font Awesome 6 Free Solid"
+                           Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="{DynamicResource ButtonNormalBackground2}" />
+        </Style>
+        <!-- Bouton Check -->
+        <Style x:Key="ButtonCheck" TargetType="Button">
+            <Setter Property="Content">
+                <Setter.Value>
+                    <TextBlock Text="&#xf00c;" FontSize="22" FontFamily="./#Font Awesome 6 Free Solid"
+                   Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="{DynamicResource ButtonNormalBackground2}" />
+        </Style>
+        <!-- Bouton Save -->
+        <Style x:Key="ButtonSave" TargetType="Button">
+            <Setter Property="Content">
+                <Setter.Value>
+                    <TextBlock Text="&#xf0c7;" FontSize="22" FontFamily="./#Font Awesome 6 Free Solid"
+           Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="{DynamicResource ButtonNormalBackground2}" />
+        </Style>
+        <!-- Bouton Delete -->
+        <Style x:Key="ButtonDelete" TargetType="Button">
+            <Setter Property="Content">
+                <Setter.Value>
+                    <TextBlock Text="&#xf2ed;" FontSize="22" FontFamily="./#Font Awesome 6 Free Solid"
+   Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="{DynamicResource ButtonNormalBackground2}" />
+        </Style>
+        <!-- Bouton Update -->
+        <Style x:Key="ButtonUpdate" TargetType="Button">
+            <Setter Property="Content">
+                <Setter.Value>
+                    <TextBlock Text="&#xf304;" FontSize="22" FontFamily="./#Font Awesome 6 Free Solid"
+    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="{DynamicResource ButtonNormalBackground2}" />
+        </Style>
+        <LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#F3F3F3" Offset="0"/>
+            <GradientStop Color="#EBEBEB" Offset="0.5"/>
+            <GradientStop Color="#DDDDDD" Offset="0.5"/>
+            <GradientStop Color="#CDCDCD" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="ButtonNormalBackground2" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FFAF40" Offset="0"/>
+            <GradientStop Color="#F3F3F3" Offset="0"/>
+            <!-- Gris clair -->
+            <GradientStop Color="#DDDDDD" Offset="0.25"/>
+            <!-- Gris moyen -->
+            <GradientStop Color="#999999" Offset="0.75"/>
+            <!-- Gris foncé -->
+            <GradientStop Color="#333333" Offset="1"/>
+            <!-- Gris très foncé -->
+        </LinearGradientBrush>
+        <!-- Background Gradient-->
+        <LinearGradientBrush x:Key="GradientFlashy" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#4CAF50" Offset="0"/>
+            <GradientStop Color="#2196F3" Offset="1"/>
+        </LinearGradientBrush>
+        <!-- BackGround un peu plus sobre -->
+        <LinearGradientBrush x:Key="GradientSobre" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#EFEFEF" Offset="0"/>
+            <GradientStop Color="#D0D0D0" Offset="1"/>
+        </LinearGradientBrush>
+        <!-- BackGround equilibré -->
+        <LinearGradientBrush x:Key="GradientMedium" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#E0E0E0" Offset="0"/>
+            <GradientStop Color="#C0C0C0" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="ButtonNormalBackground3" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFFFAF40"/>
+            <GradientStop Color="#FFF3F3F3"/>
+            <GradientStop Color="#FFDDDDDD" Offset="0.25"/>
+            <GradientStop Color="#FF999999" Offset="0.75"/>
+            <GradientStop Color="#FF333333" Offset="1"/>
+        </LinearGradientBrush>
+        <!-- Ajout d'un style de bouton -->
+        <SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
+    </Application.Resources>
+</Application>

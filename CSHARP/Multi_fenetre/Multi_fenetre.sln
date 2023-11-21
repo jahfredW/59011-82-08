@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multi_fenetre", "Multi_fenetre\Multi_fenetre.csproj", "{A6BC2877-5113-42B0-A802-EC57F901AC5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6BC2877-5113-42B0-A802-EC57F901AC5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6BC2877-5113-42B0-A802-EC57F901AC5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6BC2877-5113-42B0-A802-EC57F901AC5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6BC2877-5113-42B0-A802-EC57F901AC5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4353D212-4516-44D6-A5CF-F277D4CA3BEE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+﻿<Window x:Class="Multi_fenetre.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Multi_fenetre"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btn_Open" Content="open_window" HorizontalAlignment="Left" VerticalAlignment="Top" Height="61" Width="104" 
+                Click="Open_Window"/>
+        <Label x:Name="lbl_Message" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+    </Grid>
+</Window>
