@@ -1,0 +1,231 @@
+﻿<Window x:Class="eval_maquette.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:eval_maquette"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800" SizeChanged="Window_SizeChanged" Background="{ DynamicResource GradientFlashy2}" 
+         MinHeight="653" MinWidth="732">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Column="1" Header="Salariés Liste" Grid.Row="1" Background="{ DynamicResource GradientSobre}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="95*"/>
+                    <RowDefinition Height="27*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="613*"/>
+                        <ColumnDefinition Width="175*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="22*"/>
+                            <RowDefinition Height="8*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="95*"/>
+                            <ColumnDefinition Width="65*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btn_update" Grid.Column="1" Grid.Row="1" Style="{ DynamicResource ButtonUpdate}"/>
+
+                    </Grid>
+                </Grid>
+                <DataGrid x:Name="dgUsers" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Visible" IsReadOnly="True" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nom"  />
+                        <DataGridTextColumn Header="Prenom"  />
+                        <DataGridTextColumn Header="Genre"  />
+                        <DataGridTextColumn Header="Date de naissance"  />
+                        <DataGridTextColumn Header="Date entrée"  />
+                        <DataGridTextColumn Header="Situation familiale"  />
+                        <DataGridTextColumn Header="Nb Enfants"  />
+                        <DataGridTextColumn Header="Matricule"  />
+                        <DataGridTextColumn Header="Fonction"  />
+                        <DataGridTextColumn Header="CNSS"  />
+                        <DataGridTextColumn Header="Matricule"  />
+                        <DataGridTextColumn Header="Departement"  />
+                        <DataGridTextColumn Header="Service"  />
+                        <DataGridTextColumn Header="CIMR"  />
+                        <DataGridTextColumn Header="Mutuelle"  />
+                        <DataGridTextColumn Header="Type Paiement"  />
+                        <DataGridTextColumn Header="Mode Paiement"  />
+                        <DataGridTextColumn Header="Salaire base horaire"  />
+                        <DataGridTextColumn Header="Prime"  />
+                        <DataGridTextColumn Header="Adresse"  />
+                    </DataGrid.Columns>
+                    <DataGrid.RowDetailsTemplate>
+                        <DataTemplate>
+                            <TextBlock  />
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>
+                </DataGrid>
+
+            </Grid>
+
+        </GroupBox>
+        <GroupBox Header="Fiche de Paie" Grid.Row="3" Background="{ DynamicResource GradientMedium  }">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="285*"/>
+                    <ColumnDefinition Width="109*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="287*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <GroupBox Header="Details" Margin="0,6,0,0" Grid.RowSpan="2" FontWeight="DemiBold">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="10*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="3" Content="Base" HorizontalAlignment="Stretch" Grid.Row="1" Foreground="{ DynamicResource labelRouge}" FontWeight="Bold" />
+                        <Label Grid.Column="5" Content="Taux" HorizontalAlignment="Stretch" Grid.Row="1" Foreground="{ DynamicResource labelRouge}" FontWeight="Bold" />
+                        <Label Grid.Column="7" Content="A Payer"  HorizontalAlignment="Stretch" Grid.Row="1" Foreground="{ DynamicResource labelRouge}" FontWeight="Bold"/>
+                        <Label Grid.Column="9" Content="A Retenir"  HorizontalAlignment="Stretch" Grid.Row="1" Foreground="{ DynamicResource labelRouge}" FontWeight="Bold"/>
+                        <Label Grid.Column="1" Content="SALAIRE DE BASE" HorizontalAlignment="Stretch" Grid.Row="3"/>
+                        <Label Grid.Column="1" Content="PRIME ANCIENNETE" HorizontalAlignment="Stretch" Grid.Row="5"/>
+                        <Label Grid.Column="1" Content="SALAIRE BRUT" HorizontalAlignment="Stretch" Grid.Row="7"/>
+                        <Label Grid.Column="1" Content="COTISATION CNSS" HorizontalAlignment="Stretch" Grid.Row="9"/>
+                        <Label Grid.Column="1" Content="AMO" HorizontalAlignment="Stretch" Grid.Row="11"/>
+                        <Label Grid.Column="1" Content="IGR" HorizontalAlignment="Stretch" Grid.Row="13"/>
+                        <Label Grid.Column="1" Content="MUTUELLE" HorizontalAlignment="Stretch" Grid.Row="15"/>
+                        <Label Grid.Column="1" Content="NET A PAYER" HorizontalAlignment="Stretch" Grid.Row="17"/>
+                        <TextBox x:Name="tbx_Base_salaire" Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalContentAlignment="Center" Background="#FFFFFBFB"
+                                 />
+                        <TextBox x:Name="tbx_Base_anciennete" Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="5" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox x:Name="tbx_Base" Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True" IsEnabled="False"/>
+                        <TextBox x:Name="tbx_3"  Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="9" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox x:Name="tbx4"  Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="11" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox x:Name="tbx5"  Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="13" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FFFFFBFB"/>
+                        <TextBox x:Name="tbx6" Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="15" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox x:Name="tbx7"  Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="17" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True" IsEnabled="False"/>
+                        <TextBox x:Name="tbx8"  Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True"/>
+                        <TextBox x:Name="tbx9"  Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True"/>
+                        <TextBox x:Name="tbx10"  Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True"/>
+                        <TextBox x:Name="tbx11"  Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True"/>
+                        <TextBox x:Name="tbx12"  Grid.Column="3" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox x:Name="tbx13"  Grid.Column="5" HorizontalAlignment="Stretch" Grid.Row="5" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox x:Name="tbx14"  Grid.Column="5" HorizontalAlignment="Stretch" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True" IsEnabled="False"/>
+                        <TextBox x:Name="tbx15"  Grid.Column="5" HorizontalAlignment="Stretch" Grid.Row="9" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx16" Grid.Column="5" HorizontalAlignment="Stretch" Grid.Row="11" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx17" Grid.Column="5" HorizontalAlignment="Stretch" Grid.Row="13" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx18" Grid.Column="5" HorizontalAlignment="Stretch" Grid.Row="15" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx19" Grid.Column="7"  HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" Text="hello" HorizontalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx20" Grid.Column="7" HorizontalAlignment="Stretch" Grid.Row="5" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx21" Grid.Column="7" HorizontalAlignment="Stretch" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx22" Grid.Column="7" HorizontalAlignment="Stretch" Grid.Row="9" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True" IsEnabled="False"/>
+                        <TextBox  x:Name="tbx23" Grid.Column="7" HorizontalAlignment="Stretch" Grid.Row="11" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True" IsEnabled="False"/>
+                        <TextBox  x:Name="tbx24" Grid.Column="7" HorizontalAlignment="Stretch" Grid.Row="13" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True" IsEnabled="False"/>
+                        <TextBox  x:Name="tbx25" Grid.Column="7" Grid.Row="14" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True" IsEnabled="False" Grid.ColumnSpan="2" Height="26" Margin="0,3,9,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
+                        
+                        <TextBox  x:Name="tbx27" Grid.Column="5" HorizontalAlignment="Stretch" Grid.Row="17" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True"  IsEnabled="False"/>
+                        <TextBox  x:Name="tbx28" Grid.Column="5" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx29" Grid.Column="5" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx40" Grid.Column="7" HorizontalAlignment="Stretch" Grid.Row="17" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+
+
+                        <TextBox  x:Name="tbx30" Grid.Column="9" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsEnabled="False"/>
+                        <TextBox  x:Name="tbx31" Grid.Column="9" HorizontalAlignment="Stretch" Grid.Row="5" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsEnabled="False"/>
+                        <TextBox  x:Name="tbx32" Grid.Column="9" HorizontalAlignment="Stretch" Grid.Row="7" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsEnabled="False"/>
+                        <TextBox  x:Name="tbx33" Grid.Column="9" HorizontalAlignment="Stretch" Grid.Row="9" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx34" Grid.Column="9" HorizontalAlignment="Stretch" Grid.Row="11" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx35" Grid.Column="9" HorizontalAlignment="Stretch" Grid.Row="13" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx36" Grid.Column="5" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx37" Grid.Column="9" HorizontalAlignment="Stretch" Grid.Row="15" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFFFFBFB" IsReadOnly="True"/>
+                        <TextBox  x:Name="tbx38" Grid.Column="9" HorizontalAlignment="Stretch" Grid.Row="17" TextWrapping="Wrap" Text="" VerticalContentAlignment="Center" Background="#FFE8E2E2" IsEnabled="False"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Grid.Column="1" Header="Actions" Grid.RowSpan="2" FontWeight="DemiBold">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="37*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="93*"/>
+                            <RowDefinition Height="34*"/>
+                            <RowDefinition Height="93*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="17*"/>
+                            <ColumnDefinition Width="38*"/>
+                            <ColumnDefinition Width="92*"/>
+                            <ColumnDefinition Width="42*"/>
+                            <ColumnDefinition Width="17*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Name="grd_annee_selection" Grid.ColumnSpan="3" Margin="0,37,0,0" Grid.RowSpan="2" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="14*"/>
+                                <ColumnDefinition Width="47*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lbl_mois" Content="Mois" Foreground="{ DynamicResource labelRouge}" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="cbx_mois" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+                        </Grid>
+                        <Button x:Name="btn_Save" Grid.Column="2" HorizontalAlignment="Stretch"  Grid.Row="3" Style="{ DynamicResource ButtonSave}"/>
+                    </Grid>
+
+                </GroupBox>
+            </Grid>
+
+        </GroupBox>
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="29*"/>
+                <ColumnDefinition Width="11*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="58*"/>
+                    <ColumnDefinition Width="89*"/>
+                    <ColumnDefinition Width="73*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btn_Exit" Grid.Column="1" HorizontalAlignment="Stretch" Style="{ DynamicResource ButtonExit}"/>
+            </Grid>
+        </Grid>
+
+
+    </Grid>
+</Window>
