@@ -1,0 +1,46 @@
+1 - Lancer un nouveau projet ASP en type MVC
+2 - Ensuite il faut installer les Nuggets suivants : 
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MySql.Data" Version="8.2.0" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.10" />
+  </ItemGroup>
+
+3 - Dans le appsettings.json , entrer la string contenant les params de connexion en base de données : 
+
+  "ConnectionStrings": {
+    "Default": "server=localhost;user=root;database=noel;port=3306;"
+  }
+}
+
+
+4 - Dans le Gestionnaire de Paquets, entrer la commande suivante : 
+
+scaffold-DbContext -Connection "Server=localhost;Database=personnesdb;user=root;password=" -Provider mysql.entityFrameworkCore -OutputDir Models/Data -Context PersonnesDbContext Si rien de spécifié sinon
+
+scaffold-DbContext -Connection Name="Default" -Provider mysql.entityFrameworkCore -OutputDir Models/Data -Context MyDbContext
+-> Ici mettre le nom que l'on veut. 
+
+5- Modifier le BDCOntext en injectnat la IConfiguration : 
+
+private readonly IConfiguration _configuration;
+public NoelDbContext(IConfiguration configuration)
+{
+    _configuration = configuration;
+}
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+    
+    string connectionString = _configuration.GetConnectionString("Default");
+
+    optionsBuilder.UseMySQL(connectionString);
+}
+
+Faire une première migration et la supprimer aussitôt, ceci créera le snapshot de la base de donnée. 
+

@@ -1,0 +1,265 @@
+{
+  "Files": [
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\EntityFrameWorkAfpa.bundle.scp.css",
+      "PackagePath": "staticwebassets\\EntityFrameWorkAfpa.bundle.scp.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "U:\\59011-82-08\\CSHARP\\3 - Accès aux données\\EntityFrameWorkAfpa\\EntityFrameWorkAfpa\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.EntityFrameWorkAfpa.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.EntityFrameWorkAfpa.props",
+      "PackagePath": "build\\EntityFrameWorkAfpa.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.EntityFrameWorkAfpa.props",
+      "PackagePath": "buildMultiTargeting\\EntityFrameWorkAfpa.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.EntityFrameWorkAfpa.props",
+      "PackagePath": "buildTransitive\\EntityFrameWorkAfpa.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

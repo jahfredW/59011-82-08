@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-U:\59011-82-08\MultiFenetre\MultiFenetre\obj\Debug\net7.0-windows\
+U:\GRP-82\59011-82-08\MultiFenetre\MultiFenetre\obj\Debug\net7.0-windows\
 MultiFenetre
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-U:\59011-82-08\MultiFenetre\MultiFenetre\App.xaml
+U:\GRP-82\59011-82-08\MultiFenetre\MultiFenetre\App.xaml
 4-273311092
 
 12392119265
-199-2128997686
+199-134228196
 Data_gestion.xaml;Fenetre2.xaml;MainWindow.xaml;ProductWindow.xaml;
 
-False
+True
 
