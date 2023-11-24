@@ -1,5 +1,7 @@
 using ExerciceAPI.Models.Data;
 using ExerciceAPI.Models.Data.Services;
+using Microsoft.AspNetCore.JsonPatch.Adapters;
+using Microsoft.Build.Execution;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExerciceAPI
@@ -15,6 +17,9 @@ namespace ExerciceAPI
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<LutinsServices>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddControllers().AddNewtonsoftJson();
+
+
 
             var app = builder.Build();
 
