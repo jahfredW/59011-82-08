@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Controller Template</Title>
+			<Shortcut>controller</Shortcut>
+			<Description>Controller template for ASP.NET Core</Description>
+			<Author>Your Name</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal Editable="true">
+					<ID>EntityName</ID>
+					<ToolTip>Enter the name of the entity</ToolTip>
+					<Default>Lutins</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+				<![CDATA[
+
+    [Route("api/[controller]")]
+    [ApiController]
+    public class $EntityName$Controller : ControllerBase
+    {
+        private readonly $EntityName$sService _$EntityName$sService;
+        private readonly IMapper _mapper;
+
+        public $EntityName$Controller($EntityName$sService service, IMapper mapper)
+        {
+            _$EntityName$sService = service;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<$EntityName$sDTO>> GetAll$EntityName$s()
+        {
+            var liste$EntityName$s = _$EntityName$sService.GetAll$EntityName$s();
+            return Ok(_mapper.Map<IEnumerable<$EntityName$sDTO>>(liste$EntityName$s));
+        }
+
+        [HttpGet("{id}", Name = "Get$EntityName$ById")]
+        public ActionResult<$EntityName$sDTO> Get$EntityName$ById(int id)
+        {
+            var $EntityName$Item = _$EntityName$sService.Get$EntityName$ById(id);
+
+            if ($EntityName$Item != null)
+            {
+                return Ok(_mapper.Map<$EntityName$sDTO>($EntityName$Item));
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        public ActionResult<$EntityName$sDTO> Create$EntityName$($EntityName$ entity)
+        {
+            _$EntityName$sService.Add$EntityName$(entity);
+            return CreatedAtRoute(nameof(Get$EntityName$ById), new { Id = entity.Id$EntityName$ }, entity);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult Update$EntityName$(int id, $EntityName$sDTO entity)
+        {
+            var $EntityName$FromRepo = _$EntityName$sService.Get$EntityName$ById(id);
+            if ($EntityName$FromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(entity, $EntityName$FromRepo);
+            _$EntityName$sService.Update$EntityName$($EntityName$FromRepo);
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public ActionResult Partial$EntityName$Update(int id, [FromBody] JsonPatchDocument<$EntityName$> patchDoc)
+        {
+            var $EntityName$FromRepo = _$EntityName$sService.Get$EntityName$ById(id);
+
+            if ($EntityName$FromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var $EntityName$ToPatch = _mapper.Map<$EntityName$>($EntityName$FromRepo);
+
+            patchDoc.ApplyTo($EntityName$ToPatch, ModelState);
+            if (!TryValidateModel($EntityName$ToPatch))
+            {
+                return ValidationProblem();
+            }
+
+            _mapper.Map($EntityName$ToPatch , $EntityName$FromRepo);
+            _$EntityName$sService.Update$EntityName$($EntityName$FromRepo);
+
+            return NoContent();
+        }
+    }
+]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
