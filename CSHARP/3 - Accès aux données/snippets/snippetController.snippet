@@ -12,23 +12,35 @@
 		</Header>
 		<Snippet>
 			<Declarations>
+            <Literal Editable="true">
+					<ID>AppName</ID>
+					<ToolTip>Enter the name of the app</ToolTip>
+					<Default>AppName</Default>
+				</Literal>
 				<Literal Editable="true">
 					<ID>EntityName</ID>
 					<ToolTip>Enter the name of the entity</ToolTip>
-					<Default>Lutins</Default>
+					<Default>EntityName</Default>
 				</Literal>
 			</Declarations>
 			<Code Language="csharp">
-				<![CDATA[
+				<![CDATA[using AutoMapper;
+                using Microsoft.AspNetCore.JsonPatch;
+                using Microsoft.AspNetCore.Mvc;
+                using $AppName$.Models.Services;
+                using $AppName$.Models.DTO;
+                using $AppName$.Models.Data;
+
+namespace $AppName$.Controllers;
 
     [Route("api/[controller]")]
     [ApiController]
-    public class $EntityName$Controller : ControllerBase
+    public class $EntityName$sController : ControllerBase
     {
         private readonly $EntityName$sService _$EntityName$sService;
         private readonly IMapper _mapper;
 
-        public $EntityName$Controller($EntityName$sService service, IMapper mapper)
+        public $EntityName$sController($EntityName$sService service, IMapper mapper)
         {
             _$EntityName$sService = service;
             _mapper = mapper;

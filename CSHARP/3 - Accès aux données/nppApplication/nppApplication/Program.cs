@@ -19,6 +19,7 @@ namespace nppApplication
             builder.Services.AddControllers().AddNewtonsoftJson();
             builder.Services.AddTransient<AlbumsService>();
             builder.Services.AddTransient<PicturesService>();
+            builder.Services.AddTransient<ReductionsService>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

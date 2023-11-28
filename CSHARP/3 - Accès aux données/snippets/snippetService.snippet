@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Service Template</Title>
+			<Shortcut>service</Shortcut>
+			<Description>Service template for ASP.NET Core</Description>
+			<Author>Your Name</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+            <Literal Editable="true">
+					<ID>AppName</ID>
+					<ToolTip>Enter the name of the app</ToolTip>
+					<Default>AppName</Default>
+				</Literal>
+				<Literal Editable="true">
+					<ID>Entity</ID>
+					<ToolTip>Enter the name of the entity</ToolTip>
+					<Default>Entity</Default>
+				</Literal>
+                <Literal Editable="true">
+					<ID>Context</ID>
+					<ToolTip>Enter the name of the service</ToolTip>
+					<Default>Context</Default>
+				</Literal>
+                
+			</Declarations>
+			<Code Language="csharp">
+				<![CDATA[
+                using $AppName$.Models.Data;
+
+                namespace $AppName$.Models.Services;
+
+    public class $Entity$sService
+    {
+        private readonly $Context$ _context;
+
+        public $Entity$sService($Context$ context)
+        {
+            _context = context;
+        }
+
+        public void Add$Entity$($Entity$ entity)
+        {
+            if(entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+
+            _context.$Entity$s.Add(entity);
+            _context.SaveChanges();
+        }
+
+        public IEnumerable<$Entity$> GetAll$Entity$s()
+        {
+            return _context.$Entity$s.ToList();
+        }
+
+        public $Entity$ Get$Entity$ById(int id)
+        {
+            $Entity$ entity = _context.$Entity$s.FirstOrDefault(entity => entity.Id == id);
+
+            return entity;
+        }
+        public void Delete$Entity$($Entity$ entity) {
+
+            _context.$Entity$s.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public void Update$Entity$($Entity$ entity)
+        {
+            _context.$Entity$s.Update(entity);
+            _context.SaveChanges();
+        }
+
+    }
+    
+]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

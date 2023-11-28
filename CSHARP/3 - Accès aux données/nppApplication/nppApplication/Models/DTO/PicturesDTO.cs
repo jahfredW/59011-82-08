@@ -19,6 +19,30 @@ namespace nppApplication.Models.DTO
 
         public string Thumbnail { get; set; } = null!;
 
-        public virtual Album? Album { get; set; }
+        //public virtual Album? Album { get; set; }
+
+        public string AlbumName {  get; set; } = null!;
+    }
+
+    public class PicturesDTOWithAlbumDetails
+    {
+        //public int? AlbumId { get; set; }
+
+        public string Name { get; set; } = null!;
+
+        public string FileName { get; set; } = null!;
+
+        /// <summary>
+        /// (DC2Type:datetime_immutable)
+        /// </summary>
+        public DateTime CreatedAt { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public string Thumbnail { get; set; } = null!;
+
+        public AlbumsDTOWithoutPictures? Album { get; set; }
+
+       
     }
 }

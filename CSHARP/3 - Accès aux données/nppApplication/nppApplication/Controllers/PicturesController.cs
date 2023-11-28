@@ -16,12 +16,12 @@ namespace nppApplication.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class PictureController : ControllerBase
+    public class PicturesController : ControllerBase
     {
         private readonly PicturesService _PicturesService;
         private readonly IMapper _mapper;
 
-        public PictureController(PicturesService service, IMapper mapper)
+        public PicturesController(PicturesService service, IMapper mapper)
         {
             _PicturesService = service;
             _mapper = mapper;
@@ -35,13 +35,13 @@ namespace nppApplication.Controllers
         }
 
         [HttpGet("{id}", Name = "GetPictureById")]
-        public ActionResult<PicturesDTO> GetPictureById(int id)
+        public ActionResult<PicturesDTOWithAlbumDetails> GetPictureById(int id)
         {
             var PictureItem = _PicturesService.GetPictureById(id);
 
             if (PictureItem != null)
             {
-                return Ok(_mapper.Map<PicturesDTO>(PictureItem));
+                return Ok(_mapper.Map<PicturesDTOWithAlbumDetails>(PictureItem));
             }
 
             return NotFound();

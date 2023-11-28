@@ -16,13 +16,15 @@ namespace nppApplication.Models.Services
         // Read ALL
         public IEnumerable<Picture> GetAllPictures()
         {
+            // ici l'include permet d'effectuer une jointure 
             return _context.Pictures.Include("Album").ToList();
         }
 
         // Read One Picture 
         public Picture GetPictureById(int id)
-        {
-            return _context.Pictures.FirstOrDefault(p => p.Id == id);
+        {   
+            // idem; l'include permet de faire une jointure. 
+            return _context.Pictures.Include("Album").FirstOrDefault(p => p.Id == id);
         }
 
         // Create One picture

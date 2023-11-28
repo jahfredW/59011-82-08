@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Query.Internal;
-using nppApplication.Models.Data;
+﻿using nppApplication.Models.Data;
 
 namespace nppApplication.Models.Services
 {
