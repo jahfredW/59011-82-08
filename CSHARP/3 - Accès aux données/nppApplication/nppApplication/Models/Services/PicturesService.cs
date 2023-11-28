@@ -6,9 +6,9 @@ namespace nppApplication.Models.Services
 {
     public class PicturesService
     {
-        private readonly nppContext _context;
+        private readonly NppContext _context;
 
-        public PicturesService(nppContext context)
+        public PicturesService(NppContext context)
         {
             _context = context;
         }

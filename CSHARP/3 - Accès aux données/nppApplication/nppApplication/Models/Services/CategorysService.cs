@@ -12,9 +12,9 @@ namespace nppApplication.Models.Services
 
     public class CategoryService
     {
-        private readonly nppContext _context;
+        private readonly NppContext _context;
 
-        public CategoryService(nppContext context)
+        public CategoryService(NppContext context)
         {
             _context = context;
         }

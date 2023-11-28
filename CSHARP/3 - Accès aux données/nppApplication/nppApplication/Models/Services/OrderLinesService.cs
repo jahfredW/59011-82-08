@@ -5,9 +5,9 @@ namespace nppApplication.Models.Services;
 
 public class OrderLinesService
 {
-    private readonly nppContext _context;
+    private readonly NppContext _context;
 
-    public OrderLinesService(nppContext context)
+    public OrderLinesService(NppContext context)
     {
         _context = context;
     }

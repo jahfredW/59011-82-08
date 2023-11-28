@@ -5,9 +5,9 @@ namespace nppApplication.Models.Services;
 
 public class UsersService
 {
-    private readonly nppContext _context;
+    private readonly NppContext _context;
 
-    public UsersService(nppContext context)
+    public UsersService(NppContext context)
     {
         _context = context;
     }

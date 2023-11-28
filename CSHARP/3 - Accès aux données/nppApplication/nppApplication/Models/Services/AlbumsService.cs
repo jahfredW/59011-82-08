@@ -4,9 +4,9 @@ namespace nppApplication.Models.Services
 {
     public class AlbumsService
     {
-        private readonly nppContext _context;
+        private readonly NppContext _context;
 
-        public AlbumsService(nppContext context)
+        public AlbumsService(NppContext context)
         {
             _context = context;
         }
