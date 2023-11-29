@@ -12,8 +12,8 @@ namespace drone_appli.Models.DTO
 
         public int IdTypeDrone { get; set; }
 
-        public virtual TypeDrone IdTypeDroneNavigation { get; set; } = null!;
+        //public virtual TypeDrone IdTypeDroneNavigation { get; set; } = null!;
 
-        public virtual ICollection<Session> Sessions { get; set; } = new List<Session>();
+        //public virtual ICollection<Session> Sessions { get; set; } = new List<Session>();
     }
 }

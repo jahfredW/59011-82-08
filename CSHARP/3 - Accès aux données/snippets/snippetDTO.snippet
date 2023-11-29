@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>DTO Template</Title>
+			<Shortcut>dto</Shortcut>
+			<Description>dto template for ASP.NET Core</Description>
+			<Author>Your Name</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+            <Literal Editable="true">
+					<ID>AppName</ID>
+					<ToolTip>Enter the name of the app</ToolTip>
+					<Default>AppName</Default>
+				</Literal>
+				<Literal Editable="true">
+					<ID>Entity</ID>
+					<ToolTip>Enter the name of the entity</ToolTip>
+					<Default>Entity</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+				<![CDATA[
+                using $AppName$.Models.Data;
+
+namespace $AppName$.Models.DTO
+{
+    public class $Entity$sDTO
+    {
+
+        
+        
+    }
+}
+               
+    
+]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

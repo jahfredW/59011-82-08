@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Profile Template</Title>
+			<Shortcut>profile</Shortcut>
+			<Description>Service template for ASP.NET Core</Description>
+			<Author>Your Name</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+            <Literal Editable="true">
+					<ID>AppName</ID>
+					<ToolTip>Enter the name of the app</ToolTip>
+					<Default>AppName</Default>
+				</Literal>
+				<Literal Editable="true">
+					<ID>Entity</ID>
+					<ToolTip>Enter the name of the entity</ToolTip>
+					<Default>Entity</Default>
+				</Literal>     
+		    </Declarations>
+			<Code Language="csharp">
+				<![CDATA[
+                using AutoMapper;
+                using $AppName$.Models.Data;
+                using $AppName$.Models.DTO;
+
+                namespace $AppName$.Models.Profiles
+                {
+                    public class $Entity$sProfile : Profile
+                    {
+                        public $Entity$sProfile()
+                        {
+                            CreateMap<$Entity$, $Entity$sDTO>();
+                            CreateMap<$Entity$sDTO, $Entity$>();
+
+                        }
+                    }
+                }
+    
+]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
