@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using gestionCrud.Models.Datas;
+using gestionCrud.Models.DTOs;
 
 namespace gestionCrud.Models
 {
@@ -12,9 +13,16 @@ namespace gestionCrud.Models
     {
         const string JSON_PATH = @"U:\59011-82-08\CSHARP\3 - Accès aux données\gestionCrud\gestionCrud\datas.json";
         static string currentDirectory = Directory.GetCurrentDirectory();
+        public string _jsonData;
         // fonction save product, itère sur la liste des product et 
         // alimente le fichier data.json"
         // string jsonPath = Path.Combine(currentDirectory, JSON_PATH);
+
+        public JsonContext()
+        {
+            _jsonData = File.ReadAllText(JSON_PATH);
+        }
+
 
         public void SaveData(List<Product> product)
         {
@@ -73,10 +81,10 @@ namespace gestionCrud.Models
 
         }
 
-        public Product Get(Product product)
+        public Product Get(int id)
         {
 
-            string json = Newtonsoft.Json.JsonConvert.SerializeObject(product);
+            // string json = Newtonsoft.Json.JsonConvert.SerializeObject(product);
 
             // lecture du fichier
             string jsonData = File.ReadAllText(JSON_PATH);
@@ -89,7 +97,7 @@ namespace gestionCrud.Models
                 // parcours de la liste : 
                 foreach (var item in photoList)
                 {
-                    if (item == product)
+                    if (item.Id == id)
                     {
                         return item;
                     }
@@ -103,6 +111,45 @@ namespace gestionCrud.Models
             {
                 ex.Dump();
                 return null;
+            }
+
+        }
+
+        // remplacement d'un produit et sauvegarde dans le fichier 
+        public void Replace(Product product)
+        {
+            // récupération du product dans le repo 
+            Product productfromRepo = Get(product.Id);
+
+            // remplacement des valeurs 
+            productfromRepo.Name = product.Name;
+            productfromRepo.Description = product.Description;
+            productfromRepo.Serial = product.Serial;
+            productfromRepo.Date = product.Date;
+
+            try
+            {
+                // récupération de la liste des product et désérialisation : 
+                List<Product> photoList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Product>>(_jsonData);
+
+                // remplacement 
+                int index = photoList.FindIndex(o => o.Id == product.Id);
+
+                if(index != -1)
+                {
+                    photoList[index] = product;
+                }
+
+                // sauvegarde en bdd 
+                SaveData(photoList);
+                
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error");
+                
             }
 
         }

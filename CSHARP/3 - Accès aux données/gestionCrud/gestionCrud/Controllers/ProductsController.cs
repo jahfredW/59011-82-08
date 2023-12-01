@@ -35,12 +35,9 @@ public class ProductsController
         List<ProductsDTOout> productsDTOouts = _productsProfile.ProductsMap(listeProducts);
 
         return productsDTOouts;
-
-        
-        
     }
 
-  
+
     //public ActionResult<ProductsDTO> GetProductById(int id)
     //{
     //    var ProductItem = _ProductsService.GetProductById(id);
@@ -53,7 +50,7 @@ public class ProductsController
     //    return NotFound();
     //}
 
-   
+
     //public ActionResult<ProductsDTO> CreateProduct(Product entity)
     //{
     //    _ProductsService.AddProduct(entity);
@@ -61,20 +58,26 @@ public class ProductsController
     //}
 
 
-    //public ActionResult UpdateProduct(int id, ProductsDTO entity)
-    //{
-    //    var ProductFromRepo = _ProductsService.GetProductById(id);
-    //    if (ProductFromRepo == null)
-    //    {
-    //        return NotFound();
-    //    }
+    public void UpdateProduct(int id, ProductsDTOout entity)
+    {
+        // conversion de ProductsDTOin en ProductsDTO
+        Product product = _productsProfile.ProductsMapOut(entity);
 
-    //    _mapper.Map(entity, ProductFromRepo);
-    //    _ProductsService.UpdateProduct(ProductFromRepo);
-    //    return NoContent();
-    //}
 
- 
+
+       // Product ProductFromRepo = _productsService.GetProductById(id);
+       
+       // if (ProductFromRepo == null)
+       //{
+       //     Console.Write("Not found");
+       //}
+
+        
+
+        _productsService.UpdateProduct(product);
+    }
+
+
     //public ActionResult PartialProductUpdate(int id, [FromBody] JsonPatchDocument<Product> patchDoc)
     //{
     //    var ProductFromRepo = _ProductsService.GetProductById(id);

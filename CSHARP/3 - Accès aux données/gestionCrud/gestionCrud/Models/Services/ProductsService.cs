@@ -1,5 +1,6 @@
 ﻿using gestionCrud.Models.Datas;
 using gestionCrud.Models;
+using gestionCrud.Models.DTOs;
 
 namespace gestionCrud.Models.Services;
 
@@ -31,6 +32,17 @@ public class ProductsService
         return _context.GetAll().ToList();
     }
 
+    // récupération d'un produit via son id 
+    public Product GetProductById(int id)
+    {
+        return _context.Get(id);
+    }
+
+    // udpate d'un produit dans le JSon
+    public void UpdateProduct(Product product)
+    {
+        _context.Replace(product);
+    }
 
 }
 

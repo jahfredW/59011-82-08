@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using gestionCrud.Models;
 using gestionCrud.Models.DTOs;
+using gestionCrud.Models.Datas;
 
 namespace gestionCrud
 {
@@ -22,10 +23,13 @@ namespace gestionCrud
     /// </summary>
     public partial class MainWindow : Window
     {
+      
+
         public MainWindow()
         {
             InitializeComponent();
             DataContext = getListeProducts();
+            
         }
 
         public List<ProductsDTOout> DataContext { get; private set; }
@@ -67,6 +71,30 @@ namespace gestionCrud
             txt_Serial.Text = p.Serial;
             txt_Date.Text = p.Date.ToString();
 
+            Console.Write(p.Id);
+
         }
+
+        private void btn_update_Click(object sender, RoutedEventArgs e) 
+        {
+            ProductsDTOout p = dtg_products.SelectedItem as ProductsDTOout;
+
+            // attribution des inputs ) l'objet 
+            
+            p.Name = txt_Name.Text;
+            p.Description = txt_Description.Text;
+            p.Serial = txt_Serial.Text;
+            p.Date = Convert.ToDateTime(txt_Date.Text);
+
+            Console.Write(p.Id);
+
+            // appel du controller
+            ProductsController controller = new ProductsController();
+
+            controller.UpdateProduct(p.Id, p);
+            
+            
+        }
+     
     }
 }

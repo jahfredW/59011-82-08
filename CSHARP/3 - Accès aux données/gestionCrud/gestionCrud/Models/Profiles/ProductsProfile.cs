@@ -22,6 +22,7 @@ namespace gestionCrud.Models.Profiles
             foreach (var product in productsListe)
             {
                 ProductsDTOout productDTO = new ProductsDTOout();
+                productDTO.Id = product.Id;
                 productDTO.Name = product.Name;
                 productDTO.Description = product.Description;
                 productDTO.Serial = product.Serial;
@@ -32,8 +33,25 @@ namespace gestionCrud.Models.Profiles
 
             return productsDTOout;
         }
-        
 
-       
-}
+        // converti un DTOIn en product Base
+        public Product ProductsMapOut(ProductsDTOout productDtoIn)
+        {
+            Product product = new Product();
+
+          
+            product.Id = productDtoIn.Id;
+            product.Name = productDtoIn.Name;
+            product.Description = productDtoIn.Description;
+            product.Serial = productDtoIn.Serial;
+            product.Date = productDtoIn.Date;
+
+         
+
+            return product;
+        }
+
+
+
+    }
 }
