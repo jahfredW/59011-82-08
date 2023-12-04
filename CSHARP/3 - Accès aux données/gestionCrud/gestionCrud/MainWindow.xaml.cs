@@ -23,12 +23,14 @@ namespace gestionCrud
     /// </summary>
     public partial class MainWindow : Window
     {
-      
 
+        private ProductsController _controller;
         public MainWindow()
         {
             InitializeComponent();
+            _controller = new ProductsController();
             DataContext = getListeProducts();
+            
             
         }
 
@@ -55,9 +57,9 @@ namespace gestionCrud
 
         private List<ProductsDTOout> getListeProducts()
         {
-            ProductsController p = new ProductsController();
+            
 
-            List<ProductsDTOout> listeproducts = p.GetAllProducts();
+            List<ProductsDTOout> listeproducts = _controller.GetAllProducts();
 
             return listeproducts;
         }
@@ -88,13 +90,23 @@ namespace gestionCrud
 
             Console.Write(p.Id);
 
-            // appel du controller
-            ProductsController controller = new ProductsController();
+            
 
-            controller.UpdateProduct(p.Id, p);
+            _controller.UpdateProduct(p.Id, p);
+
+            // récupération de la liste des produits 
+            getListeProducts();
+
+            // chargement de la nouvelle datagrid
+            LoadDatas();
             
             
         }
-     
+
+        private void btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+            ProductsDTOout d = dtg_products.SelectedItem as ProductsDTOout;
+            _controller.DeleteProduct(d.Id);
+        }
     }
 }

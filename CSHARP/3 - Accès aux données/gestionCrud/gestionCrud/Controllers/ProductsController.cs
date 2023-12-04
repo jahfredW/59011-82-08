@@ -77,6 +77,11 @@ public class ProductsController
         _productsService.UpdateProduct(product);
     }
 
+    public void DeleteProduct(int id)
+    {
+        _productsService.DeleteProduct(id);
+    }
+
 
     //public ActionResult PartialProductUpdate(int id, [FromBody] JsonPatchDocument<Product> patchDoc)
     //{

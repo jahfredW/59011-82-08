@@ -9,9 +9,10 @@ using gestionCrud.Models.DTOs;
 
 namespace gestionCrud.Models
 {
-    public  class JsonContext
+    public class JsonContext
     {
-        const string JSON_PATH = @"U:\59011-82-08\CSHARP\3 - Accès aux données\gestionCrud\gestionCrud\datas.json";
+        // const string JSON_PATH = @"U:\59011-82-08\CSHARP\3 - Accès aux données\gestionCrud\gestionCrud\datas.json";
+        const string JSON_PATH = @"E:\cours\59011-82-08\CSHARP\3 - Accès aux données\gestionCrud\gestionCrud\datas.json";
         static string currentDirectory = Directory.GetCurrentDirectory();
         public string _jsonData;
         // fonction save product, itère sur la liste des product et 
@@ -40,6 +41,45 @@ namespace gestionCrud.Models
                 ex.Dump();
             }
 
+        }
+
+        public void DeleteProduct(int id)
+        {
+
+
+
+            // string json = Newtonsoft.Json.JsonConvert.SerializeObject(product);
+
+            // lecture du fichier
+            string jsonData = File.ReadAllText(JSON_PATH);
+
+            try
+            {
+                // récupération de la liste des product et désérialisation : 
+                List<Product> productList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Product>>(jsonData);
+                List<Product> productToKeep = new List<Product>();
+
+                // parcours de la liste : 
+                foreach (var item in productList)
+                {
+                    if (item.Id != id)
+                    {
+                        productToKeep.Add(item);
+                    }
+
+                }
+
+                SaveData(productToKeep);
+
+            }
+            catch (Exception ex)
+            {
+                ex.Dump();
+                Console.Write("une erreur est survenue");
+            }
+
+        
+    
         }
 
         public  List<Product> GetAll()

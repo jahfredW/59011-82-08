@@ -44,6 +44,11 @@ public class ProductsService
         _context.Replace(product);
     }
 
+
+    public void DeleteProduct(int id)
+    {
+        _context.DeleteProduct(id);
+    }
 }
 
 
