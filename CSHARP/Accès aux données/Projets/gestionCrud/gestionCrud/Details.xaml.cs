@@ -25,7 +25,7 @@ namespace gestionCrud
     /// </summary>
     public partial class Details : Window
     {
-        public MainWindow Mw { get; set; }
+        public MainWindow Mw;
         public string Data {  get; set; }
 
         private ProductsController _controller;
@@ -33,31 +33,58 @@ namespace gestionCrud
         public ProductsDTOout Product {  get; set; }
         
         
-
-        public Details(MainWindow Mw, ProductsDTOout product)
+        /// <summary>
+        /// Constructeur 
+        /// </summary>
+        /// <param name="mainWindow">Instance de la fenêtre parent</param>
+        /// <param name="product"></param>
+        public Details(MainWindow mainWindow, ProductsDTOout? product)
         {
-            Mw = new MainWindow();
+            
             InitializeComponent();
+
+            Mw = mainWindow;
+
             _controller = new ProductsController();
-            Product = product;
-            txt_Name1.Text = product.Name;
-            txt_Description1.Text = product.Description;
-            txt_Serial1.Text = product.Serial;
-            txt_Date1.Text = product.Date.ToString();
+
+            if(product != null)
+            {
+                Product = product;
+                txt_Name1.Text = product.Name;
+                txt_Description1.Text = product.Description;
+                txt_Serial1.Text = product.Serial;
+                txt_Date1.Text = product.Date.ToString();
+
+            }
 
         }
 
         public void Btn_update_Click1(object sender, RoutedEventArgs e) 
         {
-            Product.Name = txt_Name1.Text;
-            Product.Description = txt_Description1.Text;
-            Product.Serial = txt_Serial1.Text;
-            Product.Date = Convert.ToDateTime(txt_Date1.Text);
+            if(Product != null)
+            {
+                Product.Name = txt_Name1.Text;
+                Product.Description = txt_Description1.Text;
+                Product.Serial = txt_Serial1.Text;
+                Product.Date = Convert.ToDateTime(txt_Date1.Text);
+            } 
+            else
+            {
+              
 
-            // _controller.UpdateProduct(Product.Id, Product);
+                Mw.UpdateFields(txt_Name1.Text, txt_Description1.Text, txt_Serial1.Text, txt_Date1.Text);
+
+             
+            }
+            
+
+            
 
             this.Close();
         }
+
+       
+   
 
 
 

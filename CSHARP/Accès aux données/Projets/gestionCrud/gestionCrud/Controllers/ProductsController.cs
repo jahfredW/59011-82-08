@@ -61,7 +61,7 @@ public class ProductsController
     public void UpdateProduct(int id, ProductsDTOout entity)
     {
         // conversion de ProductsDTOin en ProductsDTO
-        Product product = _productsProfile.ProductsMapOut(entity);
+        Product product = _productsProfile.ProductsMapOutUpdate(entity);
 
 
 
@@ -80,6 +80,13 @@ public class ProductsController
     public void DeleteProduct(int id)
     {
         _productsService.DeleteProduct(id);
+    }
+
+    public void CreateProduct(ProductsDTOin entity) 
+    {
+        // conversion de ProductsDTOin en ProductsDTO
+        Product product = _productsProfile.ProductsMapCreate(entity);
+        _productsService.CreateProduct(product);
     }
 
 

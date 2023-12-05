@@ -1,58 +1,106 @@
 [
   {
-    "Id": 2,
-    "Name": "oioirhofi",
-    "Description": "rthrthr",
-    "Serial": "azdazdergrg",
-    "Date": "2023-11-30T14:13:00"
-  },
-  {
     "Id": 3,
     "Name": "testest4",
     "Description": "ezfefhrh",
     "Serial": "zefzefzrthrth",
-    "Date": "2023-11-30T14:13:00"
+    "Date": "2023-11-30T14:13:00",
+    "CategoryId": 2
   },
   {
     "Id": 4,
     "Name": "nomdadzad",
     "Description": "dazdadzadz",
     "Serial": "serial6",
-    "Date": "2023-11-30T14:13:00"
-  },
-  {
-    "Id": 5,
-    "Name": "nom5",
-    "Description": "description produit5",
-    "Serial": "serial5",
-    "Date": "2023-11-30T14:13:00.5982485+01:00"
+    "Date": "2023-11-30T14:13:00",
+    "CategoryId": 2
   },
   {
     "Id": 6,
     "Name": "nom6",
     "Description": "description produit6",
     "Serial": "serial6",
-    "Date": "2023-11-30T14:13:00.5982488+01:00"
+    "Date": "2023-11-30T14:13:00.5982488+01:00",
+    "CategoryId": 4
   },
   {
     "Id": 7,
     "Name": "nom7",
     "Description": "description produit7",
     "Serial": "serial7",
-    "Date": "2023-11-30T14:13:00.598249+01:00"
+    "Date": "2023-11-30T14:13:00.598249+01:00",
+    "CategoryId": 2
   },
   {
     "Id": 8,
     "Name": "nom8",
     "Description": "description produit8",
     "Serial": "serial8",
-    "Date": "2023-11-30T14:13:00.5982492+01:00"
+    "Date": "2023-11-30T14:13:00.5982492+01:00",
+    "CategoryId": 3
   },
   {
     "Id": 9,
     "Name": "nom9",
     "Description": "description produit9",
     "Serial": "serial9",
-    "Date": "2023-11-30T14:13:00.5982495+01:00"
+    "Date": "2023-11-30T14:13:00.5982495+01:00",
+    "CategoryId": 2
+  },
+  {
+    "Id": 10,
+    "Name": "greghegztrhTextBox",
+    "Description": "zherTextBox",
+    "Serial": "TextBoxehz",
+    "Date": "2023-12-06T00:00:00",
+    "CategoryId": 1
+  },
+  {
+    "Id": 11,
+    "Name": "zef",
+    "Description": "zef",
+    "Serial": "Tzef",
+    "Date": "2023-11-29T00:00:00",
+    "CategoryId": 1
+  },
+  {
+    "Id": 12,
+    "Name": "nom",
+    "Description": "description produit5",
+    "Serial": "serial5",
+    "Date": "2023-11-30T00:00:00",
+    "CategoryId": 1
+  },
+  {
+    "Id": 13,
+    "Name": "azd",
+    "Description": "azd",
+    "Serial": "azd",
+    "Date": "2023-12-14T00:00:00",
+    "CategoryId": 1
+  },
+  {
+    "Id": 14,
+    "Name": "azd",
+    "Description": "azd",
+    "Serial": "azd",
+    "Date": "2023-12-14T00:00:00",
+    "CategoryId": 1
+  },
+  {
+    "Id": 15,
+    "Name": "azd",
+    "Description": "azd",
+    "Serial": "azd",
+    "Date": "2023-12-14T00:00:00",
+    "CategoryId": 1
+  },
+  {
+    "Id": 16,
+    "Name": "faim",
+    "Description": "ffezfTextBox",
+    "Serial": "TextBox",
+    "Date": "2023-12-05T00:00:00",
+    "CategoryId": 1
   }
 ]

@@ -82,6 +82,8 @@
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="5*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
             <Label Content="Nom" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="36"/>
             <TextBox x:Name="txt_Name" Grid.Column="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="18" IsReadOnly="True"/>
@@ -90,10 +92,11 @@
             <Label Content="N° Série" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="53"/>
             <TextBox x:Name="txt_Serial" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" IsReadOnly="True" />
             <Label Content="Date" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="35"/>
-            <TextBox x:Name="txt_Date" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="18" IsReadOnly="True"/>
-            <Button x:Name="btn_update" Grid.Column="4" Style="{ DynamicResource ButtonCheck}" Margin="0,30,0,30" Grid.RowSpan="3" Click="btn_update_Click"/>
-            <Button x:Name="btn_delete" Grid.Column="4" Grid.Row="7" Style="{ DynamicResource ButtonDelete}" Click="btn_delete_Click"/>
-            <Button x:Name="btn_create" Grid.Column="4" Grid.Row="5" Style="{ DynamicResource ButtonSave}" Click="btn_save_Click"/>
+            <DatePicker x:Name="txt_Date" Grid.Row="3" Grid.Column="1"  Text="TextBox" VerticalAlignment="Center" IsEnabled="False"/>
+            <Button x:Name="btn_update" Grid.Column="4" Grid.Row="1" Style="{ DynamicResource ButtonUpdate}" Click="btn_update_Click" IsEnabled="False"/>
+            <Button x:Name="btn_delete" Grid.Column="4" Grid.Row="5" Style="{ DynamicResource ButtonDelete}" Click="btn_delete_Click" IsEnabled="False"/>
+            <Button x:Name="btn_create" Grid.Column="4" Grid.Row="7" Style="{ DynamicResource ButtonAdd}" Click="btn_create_Click"/>
+            <Button x:Name="btn_save" Grid.Column="4" Grid.Row="9" Style="{ DynamicResource ButtonSave}" Click="btn_save_Click"/>
 
 
 

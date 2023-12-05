@@ -89,8 +89,8 @@ namespace gestionCrud.Models
 
             try
             {
-                List<Product> product = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Product>>(jsonData);
-                return product;
+                List<Product> productList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Product>>(jsonData);
+                return productList;
 
             }
             catch (Exception ex)
@@ -192,6 +192,43 @@ namespace gestionCrud.Models
                 
             }
 
+        }
+
+        public void CreateProduct(Product product) 
+        {
+            // Récupération de la liste des produits
+            List<Product> productsList = GetAll();
+
+            // réupération du dernier produit de la liste
+            Product lastP = productsList[productsList.Count - 1];
+
+            // récupération de son Id 
+            int lastId = lastP.Id;
+
+            // int productsListIndex = productsList.Count();
+
+            Product productToSave = new Product(lastId + 1, product.Name, product.Description, product.Serial, product.Date, product.CategoryId);
+
+            // ajout du dernier produit à la liste  
+            productsList.Add(productToSave);
+
+            // sauvegarde dans le fihcier JSON
+            SaveData(productsList);
+
+        }
+
+        public int GetLastId()
+        {
+            // Récupération de la liste des produits
+            List<Product> productsList = GetAll();
+
+            // réupération du dernier produit de la liste
+            Product lastP = productsList[productsList.Count - 1];
+
+            // récupération de son Id 
+            int lastId = lastP.Id;
+
+            return lastId;
         }
     }
 }

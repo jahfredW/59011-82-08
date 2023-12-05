@@ -18,12 +18,12 @@ namespace gestionCrud
 
             for( int index = 0; index < 10; index++ ) 
             {
-                Product product = new Product();
-                product.Id = index;
-                product.Name = "nom" + index;
-                product.Date = DateTime.Now;
-                product.Description = "description produit" + index;
-                product.Serial =  "serial" + index;
+                Product product = new Product(index , "nom" + index, "serial" + index, "description produit" + index, DateTime.Now, 1);
+                //product.Id = index;
+                //product.Name = "nom" + index;
+                //product.Date = DateTime.Now;
+                //product.Description = "description produit" + index;
+                //product.Serial =  "serial" + index;
 
                 listeproducts.Add(product);
             }

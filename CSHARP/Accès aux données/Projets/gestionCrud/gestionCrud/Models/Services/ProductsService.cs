@@ -49,6 +49,16 @@ public class ProductsService
     {
         _context.DeleteProduct(id);
     }
+
+    public void CreateProduct(Product product)
+    {
+        _context.CreateProduct(product);
+    }
+
+    public int getLastId()
+    {
+        return _context.GetLastId();
+    }
 }
 
 

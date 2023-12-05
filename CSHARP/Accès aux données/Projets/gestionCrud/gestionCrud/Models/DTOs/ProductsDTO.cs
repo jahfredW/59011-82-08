@@ -68,6 +68,39 @@ namespace gestionCrud.Models.DTOs
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
+    public class ProductsDTOin
+    {
+        public ProductsDTOin(string name, string description, string serial, DateTime date, int idCategory)
+        {
+            Name = name;
+            Description = description;
+            Serial = serial;
+            Date = date;
+            IdCategory = idCategory;
+        }
+
+        // public int Id { get; set; }
+        public string Name {  get; set; }
+        public string Description {  get; set; }
+        public string Serial { get; set; }
+        public DateTime Date { get; set; }
+        public int IdCategory { get; set; }
+        
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
     //public class ObservableObject : INotifyPropertyChanged
     //{
 
@@ -112,14 +145,4 @@ namespace gestionCrud.Models.DTOs
     //}
 
 
-    public class ProductsDTOin
-    {
-        //public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-
-        public string Serial { get; set; }
-
-        public DateTime Date { get; set; }
-    }
 }
