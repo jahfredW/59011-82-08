@@ -12,7 +12,7 @@ namespace gestionCrud.Models
     public class JsonContext
     {
         const string JSON_PATH = @"U:\59011-82-08\CSHARP\Accès aux données\Projets\gestionCrud\gestionCrud\datas.json";
-        const string CATEGORIES_PATH = @"U:\59011-82-08\CSHARP\Accès aux données\Projets\gestionCrud\gestionCrud\datas.json";
+        const string CATEGORIES_PATH = @"U:\59011-82-08\CSHARP\Accès aux données\Projets\gestionCrud\gestionCrud\categories.json";
         // const string JSON_PATH = @"E:\cours\59011-82-08\CSHARP\3 - Accès aux données\gestionCrud\gestionCrud\datas.json";
         static string currentDirectory = Directory.GetCurrentDirectory();
         public string _jsonData;

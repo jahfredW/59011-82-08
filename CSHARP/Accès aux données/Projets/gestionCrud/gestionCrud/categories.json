@@ -8,13 +8,13 @@
   {
     "Id": 2,
     "Name": "HIFI",
-    "Description": "du matériel Hifi",
+    "Description": "du matï¿½riel Hifi",
     "Date": "2023-12-14T00:00:00"
 
   },
   {
     "Id": 3,
-    "Name": "Hygiène",
+    "Name": "Hygiï¿½ne",
     "Description": "Pour que FLorent sente bon",
     "Date": "2023-12-14T00:00:00"
   }

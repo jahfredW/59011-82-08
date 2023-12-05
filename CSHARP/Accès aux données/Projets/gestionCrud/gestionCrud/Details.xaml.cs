@@ -29,6 +29,7 @@ namespace gestionCrud
         public string Data {  get; set; }
 
         private ProductsController _controller;
+        private CategoriesController _categoriesController;
 
         public ProductsDTOout Product {  get; set; }
         
@@ -43,9 +44,17 @@ namespace gestionCrud
             
             InitializeComponent();
 
+            _controller = new ProductsController();
+            _categoriesController = new CategoriesController();
+
+            // récupération de la liste des catégories 
+            List<CategoriesDTOout> categoryList = _categoriesController.GetAllCategories();
+
             Mw = mainWindow;
 
-            _controller = new ProductsController();
+            // alimentation de la comboBox
+            cbo_cat.ItemsSource = categoryList;
+            
 
             if(product != null)
             {
@@ -67,6 +76,7 @@ namespace gestionCrud
                 Product.Description = txt_Description1.Text;
                 Product.Serial = txt_Serial1.Text;
                 Product.Date = Convert.ToDateTime(txt_Date1.Text);
+                Product.Category.Name = cbo_cat.Text;
             } 
             else
             {
