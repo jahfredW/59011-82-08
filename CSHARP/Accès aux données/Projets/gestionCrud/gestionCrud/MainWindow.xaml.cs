@@ -26,10 +26,12 @@ namespace gestionCrud
     {
 
         private ProductsController _controller;
+        private CategoriesController _categoryController;
         public MainWindow()
         {
             InitializeComponent();
             _controller = new ProductsController();
+            _categoryController = new CategoriesController();
             DataContext = new ObservableCollection<ProductsDTOout>(getListeProducts());
             LoadDatas();
 
@@ -108,12 +110,14 @@ namespace gestionCrud
 
 
             ProductsDTOout p = dataGrid.SelectedItem as ProductsDTOout;
+            
             if(p != null)
             {
                 txt_Name.Text = p.Name;
                 txt_Description.Text = p.Description;
                 txt_Serial.Text = p.Serial;
                 txt_Date.Text = p.Date.ToString();
+                txt_Categorie.Text = p.Category.Name;
 
                 Console.Write(p.Id);
             }
@@ -272,8 +276,9 @@ namespace gestionCrud
             // Sinon instanciation d'un DTO in est création d'un élement en BDD ( data.json). 
             else
             {
+                CategoriesDTOout catOut = _categoryController.GetCategoryById(p.Category.Id);
                 
-                ProductsDTOin d = new ProductsDTOin(txt_Name.Text, txt_Description.Text, txt_Serial.Text, Convert.ToDateTime(txt_Date.Text), 1);
+                ProductsDTOin d = new ProductsDTOin(txt_Name.Text, txt_Description.Text, txt_Serial.Text, Convert.ToDateTime(txt_Date.Text), catOut);
                 _controller.CreateProduct(d);
             }
 

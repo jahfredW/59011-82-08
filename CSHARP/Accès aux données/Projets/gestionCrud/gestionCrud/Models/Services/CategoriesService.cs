@@ -18,7 +18,7 @@ namespace gestionCrud.Models.Services
     }
 
     // permet de sauvegarder une liste de produit
-    public void SaveAllCategorys(List<Category> categoryList)
+    public void SaveAllCategories(List<Category> categoryList)
     {
         
         if (categoryList == null)
@@ -31,7 +31,7 @@ namespace gestionCrud.Models.Services
     }   
 
    // permet de récupérer la liste de produits 
-    public IEnumerable<Category> GetAllCategorys()
+    public IEnumerable<Category> GetAllCategories()
     {
         return _context.GetAllCategories().ToList();
     }

@@ -10,7 +10,7 @@ using gestionCrud.Models.Services;
 namespace gestionCrud.Models.Profiles
 {
 
-    public class CategorysProfile
+    public class CategoriesProfile
     {
 
 
@@ -81,6 +81,26 @@ namespace gestionCrud.Models.Profiles
 
 
             return category;
+        }
+
+        public CategoriesDTOout CategorysOutToBaseMap(Category category)
+        {
+
+            // CategoriesService categorysService = new CategoriesService();
+
+
+            CategoriesDTOout categoryOut = new CategoriesDTOout(category.Id, category.Name, category.Description, category.Date);
+
+
+            //category.Id = categoryDtoIn.Id;
+            //category.Name = categoryDtoIn.Name;
+            //category.Description = categoryDtoIn.Description;
+            //category.Serial = categoryDtoIn.Serial;
+            //category.Date = categoryDtoIn.Date;
+
+
+
+            return categoryOut;
         }
 
 

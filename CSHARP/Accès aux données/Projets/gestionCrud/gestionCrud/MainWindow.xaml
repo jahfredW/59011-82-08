@@ -57,6 +57,7 @@
                         <DataGridTextColumn Header="Description" Binding="{ Binding Description}"/>
                         <DataGridTextColumn Header="N° de série" Binding="{ Binding Serial}"/>
                         <DataGridTextColumn Header="Date de création" Binding="{ Binding Date}"/>
+                        <DataGridTextColumn Header="Categorie" Binding="{ Binding Category.Name }"/>
 
                     </DataGrid.Columns>
                 </DataGrid>
@@ -93,6 +94,8 @@
             <TextBox x:Name="txt_Serial" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" IsReadOnly="True" />
             <Label Content="Date" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="35"/>
             <DatePicker x:Name="txt_Date" Grid.Row="3" Grid.Column="1"  Text="TextBox" VerticalAlignment="Center" IsEnabled="False"/>
+            <Label Content="Categorie" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox x:Name="txt_Categorie" Grid.Row="5" Grid.Column="1"  Text="TextBox" VerticalAlignment="Center" IsEnabled="False"/>
             <Button x:Name="btn_update" Grid.Column="4" Grid.Row="1" Style="{ DynamicResource ButtonUpdate}" Click="btn_update_Click" IsEnabled="False"/>
             <Button x:Name="btn_delete" Grid.Column="4" Grid.Row="5" Style="{ DynamicResource ButtonDelete}" Click="btn_delete_Click" IsEnabled="False"/>
             <Button x:Name="btn_create" Grid.Column="4" Grid.Row="7" Style="{ DynamicResource ButtonAdd}" Click="btn_create_Click"/>

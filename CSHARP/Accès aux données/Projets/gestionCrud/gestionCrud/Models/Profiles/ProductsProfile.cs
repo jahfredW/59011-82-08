@@ -26,7 +26,7 @@ namespace gestionCrud.Models.Profiles
 
             foreach (var product in productsListe)
             {
-                ProductsDTOout productDTO = new ProductsDTOout(product.Id, product.Name, product.Description, product.Serial, product.Date);
+                ProductsDTOout productDTO = new ProductsDTOout(product.Id, product.Name, product.Description, product.Serial, product.Date, product.Category);
                 productDTO.Id = product.Id;
                 productDTO.Name = product.Name;
                 productDTO.Description = product.Description;
@@ -44,10 +44,15 @@ namespace gestionCrud.Models.Profiles
         {
 
             ProductsService productsService = new ProductsService();
+            CategoriesService categoriesService = new CategoriesService();
 
             int id = productsService.getLastId();
+
+            Category catFromRepo = categoriesService.GetCategoryById(productDtoIn.Category.Id);
+
+            
              
-            Product product = new Product(id + 1, productDtoIn.Name, productDtoIn.Description, productDtoIn.Serial, productDtoIn.Date, 1 );
+            Product product = new Product(id + 1, productDtoIn.Name, productDtoIn.Description, productDtoIn.Serial, productDtoIn.Date, catFromRepo );
 
           
             //product.Id = productDtoIn.Id;
@@ -66,10 +71,13 @@ namespace gestionCrud.Models.Profiles
         {
 
             ProductsService productsService = new ProductsService();
+            CategoriesService categoriesService = new CategoriesService();
+
+            Category catFromRepo = categoriesService.GetCategoryById(productDtoout.Category.Id);
 
             int id = productsService.getLastId();
 
-            Product product = new Product(productDtoout.Id, productDtoout.Name, productDtoout.Description, productDtoout.Serial, productDtoout.Date, 1);
+            Product product = new Product(productDtoout.Id, productDtoout.Name, productDtoout.Description, productDtoout.Serial, productDtoout.Date, catFromRepo);
 
 
             //product.Id = productDtoIn.Id;

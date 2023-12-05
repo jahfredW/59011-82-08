@@ -9,14 +9,14 @@ namespace gestionCrud.Models.Datas
 {
     public class Product : IEntity
     {
-        public Product(int id, string name, string description, string serial, DateTime date, int categoryId)
+        public Product(int id, string name, string description, string serial, DateTime date, Category category)
         {
             Id = id;
             Name = name;
             Description = description;
             Serial = serial;
             Date = date;
-            CategoryId = categoryId;
+            Category = category;
         }
 
         public int Id { get; set; }
@@ -27,6 +27,6 @@ namespace gestionCrud.Models.Datas
 
         public DateTime Date { get; set; }
 
-        public int CategoryId  { get; set; }
+        public Category Category  { get; set; }
     }
 }

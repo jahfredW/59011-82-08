@@ -4,9 +4,13 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using PropertyChanged;
+using gestionCrud.Models.Datas;
+using gestionCrud.Models.DTOs;
+
 
 namespace gestionCrud.Models.DTOs
 {
@@ -16,15 +20,17 @@ namespace gestionCrud.Models.DTOs
         private string _description;
         private string _serial;
 
-        public ProductsDTOout(int id, string name, string description, string serial, DateTime date)
+        public ProductsDTOout(int id, string name, string description, string serial, DateTime date, Category category)
         {
             Id = id;
             Name = name;
             Description = description;
             Serial = serial;
             Date = date;
+            Category = category;
         }
 
+        public Category Category { get; set; }
         public int Id { get; set; }
         public string Name
         {
@@ -71,13 +77,13 @@ namespace gestionCrud.Models.DTOs
 
     public class ProductsDTOin
     {
-        public ProductsDTOin(string name, string description, string serial, DateTime date, int idCategory)
+        public ProductsDTOin(string name, string description, string serial, DateTime date, CategoriesDTOout category)
         {
             Name = name;
             Description = description;
             Serial = serial;
             Date = date;
-            IdCategory = idCategory;
+            Category = category;
         }
 
         // public int Id { get; set; }
@@ -85,7 +91,7 @@ namespace gestionCrud.Models.DTOs
         public string Description {  get; set; }
         public string Serial { get; set; }
         public DateTime Date { get; set; }
-        public int IdCategory { get; set; }
+        public CategoriesDTOout Category { get; set; }
         
 
 

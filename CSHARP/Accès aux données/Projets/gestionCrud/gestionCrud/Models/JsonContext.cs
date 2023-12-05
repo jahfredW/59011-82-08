@@ -358,7 +358,7 @@ namespace gestionCrud.Models
 
             // int productsListIndex = productsList.Count();
 
-            Product productToSave = new Product(lastId + 1, product.Name, product.Description, product.Serial, product.Date, product.CategoryId);
+            Product productToSave = new Product(lastId + 1, product.Name, product.Description, product.Serial, product.Date, product.Category);
 
             // ajout du dernier produit à la liste  
             productsList.Add(productToSave);

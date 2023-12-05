@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "Name": "Jouets",
+    "Description": "des jouets pour Noel",
+    "Date": "2023-11-30T00:00:00"
+  },
+  {
+    "Id": 2,
+    "Name": "HIFI",
+    "Description": "du matériel Hifi",
+    "Date": "2023-12-14T00:00:00"
+
+  },
+  {
+    "Id": 3,
+    "Name": "Hygiène",
+    "Description": "Pour que FLorent sente bon",
+    "Date": "2023-12-14T00:00:00"
+  }
+
+]
