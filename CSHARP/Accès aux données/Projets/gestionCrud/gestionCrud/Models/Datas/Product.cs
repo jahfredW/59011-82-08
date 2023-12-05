@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace gestionCrud.Models.Datas
 {
-    public class Product
+    public class Product : IEntity
     {
         public Product(int id, string name, string description, string serial, DateTime date, int categoryId)
         {

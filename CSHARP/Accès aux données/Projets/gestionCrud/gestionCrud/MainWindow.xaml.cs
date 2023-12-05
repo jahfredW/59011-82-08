@@ -31,6 +31,7 @@ namespace gestionCrud
             InitializeComponent();
             _controller = new ProductsController();
             DataContext = new ObservableCollection<ProductsDTOout>(getListeProducts());
+            LoadDatas();
 
 
         }
@@ -60,13 +61,15 @@ namespace gestionCrud
 
             //List<ProductsDTOout> listeproducts = p.GetAllProducts();
 
-
             dtg_products.ItemsSource = DataContext;
         }
 
+        /// <summary>
+        /// Récupération de la liste des produits
+        /// </summary>
+        /// <returns></returns>
         private List<ProductsDTOout> getListeProducts()
         {
-
 
             List<ProductsDTOout> listeproducts = _controller.GetAllProducts();
 
@@ -105,13 +108,17 @@ namespace gestionCrud
 
 
             ProductsDTOout p = dataGrid.SelectedItem as ProductsDTOout;
+            if(p != null)
+            {
+                txt_Name.Text = p.Name;
+                txt_Description.Text = p.Description;
+                txt_Serial.Text = p.Serial;
+                txt_Date.Text = p.Date.ToString();
 
-            txt_Name.Text = p.Name;
-            txt_Description.Text = p.Description;
-            txt_Serial.Text = p.Serial;
-            txt_Date.Text = p.Date.ToString();
+                Console.Write(p.Id);
+            }
 
-            Console.Write(p.Id);
+            
 
         }
 
@@ -229,6 +236,15 @@ namespace gestionCrud
         {
             ProductsDTOout d = dtg_products.SelectedItem as ProductsDTOout;
             _controller.DeleteProduct(d.Id);
+
+            txt_Date.Text = null;
+            txt_Description.Text = null;
+            txt_Serial.Text = null;
+            txt_Name.Text = null;
+
+            DataContext = new ObservableCollection<ProductsDTOout>(getListeProducts());
+          
+            LoadDatas();
         }
 
 
