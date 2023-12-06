@@ -1,114 +1,120 @@
-[
-  {
-    "Id": 7,
-    "Name": "nom6",
-    "Description": "description produit7",
-    "Serial": "serial7",
-    "Date": "2023-11-30T00:00:00",
-    "Category": {
-      "Id": 2,
-      "Name": "HIFI",
-      "Description": "du mat�riel Hifi",
+[{
+  "nextId": 8,
+  "Liste": 
+  [
+    {
+      "Id": 7,
+      "Name": "nom6",
+      "Description": "description produit7",
+      "Serial": "serial7",
+      "Date": "2023-11-30T00:00:00",
+      "Category": {
+        "Id": 2,
+        "Name": "HIFI",
+        "Description": "du mat�riel Hifi",
+        "Date": "2023-12-14T00:00:00",
+        "ProductList": null
+      }
+    },
+    {
+      "Id": 14,
+      "Name": "azd",
+      "Description": "azd",
+      "Serial": "azd",
       "Date": "2023-12-14T00:00:00",
-      "ProductList": null
+      "Category": {
+        "Id": 3,
+        "Name": "Hygiene",
+        "Description": "Pour que FLorent sente bon",
+        "Date": "2023-12-14T00:00:00",
+        "ProductList": null
+      }
+    },
+    {
+      "Id": 16,
+      "Name": "faim",
+      "Description": "ffezfTextBox",
+      "Serial": "TextBox",
+      "Date": "2023-12-05T00:00:00",
+      "Category": {
+        "Id": 3,
+        "Name": "Hygiene",
+        "Description": "Pour que FLorent sente bon",
+        "Date": "2023-12-14T00:00:00",
+        "ProductList": null
+      }
+    },
+    {
+      "Id": 17,
+      "Name": "adazd",
+      "Description": "erge",
+      "Serial": "erg",
+      "Date": "2023-12-06T00:00:00",
+      "Category": {
+        "Id": 1,
+        "Name": "Jouets",
+        "Description": "des jouets pour Noel",
+        "Date": "2023-11-30T00:00:00",
+        "ProductList": null
+      }
+    },
+    {
+      "Id": 18,
+      "Name": "jfzej",
+      "Description": "jpergj",
+      "Serial": "^zkef",
+      "Date": "2023-12-07T00:00:00",
+      "Category": {
+        "Id": 1,
+        "Name": "Jouets",
+        "Description": "des jouets pour Noel",
+        "Date": "2023-11-30T00:00:00",
+        "ProductList": null
+      }
+    },
+    {
+      "Id": 19,
+      "Name": "object1",
+      "Description": "object1",
+      "Serial": "pzejfpo",
+      "Date": "2023-12-06T00:00:00",
+      "Category": {
+        "Id": 1,
+        "Name": "Jouets",
+        "Description": "des jouets pour Noel",
+        "Date": "2023-11-30T00:00:00",
+        "ProductList": null
+      }
+    },
+    {
+      "Id": 20,
+      "Name": "object3",
+      "Description": "object3",
+      "Serial": "6498919",
+      "Date": "2023-12-07T00:00:00",
+      "Category": {
+        "Id": 1,
+        "Name": "Jouets",
+        "Description": "des jouets pour Noel",
+        "Date": "2023-11-30T00:00:00",
+        "ProductList": null
+      }
+    },
+    {
+      "Id": 21,
+      "Name": "object4",
+      "Description": "object4",
+      "Serial": "9498",
+      "Date": "2023-12-08T00:00:00",
+      "Category": {
+        "Id": 1,
+        "Name": "Jouets",
+        "Description": "des jouets pour Noel",
+        "Date": "2023-11-30T00:00:00",
+        "ProductList": null
+      }
     }
-  },
-  {
-    "Id": 14,
-    "Name": "azd",
-    "Description": "azd",
-    "Serial": "azd",
-    "Date": "2023-12-14T00:00:00",
-    "Category": {
-      "Id": 3,
-      "Name": "Hygiene",
-      "Description": "Pour que FLorent sente bon",
-      "Date": "2023-12-14T00:00:00",
-      "ProductList": null
-    }
-  },
-  {
-    "Id": 16,
-    "Name": "faim",
-    "Description": "ffezfTextBox",
-    "Serial": "TextBox",
-    "Date": "2023-12-05T00:00:00",
-    "Category": {
-      "Id": 3,
-      "Name": "Hygiene",
-      "Description": "Pour que FLorent sente bon",
-      "Date": "2023-12-14T00:00:00",
-      "ProductList": null
-    }
-  },
-  {
-    "Id": 17,
-    "Name": "adazd",
-    "Description": "erge",
-    "Serial": "erg",
-    "Date": "2023-12-06T00:00:00",
-    "Category": {
-      "Id": 1,
-      "Name": "Jouets",
-      "Description": "des jouets pour Noel",
-      "Date": "2023-11-30T00:00:00",
-      "ProductList": null
-    }
-  },
-  {
-    "Id": 18,
-    "Name": "jfzej",
-    "Description": "jpergj",
-    "Serial": "^zkef",
-    "Date": "2023-12-07T00:00:00",
-    "Category": {
-      "Id": 1,
-      "Name": "Jouets",
-      "Description": "des jouets pour Noel",
-      "Date": "2023-11-30T00:00:00",
-      "ProductList": null
-    }
-  },
-  {
-    "Id": 19,
-    "Name": "object1",
-    "Description": "object1",
-    "Serial": "pzejfpo",
-    "Date": "2023-12-06T00:00:00",
-    "Category": {
-      "Id": 1,
-      "Name": "Jouets",
-      "Description": "des jouets pour Noel",
-      "Date": "2023-11-30T00:00:00",
-      "ProductList": null
-    }
-  },
-  {
-    "Id": 20,
-    "Name": "object3",
-    "Description": "object3",
-    "Serial": "6498919",
-    "Date": "2023-12-07T00:00:00",
-    "Category": {
-      "Id": 1,
-      "Name": "Jouets",
-      "Description": "des jouets pour Noel",
-      "Date": "2023-11-30T00:00:00",
-      "ProductList": null
-    }
-  },
-  {
-    "Id": 21,
-    "Name": "object4",
-    "Description": "object4",
-    "Serial": "9498",
-    "Date": "2023-12-08T00:00:00",
-    "Category": {
-      "Id": 1,
-      "Name": "Jouets",
-      "Description": "des jouets pour Noel",
-      "Date": "2023-11-30T00:00:00",
-      "ProductList": null
-    }
-  }
+  ]
+}
+
 ]

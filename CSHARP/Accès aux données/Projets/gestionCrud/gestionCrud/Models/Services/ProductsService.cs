@@ -1,64 +1,44 @@
 ﻿using gestionCrud.Models.Datas;
 using gestionCrud.Models;
 using gestionCrud.Models.DTOs;
+using System.IO;
 
 namespace gestionCrud.Models.Services;
 
 public class ProductsService
 {
-    private JsonContext _context;
+    const string PRODUCT_PATH = @"U:\59011-82-08\CSHARP\Accès aux données\Projets\gestionCrud\gestionCrud\datas.json";
+    static public int NextId { get; set; }
 
-    public ProductsService()
-    {
-        _context = new JsonContext();
-    }
 
     // permet de sauvegarder une liste de produit
-    public void SaveAllProducts(List<Product> productList)
+    public static void SaveAllProducts(List<Product> productList)
     {
-        
+
         if (productList == null)
         {
             throw new ArgumentNullException(nameof(productList));
         }
 
-        _context.SaveData(productList);
-      
-    }   
+         json = Newtonsoft.Json.JsonConvert.SerializeObject(productList);
 
-   // permet de récupérer la liste de produits 
-    public IEnumerable<Product> GetAllProducts()
-    {
-        return _context.GetAll().ToList();
+        // Convertir les Object en product 
+        JsonContext.SaveData(json, PRODUCT_PATH);
+
+
     }
 
-    // récupération d'un produit via son id 
-    public Product GetProductById(int id)
+    // méthode de récupération de tous les produits 
+    public static List<Product> GetAllProducts() 
     {
-        return _context.Get(id);
-    }
-
-    // udpate d'un produit dans le JSon
-    public void UpdateProduct(Product product)
-    {
-        _context.Replace(product);
-    }
+        // récuépration du contenu du fichier : 
+        StructureJson js = JsonContext.ReadData(PRODUCT_PATH);
+        // mapping 
 
 
-    public void DeleteProduct(int id)
-    {
-        _context.DeleteProduct(id);
+
     }
 
-    public void CreateProduct(Product product)
-    {
-        _context.CreateProduct(product);
-    }
-
-    public int getLastId()
-    {
-        return _context.GetLastId();
-    }
 }
 
 

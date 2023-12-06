@@ -8,14 +8,13 @@ using gestionCrud.Models.Datas;
 
 namespace gestionCrud.Models.Services
 {
+    
     class CategoriesService
     {
-            private JsonContext _context;
+        const string CATEGORIES_PATH = @"U:\59011-82-08\CSHARP\Accès aux données\Projets\gestionCrud\gestionCrud\categories.json";
+       
 
-    public CategoriesService()
-    {
-        _context = new JsonContext();
-    }
+   
 
     // permet de sauvegarder une liste de produit
     public void SaveAllCategories(List<Category> categoryList)
@@ -26,7 +25,9 @@ namespace gestionCrud.Models.Services
             throw new ArgumentNullException(nameof(categoryList));
         }
 
-        _context.SaveDataCategory(categoryList);
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(categoryList);
+
+        JsonContext.SaveData(json, CATEGORIES_PATH);
       
     }   
 
