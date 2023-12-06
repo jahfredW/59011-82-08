@@ -20,7 +20,7 @@ namespace gestionCrud.Models.DTOs
         private string _description;
         private string _serial;
 
-        public ProductsDTOout(int id, string name, string description, string serial, DateTime date, Category category)
+        public ProductsDTOout(int id, string name, string description, string serial, DateTime date, CategoriesDTOout category)
         {
             Id = id;
             Name = name;
@@ -30,7 +30,7 @@ namespace gestionCrud.Models.DTOs
             Category = category;
         }
 
-        public Category Category { get; set; }
+        public CategoriesDTOout Category { get; set; }
         public int Id { get; set; }
         public string Name
         {

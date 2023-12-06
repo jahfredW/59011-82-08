@@ -80,14 +80,8 @@ namespace gestionCrud
             } 
             else
             {
-              
-
-                Mw.UpdateFields(txt_Name1.Text, txt_Description1.Text, txt_Serial1.Text, txt_Date1.Text);
-
-             
+                Mw.UpdateFields(txt_Name1.Text, txt_Description1.Text, txt_Serial1.Text, txt_Date1.Text, cbo_cat.Text);
             }
-            
-
             
 
             this.Close();

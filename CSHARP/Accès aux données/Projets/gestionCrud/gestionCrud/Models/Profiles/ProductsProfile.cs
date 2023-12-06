@@ -26,7 +26,9 @@ namespace gestionCrud.Models.Profiles
 
             foreach (var product in productsListe)
             {
-                ProductsDTOout productDTO = new ProductsDTOout(product.Id, product.Name, product.Description, product.Serial, product.Date, product.Category);
+                CategoriesDTOout catOut = new CategoriesDTOout(product.Category.Id, product.Category.Name, product.Category.Description, product.Category.Date);
+
+                ProductsDTOout productDTO = new ProductsDTOout(product.Id, product.Name, product.Description, product.Serial, product.Date, catOut);
                 productDTO.Id = product.Id;
                 productDTO.Name = product.Name;
                 productDTO.Description = product.Description;

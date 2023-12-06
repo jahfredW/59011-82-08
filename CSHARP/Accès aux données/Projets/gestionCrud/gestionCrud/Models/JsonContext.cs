@@ -234,6 +234,38 @@ namespace gestionCrud.Models
 
         }
 
+
+        public Category GetCategoryByName(string name)
+        {
+            // lecture du fichier
+            string jsonData = File.ReadAllText(CATEGORIES_PATH);
+
+            try
+            {
+                // récupération de la liste des product et désérialisation : 
+                List<Category> categoryList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Category>>(jsonData);
+
+                // parcours de la liste : 
+                foreach (var item in categoryList)
+                {
+                    if (item.Name == name)
+                    {
+                        return item;
+                    }
+
+                }
+                return null;
+
+
+            }
+            catch (Exception ex)
+            {
+                ex.Dump();
+                return null;
+            }
+        }
+
+
         public Category GetCategory(int id)
         {
 

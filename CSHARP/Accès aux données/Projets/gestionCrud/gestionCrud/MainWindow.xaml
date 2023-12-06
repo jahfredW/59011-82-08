@@ -95,7 +95,7 @@
             <Label Content="Date" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Width="35"/>
             <DatePicker x:Name="txt_Date" Grid.Row="3" Grid.Column="1"  Text="TextBox" VerticalAlignment="Center" IsEnabled="False"/>
             <Label Content="Categorie" Grid.Row="5" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
-            <TextBox x:Name="txt_Categorie" Grid.Row="5" Grid.Column="1"  Text="TextBox" VerticalAlignment="Center" IsEnabled="False"/>
+            <ComboBox x:Name="cbo_Categorie" DisplayMemberPath="Name" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" IsEnabled="False"/>
             <Button x:Name="btn_update" Grid.Column="4" Grid.Row="1" Style="{ DynamicResource ButtonUpdate}" Click="btn_update_Click" IsEnabled="False"/>
             <Button x:Name="btn_delete" Grid.Column="4" Grid.Row="5" Style="{ DynamicResource ButtonDelete}" Click="btn_delete_Click" IsEnabled="False"/>
             <Button x:Name="btn_create" Grid.Column="4" Grid.Row="7" Style="{ DynamicResource ButtonAdd}" Click="btn_create_Click"/>

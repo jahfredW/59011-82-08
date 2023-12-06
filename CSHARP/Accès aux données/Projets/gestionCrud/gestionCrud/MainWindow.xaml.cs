@@ -33,6 +33,7 @@ namespace gestionCrud
             _controller = new ProductsController();
             _categoryController = new CategoriesController();
             DataContext = new ObservableCollection<ProductsDTOout>(getListeProducts());
+            cbo_Categorie.ItemsSource = _categoryController.GetAllCategories();
             LoadDatas();
 
 
@@ -117,7 +118,8 @@ namespace gestionCrud
                 txt_Description.Text = p.Description;
                 txt_Serial.Text = p.Serial;
                 txt_Date.Text = p.Date.ToString();
-                txt_Categorie.Text = p.Category.Name;
+                cbo_Categorie.SelectedValuePath = "Name";
+                cbo_Categorie.SelectedValue = p.Category.Name;
 
                 Console.Write(p.Id);
             }
@@ -151,6 +153,8 @@ namespace gestionCrud
             txt_Description.Text = p.Description;
             txt_Serial.Text = p.Serial;
             txt_Date.Text = p.Date.ToString();
+            cbo_Categorie.Text = p.Category.Name;
+            
 
             //p.Name = txt_Name.Text;
             //p.Description = txt_Description.Text;
@@ -169,12 +173,13 @@ namespace gestionCrud
         /// <param name="description"></param>
         /// <param name="serial"></param>
         /// <param name="date"></param>
-        public void UpdateFields(string name, string description, string serial, string date)
+        public void UpdateFields(string name, string description, string serial, string date, string categoryName)
         {
             txt_Name.Text = name;
             txt_Description.Text = description;
             txt_Serial.Text = serial;
             txt_Date.Text = date;
+            cbo_Categorie.Text= categoryName;
         }
 
 
@@ -187,6 +192,9 @@ namespace gestionCrud
         {
             ProductsDTOin p = dtg_products.SelectedItem as ProductsDTOin;
 
+
+            // neutralisation de la dataGrid -> plus d'items sélectionnés.
+            dtg_products.SelectedItem = null;
             // attribution des inputs ) l'objet 
             Details details = new Details(this, null);
 
@@ -270,17 +278,41 @@ namespace gestionCrud
                 p.Description = txt_Description.Text;
                 p.Serial = txt_Serial.Text;
                 p.Date = Convert.ToDateTime(txt_Date.Text);
+
+                CategoriesDTOout product = cbo_Categorie.SelectedItem as CategoriesDTOout;
+
+
+                p.Category = product;
+
                 _controller.UpdateProduct(p.Id, p);
 
             }
             // Sinon instanciation d'un DTO in est création d'un élement en BDD ( data.json). 
             else
             {
-                CategoriesDTOout catOut = _categoryController.GetCategoryById(p.Category.Id);
+                // récupération du nom de la catégorie 
+                string categorieName = cbo_Categorie.Text;
+
+                // récupération de la catégorie par son nom
+                CategoriesDTOout categoriesDTOout = _categoryController.GetCategoryByName(categorieName);
+
+                // CategoriesDTOout catOut = _categoryController.GetCategoryById(p.Category.Id);
                 
-                ProductsDTOin d = new ProductsDTOin(txt_Name.Text, txt_Description.Text, txt_Serial.Text, Convert.ToDateTime(txt_Date.Text), catOut);
+                ProductsDTOin d = new ProductsDTOin(txt_Name.Text, txt_Description.Text, txt_Serial.Text, Convert.ToDateTime(txt_Date.Text), categoriesDTOout);
+                
                 _controller.CreateProduct(d);
+
+                DataContext = new ObservableCollection<ProductsDTOout>(getListeProducts());
+
+                LoadDatas();
             }
+
+            // dans les deux cas on réinitialise les champs 
+            txt_Name.Text = null;
+            txt_Description.Text = null;
+            txt_Serial.Text = null;
+            txt_Date.Text = null;
+            cbo_Categorie.SelectedValue = null;
 
         }
 

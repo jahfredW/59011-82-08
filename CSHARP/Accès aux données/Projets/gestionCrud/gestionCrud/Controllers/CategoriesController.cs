@@ -51,6 +51,21 @@ public class CategoriesController
 
     }
 
+    public CategoriesDTOout GetCategoryByName(string name)
+    {
+        try
+        {
+            Category catFromRepo = _categoriesService.GetCategoryByName(name);
+            CategoriesDTOout cat = _categoriesProfile.CategorysOutToBaseMap(catFromRepo);
+            return cat;
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
+
+    }
+
 
 
     public void UpdateCategorie(int id, CategoriesDTOout entity)

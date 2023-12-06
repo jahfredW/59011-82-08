@@ -84,33 +84,14 @@ public class ProductsController
 
     public void CreateProduct(ProductsDTOin entity) 
     {
-        // conversion de ProductsDTOin en ProductsDTO
+        // conversion de ProductsDTOin en Product
         Product product = _productsProfile.ProductsMapCreate(entity);
+
+        // Récupératin 
+
+
         _productsService.CreateProduct(product);
     }
 
-
-    //public ActionResult PartialProductUpdate(int id, [FromBody] JsonPatchDocument<Product> patchDoc)
-    //{
-    //    var ProductFromRepo = _ProductsService.GetProductById(id);
-
-    //    if (ProductFromRepo == null)
-    //    {
-    //        return NotFound();
-    //    }
-
-    //    var ProductToPatch = _mapper.Map<Product>(ProductFromRepo);
-
-    //    patchDoc.ApplyTo(ProductToPatch, ModelState);
-    //    if (!TryValidateModel(ProductToPatch))
-    //    {
-    //        return ValidationProblem();
-    //    }
-
-    //    _mapper.Map(ProductToPatch, ProductFromRepo);
-    //    _ProductsService.UpdateProduct(ProductFromRepo);
-
-    //    return NoContent();
-    //}
 }
 

@@ -41,9 +41,15 @@ namespace gestionCrud.Models.Services
     {
         return _context.GetCategory(id);
     }
+    
+    // récupération d'une catégorie par son nom 
+    public Category GetCategoryByName(string name)
+    {
+        return _context.GetCategoryByName(name);
+    }
 
-    // udpate d'un produit dans le JSon
-    public void UpdateCategory(Category category)
+        // udpate d'un produit dans le JSon
+        public void UpdateCategory(Category category)
     {
         _context.ReplaceCategory(category);
     }
