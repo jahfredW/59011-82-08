@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using WpfAvecScaffold.Models.Data;
 
 namespace WpfAvecScaffold.Models.Services;
@@ -25,7 +26,7 @@ public class DronesService
 
     public IEnumerable<Drone> GetAllDrones()
     {
-        return _context.Drones.ToList();
+        return _context.Drones.Include("LeTypeDeDrone").ToList();
     }
 
     public Drone GetDroneById(int id)

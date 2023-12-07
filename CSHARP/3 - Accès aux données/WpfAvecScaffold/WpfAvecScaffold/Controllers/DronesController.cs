@@ -27,10 +27,10 @@ public class DronesController : ControllerBase
     }
 
 
-    public IEnumerable<DronesDTO> GetAllDrones()
+    public IEnumerable<DronesDTOOut> GetAllDrones()
     {
         var listeDrones = _DronesService.GetAllDrones();
-        return _mapper.Map<IEnumerable<DronesDTO>>(listeDrones);
+        return _mapper.Map<IEnumerable<DronesDTOOut>>(listeDrones);
     }
 
  

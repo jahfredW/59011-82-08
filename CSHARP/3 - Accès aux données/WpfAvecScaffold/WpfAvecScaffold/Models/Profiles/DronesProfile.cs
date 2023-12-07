@@ -15,7 +15,7 @@ namespace WpfAvecScaffold.Models.Profiles
         {
             CreateMap<Drone, DronesDTO>();
             CreateMap<DronesDTOIn, Drone>();
-            CreateMap<Drone, DronesDTOOut>();
+            CreateMap<Drone, DronesDTOOut>().ForMember(dest => dest.LeTypeDeDrone, opt => opt.MapFrom(src => src.LeTypeDeDrone.Intitule));
         }
     }
 }

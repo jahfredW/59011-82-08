@@ -29,6 +29,8 @@ namespace WpfAvecScaffold.Models.DTOs
         public decimal? Prix { get; set; }
 
         public int IdTypeDrone { get; set; }
+
+        public string LeTypeDeDrone { get; set; } = null!;
     }
 
     public class DronesDTOOut
@@ -41,9 +43,9 @@ namespace WpfAvecScaffold.Models.DTOs
 
         public int IdTypeDrone { get; set; }
 
-        public virtual TypeDrone LeTypeDeDrone { get; set; } = null!;
+        public string LeTypeDeDrone { get; set; } = null!;
 
-        public virtual ICollection<Session> ListeSessions { get; set; } = new List<Session>();
+        // public virtual ICollection<Session> ListeSessions { get; set; } = new List<Session>();.
 
     }
 }
