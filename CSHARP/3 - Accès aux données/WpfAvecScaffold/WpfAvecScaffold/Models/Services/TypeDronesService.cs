@@ -30,7 +30,7 @@ public class TypeDronesService
 
     public TypeDrone GetTypeDroneById(int id)
     {
-        TypeDrone entity = _context.TypeDrones.FirstOrDefault(entity => entity.Id == id);
+        TypeDrone entity = _context.TypeDrones.FirstOrDefault(entity => entity.IdTypeDrone == id);
 
         return entity;
     }
@@ -47,7 +47,12 @@ public class TypeDronesService
         _context.SaveChanges();
     }
 
-    public 
+    public int GetTypeDroneByName(string name)
+    {
+        TypeDrone entity = _context.TypeDrones.FirstOrDefault(entity => entity.Intitule == name);
+
+        return entity.IdTypeDrone;
+    }
 
 }
 

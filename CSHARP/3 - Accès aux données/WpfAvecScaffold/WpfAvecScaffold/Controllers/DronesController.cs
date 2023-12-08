@@ -54,9 +54,12 @@ public class DronesController : ControllerBase
     }
 
 
-    public void UpdateDrone(int id, DronesDTO entity)
+    public void UpdateDrone(int id, DronesDTOIn entity)
     {
+        // récupération du drone en bdd 
         var DroneFromRepo = _DronesService.GetDroneById(id);
+
+
         if (DroneFromRepo != null)
         {
             _mapper.Map(entity, DroneFromRepo);

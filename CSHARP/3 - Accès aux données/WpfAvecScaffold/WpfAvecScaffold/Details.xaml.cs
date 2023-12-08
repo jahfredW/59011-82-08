@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfAvecScaffold.Models.DTOs;
+using WpfAvecScaffold.Models.Data;
 using WpfAvecScaffold.Controllers;
 using WpfAvecScaffold.Models;
 
@@ -26,6 +27,7 @@ namespace WpfAvecScaffold
         private DronesDTOOut _drone;
         private string _mode;
         private DronesController _dronesController;
+        private TypeDronesController _typeDronesController;
         private DronesDbContext _dbContext;
 
 
@@ -38,6 +40,8 @@ namespace WpfAvecScaffold
             _drone = drone;
             _dbContext = context;
             _dronesController = new DronesController(context);
+            _typeDronesController = new TypeDronesController(context);
+            cbo_Type.ItemsSource = _typeDronesController.GetAllTypeDrones();
 
             // On met à jour les champs au chargement de la page 
             FillInForm(_drone);
@@ -50,7 +54,7 @@ namespace WpfAvecScaffold
             {
                 txt_Nom.Text = drone.Nom;
                 txt_Prix.Text = drone.Prix.ToString();
-                txt_Type.Text = drone.LeTypeDeDrone;
+                cbo_Type.SelectedValue = drone.LeTypeDeDrone;
             }
             
         }
@@ -59,13 +63,22 @@ namespace WpfAvecScaffold
         {
             // récupérer les infos de la BDD pour créer un DTOIn
 
+
             DronesDTOIn droneDTOIn = new DronesDTOIn();
+
+
             droneDTOIn.Nom = txt_Nom.Text;
             droneDTOIn.Prix = Convert.ToDecimal(txt_Prix.Text);
-            droneDTOIn.IdTypeDrone =  
+
+            
+
+            // récupération de l'id du type de Drone
+            int idTypeDrone = _typeDronesController.GetTypeDroneByName(cbo_Type.Text);
+            droneDTOIn.IdTypeDrone = idTypeDrone;
+
 
             // Utiliser un controller pour update en BDD
-            _dronesController.UpdateDrone(_drone.IdDrone, drone)
+            _dronesController.UpdateDrone(_drone.IdDrone, droneDTOIn);
             
         }
     }

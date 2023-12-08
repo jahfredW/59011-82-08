@@ -40,7 +40,7 @@ namespace WpfAvecScaffold
                 // Ajouter un Drone : Créer un nouveau Drone 
                 DronesDTOOut drone = new DronesDTOOut();
                 // passe la drone à la fenêtre de l'enfant 
-                Details detailsWindow = new Details(this, drone, mode) ;
+                Details detailsWindow = new Details(this, drone, mode, _context) ;
 
                 detailsWindow.ShowDialog();
 
@@ -55,7 +55,7 @@ namespace WpfAvecScaffold
                 // Ajouter un Drone : Créer un nouveau Drone 
                 DronesDTOOut drone = test.SelectedItem as DronesDTOOut;
                 // passe la drone à la fenêtre de l'enfant 
-                Details detailsWindow = new Details(this, drone, mode);
+                Details detailsWindow = new Details(this, drone, mode, _context);
 
                 detailsWindow.ShowDialog();
 

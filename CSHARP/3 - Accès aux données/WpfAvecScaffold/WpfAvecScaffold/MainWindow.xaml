@@ -18,7 +18,7 @@
             <ColumnDefinition Width="748*"/>
             <ColumnDefinition Width="31*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="test" Grid.Column="1" Grid.Row="1" />
+        <DataGrid x:Name="test" Grid.Column="1" Grid.Row="1" ColumnWidth="*" />
         <Grid x:Name="grd_Btn" Grid.Row="2" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30*"/>

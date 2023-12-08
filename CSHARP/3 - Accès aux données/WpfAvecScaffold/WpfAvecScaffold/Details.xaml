@@ -33,11 +33,11 @@
                 <RowDefinition Height="182*"/>
             </Grid.RowDefinitions>
             <Label Content="Nom"   Grid.Row="1" VerticalContentAlignment="Center" FontSize="16" />
-            <TextBox x:Name="txt_Nom" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1"  Text="TextBox" VerticalContentAlignment="Center" FontSize="16" IsEnabled="False"/>
+            <TextBox x:Name="txt_Nom" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1"  Text="TextBox" VerticalContentAlignment="Center" FontSize="16"/>
             <Label Content="Prix"   Grid.Row="3" VerticalContentAlignment="Center" FontSize="16" />
-            <TextBox x:Name="txt_Prix" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3"  Text="TextBox" VerticalContentAlignment="Center" FontSize="16" IsEnabled="False"/>
+            <TextBox x:Name="txt_Prix" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3"  Text="TextBox" VerticalContentAlignment="Center" FontSize="16"/>
             <Label Content="Type"   Grid.Row="5" VerticalContentAlignment="Center" FontSize="16" />
-            <TextBox x:Name="txt_Type" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="5"  Text="TextBox" VerticalContentAlignment="Center" FontSize="16" IsEnabled="False"/>
+            <ComboBox x:Name="cbo_Type" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="5" VerticalContentAlignment="Center" FontSize="16"/>
             <Grid Grid.Row="7">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20*"/>

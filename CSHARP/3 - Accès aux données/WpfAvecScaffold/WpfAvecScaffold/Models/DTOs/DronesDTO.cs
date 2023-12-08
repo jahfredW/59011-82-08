@@ -30,7 +30,7 @@ namespace WpfAvecScaffold.Models.DTOs
 
         public int IdTypeDrone { get; set; }
 
-        public string LeTypeDeDrone { get; set; } = null!;
+        // public string LeTypeDeDrone { get; set; } = null!;
     }
 
     public class DronesDTOOut
